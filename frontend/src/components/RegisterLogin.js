@@ -100,8 +100,7 @@ const Register__Login = () => {
     }
   };
 
-  // Therapist Login
-  const Therapist = async (loginData) => {
+  const TherapistLogin = async (loginData) => {
     try {
       const response = await fetch(
         "http://localhost:4000/api/therapist/loginTherapist",
