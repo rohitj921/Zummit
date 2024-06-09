@@ -1,84 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import FlowerImage from "../../images/flower-img.png";
 const Groups = () => {
-  const groupsDetails = [
-    {
-      image: FlowerImage,
-      email: "zummit-chandan@gmail.com",
-      groupName: "Better Than Yesterday",
-      purpose_Goals:
-        "Trauma, Anxiety, Depression, Life Transitions, Career Uncertainty, Relationship Challenges, Quarter-Life Crisis, Couples Therapy",
-      sessionNumber: 10,
-      slots: 10,
-      startDate: "",
-      price: "",
-      time: {
-        shift: "",
-        hours: "",
-      },
-      selectDay: "",
-    },
-    {
-      image: FlowerImage,
-      email: "zummit-chandan@gmail.com",
-      groupName: "Better Than Tomorrow",
-      purpose_Goals: "Improving every minute",
-      sessionNumber: 10,
-      slots: 10,
-      startDate: "",
-      price: "",
-      time: {
-        shift: "",
-        hours: "",
-      },
-      selectDay: "",
-    },
-    {
-      image: FlowerImage,
-      email: "zummit-chandan@gmail.com",
-      groupName: "Better Than Tomorrow",
-      purpose_Goals: "Improving every minute",
-      sessionNumber: 10,
-      slots: 10,
-      startDate: "",
-      price: "",
-      time: {
-        shift: "",
-        hours: "",
-      },
-      selectDay: "",
-    },
-    {
-      image: FlowerImage,
-      email: "zummit-chandan@gmail.com",
-      groupName: "Better Than Tomorrow",
-      purpose_Goals: "Improving every minute",
-      sessionNumber: 10,
-      slots: 10,
-      startDate: "",
-      price: "",
-      time: {
-        shift: "",
-        hours: "",
-      },
-      selectDay: "",
-    },
-    {
-      image: FlowerImage,
-      email: "zummit-chandan@gmail.com",
-      groupName: "Better Than Tomorrow",
-      purpose_Goals: "Improving every minute",
-      sessionNumber: 10,
-      slots: 10,
-      startDate: "",
-      price: "",
-      time: {
-        shift: "",
-        hours: "",
-      },
-      selectDay: "",
-    },
-  ];
+  const [groupsDetails,setGroupsDetails] = useState([])
+  useEffect(() => {
+    axios
+      .post("https://zummit-chandan.onrender.com/api/admin/groupsdetails", {
+        input: "Dom@gmail.com",
+        token: 
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NWFiOGNjNDQ1MmIxM2Q1MGJmYTYzNCIsImlhdCI6MTcxNzIyMTU4MCwiZXhwIjoxNzE5ODEzNTgwfQ.ZKxsQmALrx7CpkOpNzA1i1Ub1exmI9ghmsdY9bQVzuI",
+      })
+      .then((response) => {
+        if (response.data.success) {
+          setGroupsDetails(response.data.groups);
+        } else {
+          console.error("Failed to fetch appointments");
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching appointments:", error);
+      });
+  }, []);
   return (
     <div className="w-full m-10 ">
       {/* Search Bar */}
@@ -141,7 +83,7 @@ const Groups = () => {
         <div className="relative overflow-hidden rounded-lg">
           <div className="relative group-hover:scale-[1.08] transition ease-in-out duration-700 overflow-hidden">
             <img
-              src={item.image}
+              src={FlowerImage}
               alt=""
               className="w-72 m-auto"
             />

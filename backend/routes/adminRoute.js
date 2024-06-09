@@ -41,7 +41,7 @@ router.route("/adminDashboard").get(adminDashboard);
 router.route("/appointmentslist").post(appointmentsList);
 router.route("/clienlist").post(clientsList);
 router.route("/profile").get(profiles);
-router.route("/groupsdetails").get(groupsDetails);
+router.route("/groupsdetails").post(groupsDetails);
 router.route("/addedreview").get(reviewsList);
 router.route("/reviews").post(reviewsList);
 router.route("/therapistsdetails").post(protect , admin ,therapistsDetails);
