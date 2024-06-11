@@ -31,6 +31,9 @@ import Admin_Clients from "./components/Admin/Client/Admin_Clients";
 import Admin_Reviews from "./components/Admin/Reviews/Admin_Reviews";
 import Admin_Transactions from "./components/Admin/Transactions/Admin_Transactions";
 import TherapistHome from "./components/TherapistHome";
+import Login from "./components/Admin/Register_Loigin/Login";
+import Register__Login from "./components/RegisterLogin";
+import SignUp from "./components/Admin/Register_Loigin/SignUp";
 
 const WithHeaderAndFooter = ({ children }) => (
   <>
@@ -179,6 +182,8 @@ const routes = [
   { path: "/admin-transactions", element: <Admin_Transactions /> },
   { path: "/admin-resources", element: <Admin_Resources /> },
   { path: "/Therapist-home", element: <TherapistHome /> },
+  {path:"admin-login",element:<Login/>},
+  {path:"admin-register",element:<SignUp/>},
 ];
 
 function renderRoutes(routes) {
