@@ -20,6 +20,8 @@
           "Description": "Static/hardcoded data only."
         }
       ],
+      "Status": "Failed",
+      
       "Fixes to be Done": [
         {
           "Description": "Please send the proper response from the backend."
