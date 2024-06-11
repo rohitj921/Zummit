@@ -24,6 +24,10 @@ const adminLoginRegisterSchema = new mongoose.Schema(
             required:[true,"Please add apassword"],
             minLength:[6,"Password must be upto 6 characters"],
         },
+        imageUrl:{
+          type:String,
+          required:true
+      },
        
     },
   { timestamps: true }
