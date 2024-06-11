@@ -83,7 +83,7 @@ const Register__Login = () => {
 
       const data = await response.json();
 
-      dispatch(addUser(data));
+      dispatch(addUser(data.newUser));
       navigate("/userdashboard");
       console.log(response);
 

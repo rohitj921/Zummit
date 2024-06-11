@@ -76,7 +76,7 @@ const registerUser = asyncHandler(async (req, res) => {  // control variable hai
     // send user data
         res.status(201).json({
       success: true,
-      data: _id,
+      _id,
       name,
       input,
       role,
