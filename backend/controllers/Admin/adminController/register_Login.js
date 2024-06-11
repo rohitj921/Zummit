@@ -29,6 +29,7 @@ const registerAdmin = asyncHandler(async (req, res) => {
   const { name, input, password, role } = req.body;
   let isValid = false;
   let msg = "";
+  let imageUrl='';
 
   if (!name || !input || !password || !role) {
     return res.status(400).json({ message: "Please provide all fields" });
@@ -84,6 +85,7 @@ const registerAdmin = asyncHandler(async (req, res) => {
   try {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
+    
 
     const admin = new AdminLoginRegister({
       name,

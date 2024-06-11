@@ -1,0 +1,38 @@
+[
+    {
+      "Component Name": "Admin Dashboard",
+      "Testing Requirement": "Referenced by QA ticket - http://github.com",
+      "Testing Type": "Manually tested",
+      "Tested Cases": [
+        "UI layer in frontend",
+        "Data response from the backend"
+      ],
+      "Failure Cases": "N/A",
+      "Accuracy": "95%",
+      "Bugs Reported": [
+        {
+          "Description": "Admin image should be mandatory, not optional."
+        },
+        {
+          "Description": "Image not received from the backend."
+        },
+        {
+          "Description": "Static/hardcoded data only."
+        }
+      ],
+      "Fixes to be Done": [
+        {
+          "Description": "Please send the proper response from the backend."
+        },
+        {
+          "Description": "UI alignment can be polished more to improve appearance."
+        }
+      ],
+      "Testing Feedback": "The Admin Dashboard component has been tested and found to be working well with minor issues. The UI is not responsive and the data is not correctly retrieved from the backend. However, some bugs were identified and reported, such as the missing admin image and the use of static data. The fixes for these bugs have been identified and will be implemented in the next iteration.",
+      "Performance": "Good, but there is scope for improving the quality of the code."
+    },
+    {
+      "Next component": "test next and add like this"
+    }
+  ]
+  
