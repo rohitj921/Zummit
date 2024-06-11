@@ -17,6 +17,11 @@ app.use(bodyParser.json());
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
+const fileupload=require("express-fileupload");
+app.use(fileupload({
+    useTempFiles:true,
+    tempFileDir:'/tmp/'
+}));
 
 app.use(
   cors({
@@ -47,9 +52,14 @@ app.get("/booking-details", async (req, res) => {
   return res.send(allBookings);
 });
 
+
 //connect to the database
 const dbConnect = require("./config/database");
 dbConnect();
+
+//Cloudinary Connection
+const cloudinary=require("./config/cloudinary");
+cloudinary.cloudinaryConnect();
 
 const {
   MySqlConnect,
