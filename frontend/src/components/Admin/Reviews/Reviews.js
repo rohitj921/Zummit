@@ -34,7 +34,6 @@ const Reviews = () => {
           viewBox="0 0 21 20"
           fill={i < reviewValue ? "#FED365" : "#ffffff"}
           xmlns="http://www.w3.org/2000/svg"
-        //   className={i < reviewValue ? "#FED365" : ""}
         >
           <path
             d="M10.667 1.12963L13.3086 6.48131C13.3814 6.62874 13.522 6.73097 13.6847 6.75474L19.5928 7.6183L15.3181 11.7818C15.2002 11.8967 15.1464 12.0623 15.1742 12.2245L16.1829 18.1058L10.8997 15.3275C10.754 15.2508 10.58 15.2508 10.4343 15.3275L5.15108 18.1058L6.1598 12.2245C6.18763 12.0623 6.1338 11.8967 6.01586 11.7818L1.7412 7.6183L7.64931 6.75474C7.81198 6.73097 7.95258 6.62874 8.02535 6.48131L10.667 1.12963Z"
@@ -49,7 +48,6 @@ const Reviews = () => {
  };
   return (
     <div className="w-full m-10 ">
-      {/* Search Bar */}
       <div className="flex justify-center gap-10 items-center">
         <div className="flex items-center bg-white w-[70%] border  pl-4 rounded-lg border-[#B4F0FF] ">
           <svg

@@ -29,7 +29,6 @@ const Therapist = () => {
     fetchTherapistsDetails();
   }, []);
 
-  // formated Date like DD-MM-YYYY
   const formatDate = (dateString) => {
     const options = { day: "2-digit", month: "2-digit", year: "numeric" };
     return new Date(dateString).toLocaleDateString("en-GB", options);
@@ -118,7 +117,6 @@ const Therapist = () => {
           <h1>Reviews</h1>
           <h1>Joining Date</h1>
         </div>
-
         {Array.isArray(therapistsDetails) && therapistsDetails.length > 0 ? (
           therapistsDetails.map((item) => (
             <div

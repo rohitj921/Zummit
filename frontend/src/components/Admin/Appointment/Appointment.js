@@ -10,7 +10,7 @@ const Appointment = () => {
     axios
       .post("https://zummit-chandan.onrender.com/api/admin/appointmentslist", {
         input: "akib@gmail.com",
-        token: 
+        token:
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NWEwNGRiMTk3Mzk4MTgwNzAwZDZjNCIsImlhdCI6MTcxNzE3NTUxNiwiZXhwIjoxNzE5NzY3NTE2fQ.nT9mK7G3tCQlHfhpFBC-iefz4XkGdBIP8BUNN9tOoUQ",
       })
       .then((response) => {
@@ -127,9 +127,8 @@ const Appointment = () => {
         <h1>Appointments</h1>
         <div className="relative text-white cursor-pointer bg-[#0190B1] w-[7rem] p-1 text-center  rounded-md text-base ">
           <div
-            className={`flex ${
-              showSort && "border-b"
-            } border-white justify-center items-center gap-2 py-1 text-center`}
+            className={`flex ${showSort && "border-b"
+              } border-white justify-center items-center gap-2 py-1 text-center`}
           >
             <h1>Sort</h1>
             {showSort ? (
@@ -219,33 +218,29 @@ const Appointment = () => {
             <div className="absolute left-0 rounded-b-md px-1 text-sm  w-full  bg-[#0190b1]">
               <h1
                 onClick={handleSortClick("All")}
-                className={`${
-                  selectedSort === "All" ? "#F7F131" : ""
-                } border-b rounde-md border-white text-center  py-1`}
+                className={`${selectedSort === "All" ? "#F7F131" : ""
+                  } border-b rounde-md border-white text-center  py-1`}
               >
                 All
               </h1>
               <h1
                 onClick={handleSortClick("Pending")}
-                className={`${
-                  selectedSort === "All" ? "#F7F131" : ""
-                } border-b rounde-md border-white text-center p-1`}
+                className={`${selectedSort === "All" ? "#F7F131" : ""
+                  } border-b rounde-md border-white text-center p-1`}
               >
                 Pending
               </h1>
               <h1
                 onClick={handleSortClick("Cancelled")}
-                className={`${
-                  selectedSort === "All" ? "#F7F131" : ""
-                } border-b rounde-md border-white text-center p-1`}
+                className={`${selectedSort === "All" ? "#F7F131" : ""
+                  } border-b rounde-md border-white text-center p-1`}
               >
                 Cancelled
               </h1>
               <h1
                 onClick={handleSortClick("Completed")}
-                className={`${
-                  selectedSort === "All" ? "#F7F131" : ""
-                } rounde-md border-white text-center p-1`}
+                className={`${selectedSort === "All" ? "#F7F131" : ""
+                  } rounde-md border-white text-center p-1`}
               >
                 Completed
               </h1>

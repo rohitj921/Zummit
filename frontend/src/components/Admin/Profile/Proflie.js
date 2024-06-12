@@ -10,7 +10,6 @@ const Proflie = () => {
   };
   return (
     <div className="w-full m-10 ">
-      {/* Search Bar */}  
       <div className="flex w-[90%] justify-between items-center">
         <h1 className="text-2xl ">Profile</h1>
         <div className="p-2 rounded-full ">
@@ -35,19 +34,18 @@ const Proflie = () => {
       </div>
       <div className="w-[90%] text-lg mb-4 rounded-md bg-white px-10 py-3">
         <div className="flex items-end gap-8">
-        <img className="h-36" src={admin_lady} alt="" />
-        <div>
-        <h1>{profile.name}</h1>
-        <h1>Admin</h1>
-        <h1>{profile.email}</h1>
-        </div>
+          <img className="h-36" src={admin_lady} alt="" />
+          <div>
+            <h1>{profile.name}</h1>
+            <h1>Admin</h1>
+            <h1>{profile.email}</h1>
+          </div>
         </div>
         <div className="flex mt-10 gap-10 items-center">
           <button className="px-4 py-2 rounded-md text-white bg-[#00677F]">About</button>
           <h1>Password</h1>
         </div>
       </div>
-
       <div className="p-4 w-[90%] rounded-md bg-white ">
         <div className="flex mb-2 justify-end items-center">
           <button className="px-2 rounded-md text-white text-lg  bg-[#00677F]">Edit</button>
