@@ -74,7 +74,6 @@ const createResource = asyncHandler(async (req, res) => {
   }
 });
 
-
 const updateResource = asyncHandler(async (req, res) => {
   const errors = validationResult(req);
   if(!errors.isEmpty()) {
