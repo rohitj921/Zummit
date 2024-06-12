@@ -16,13 +16,10 @@ const reviewsList = asyncHandler(async (req, res) => {
   }
 
   try {
-    const admin = await AdminLoginRegister.findOne({ input }).select(
-      "-password"
-    )
+    const admin = await AdminLoginRegister.findOne({ input }).select("-password")
     if (!admin) {
       return res.status(404).json({ message: "Review Lists not found" });
     }
-
 
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
     if (JSON.stringify(decodedToken.id) !== JSON.stringify(admin._id)) {
@@ -37,7 +34,6 @@ const reviewsList = asyncHandler(async (req, res) => {
       message: "reviews Granted"
     });
   } catch (error) {
-    console.error(error);
     res.status(500).json({ message: "Server error" });
   }
 });
@@ -55,13 +51,10 @@ const createReviewsList = asyncHandler(async (req, res) => {
   }
 
   try {
-    const admin = await  AdminLoginRegister.findOne({ input }).select(
-      "-password"
-    )
+    const admin = await  AdminLoginRegister.findOne({ input }).select("-password")
     if (!admin) {
       return res.status(404).json({ message: "Review Lists not found" });
     }
-
 
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
     if (JSON.stringify(decodedToken.id) !== JSON.stringify(admin._id)) {
@@ -70,7 +63,6 @@ const createReviewsList = asyncHandler(async (req, res) => {
 
     const newReview = new AdminReview(reviews)
     await newReview.save()
-
     res.status(200).json({
       success: true,
       review: newReview,
@@ -94,9 +86,7 @@ const deleteReview = asyncHandler(async (req, res) => {
   }
 
   try {
-    const admin = await AdminLoginRegister.findOne({ input }).select(
-      "-password"
-    )
+    const admin = await AdminLoginRegister.findOne({ input }).select("-password")
     if (!admin) {
       return res.status(404).json({ message: "Admin not found" });
     }
