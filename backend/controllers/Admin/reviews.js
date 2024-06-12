@@ -69,6 +69,7 @@ const createReviewsList = asyncHandler(async (req, res) => {
       message: "reviews created successfully"
     });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: "Server error" });
   }
 });
@@ -105,6 +106,7 @@ const deleteReview = asyncHandler(async (req, res) => {
       message: "Review deleted successfully"
     });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: "Server error" });
   }
 });

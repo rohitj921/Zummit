@@ -33,6 +33,7 @@ const transactions = asyncHandler(async (req, res) => {
       message: "Transaction Details Granted"
     });
   }catch (error) {
+    console.error(error);
     res.status(500).json({ message: "Server error" });
   }
 });
@@ -69,6 +70,7 @@ const createtransactions = asyncHandler(async (req, res) => {
     });
 
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: "Server error" });
   }
 });
