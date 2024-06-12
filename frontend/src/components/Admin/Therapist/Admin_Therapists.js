@@ -7,7 +7,6 @@ const Admin_Therapists = () => {
     <div className="flex bg-[#F2FCFF]">
       <Admin_SideBar />
       <Therapist/>
-      {/* <AddTherapist/> */}
     </div>
   );
 };

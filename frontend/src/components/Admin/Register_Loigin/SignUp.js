@@ -16,7 +16,6 @@ const SignUp = () => {
   const navigate=useNavigate();
   const dispatch=useDispatch();
 
-  //Rendering Loader
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -24,11 +23,10 @@ const SignUp = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  //Backend API call
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMsg(true);
-    // Form data
+
     const formData = new FormData();
     formData.append('phoneNumber', phoneNumber);
     formData.append('name', name);
@@ -47,18 +45,12 @@ const SignUp = () => {
 
       const data = await response.json();
       console.log(data);
-      
-        
-      
       if(data.success==true){
         setMsg(false);
         navigate('/login')
       }
-      
-      // Handle successful signup (e.g., redirect, show success message)
     } catch (error) {
       console.error('There was a problem with the fetch operation:', error);
-      // Handle error (e.g., show error message)
     }
   };
 
@@ -83,9 +75,7 @@ const SignUp = () => {
       </form>
       <Link to={"/login"}>
       <h1 className='text-gray-300'>Already have account Login</h1>
-      </Link>
-
-     
+      </Link>    
   </div> 
   {(msg && imageFile )&& <div className='text-xl flex justify-center items-center gap-4'><h1>Processing...</h1><span className="loader-1"></span></div>}
 </div>)

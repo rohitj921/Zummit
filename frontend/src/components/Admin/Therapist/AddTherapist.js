@@ -3,7 +3,6 @@ import React from "react";
 const AddTherapist = () => {
   return (
     <div className="w-full m-10">
-      {/* heading */}
       <div className="w-[95%] flex justify-between items-center text-2xl ">
         <h1>Appointments</h1>
         <div className="p-2  cursor-pointer   rounded-full ">

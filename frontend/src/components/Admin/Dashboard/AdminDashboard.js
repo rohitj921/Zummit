@@ -11,8 +11,6 @@ const AdminDashboard = () => {
       </div>
       <div className="w-[81.5%]  bg-[#F2FCFF]">
         <Main_Dashboard />
-        {/* <Resources_Edit /> */}
-        {/* <Author/> */}
       </div>
     </div>
   );

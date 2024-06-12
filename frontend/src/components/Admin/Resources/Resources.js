@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Main_Dashboard_img from "../../images/Main_Dashboard_img.png";
 const Resources = () => {
- const [addedReview,setAddedReview] = useState([])
-  
+  const [addedReview, setAddedReview] = useState([])
+
   useEffect(() => {
     axios
       .post("https://zummit-chandan.onrender.com/api/admin/resources", {
         input: "Dom@gmail.com",
-        token: 
+        token:
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NWFiOGNjNDQ1MmIxM2Q1MGJmYTYzNCIsImlhdCI6MTcxNzIyMTU4MCwiZXhwIjoxNzE5ODEzNTgwfQ.ZKxsQmALrx7CpkOpNzA1i1Ub1exmI9ghmsdY9bQVzuI",
       })
       .then((response) => {
@@ -26,7 +26,7 @@ const Resources = () => {
   const pendingStyle = { color: "#FED365" };
   const publishedStyle = { color: "#02B04A" };
 
-  const PendingIcon = ( 
+  const PendingIcon = (
     <svg
       width="12"
       height="12"
@@ -77,7 +77,6 @@ const Resources = () => {
   );
   return (
     <div className="w-full m-10 ">
-      {/* Search Bar */}
       <div className="flex justify-center gap-10 items-center">
         <div className="flex items-center bg-white w-[70%] border  pl-4 rounded-lg border-[#B4F0FF] ">
           <svg

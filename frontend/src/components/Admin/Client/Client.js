@@ -2,13 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const Client = () => {
- 
-  const [clientList,setClientList] = useState([])
+  const [clientList, setClientList] = useState([])
   useEffect(() => {
     axios
       .post("https://zummit-chandan.onrender.com/api/admin/clienlist", {
         input: "akib@gmail.com",
-        token: 
+        token:
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NWEwNGRiMTk3Mzk4MTgwNzAwZDZjNCIsImlhdCI6MTcxNzE3NTUxNiwiZXhwIjoxNzE5NzY3NTE2fQ.nT9mK7G3tCQlHfhpFBC-iefz4XkGdBIP8BUNN9tOoUQ",
       })
       .then((response) => {
@@ -25,7 +24,6 @@ const Client = () => {
 
   return (
     <div className="w-full m-10 ">
-      {/* Search Bar */}
       <div className="flex justify-center gap-10 items-center">
         <div className="flex items-center bg-white w-[70%] border  pl-4 rounded-lg border-[#B4F0FF] ">
           <svg
