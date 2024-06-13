@@ -4,12 +4,12 @@ import Side_Navbar from "./Side_Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { add_councellor } from "../utils/bookingSlice";
+import { addCouncellor } from "../utils/bookingSlice";
 import { useNavigate } from "react-router-dom";
 
 function TherapistDetailsPage() {
 
-  const therapist_details = useSelector((state) => state.booking.selected_councellor)
+  const therapist_details = useSelector((state) => state.booking.selectedCouncellor)
   const user = useSelector((state) => state.user.data)
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ function TherapistDetailsPage() {
       console.log(data)
       //add fetched data in redux state if data is available
       if (data) {
-        dispatch(add_councellor(data))
+        dispatch(addCouncellor(data))
       } else {
         return (
           <>

@@ -13,7 +13,6 @@ const FeedbackSection = () => {
 
       let BiggerMarquee;
       MarqueeWidth1 > MarqueeWidth2 ? BiggerMarquee = MarqueeWidth1 : BiggerMarquee = MarqueeWidth2;
-      console.log(ScrollWidth_Marquee);
       if(BiggerMarquee > window.innerWidth){
         setScrollWidth_Marquee(() => MarqueeWidth1 - window.innerWidth)
       } 

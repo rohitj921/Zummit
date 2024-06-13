@@ -82,18 +82,17 @@ const Register__Login = () => {
       }
 
       const data = await response.json();
-
+      console.log(data)
       dispatch(addUser(data.newUser));
       navigate("/userdashboard");
       console.log(response);
 
-      //reload kee baad bhi data remain constant
-      localStorage.setItem("token", data.token);
-
       //jaao token leke aao
-      const token = response["Authorization"];
+      const token = data.Authorization;
       if (!token) {
         throw new Error("Token not found in response headers");
+      }else if(token){
+        localStorage.setItem("token", data.token);
       }
     } catch (error) {
       console.error("Error:", error);
@@ -149,9 +148,9 @@ const Register__Login = () => {
   };
 
   //re-render kee baad call karo
-  useEffect(() => {
-    checkForToken();
-  }, []);
+  // useEffect(() => {
+  //   checkForToken();
+  // }, []);
 
   const handleClick = () => {
     setSignUp(!signUp);

@@ -6,7 +6,7 @@ import GroupTherapyImg1 from './images/group_therapy_img1.jpg'
 import GroupTherapyImg2 from './images/group_therapy_img2.jpg'
 import GroupTherapyImg3 from './images/group_therapy_img3.jpg'
 import { useDispatch, useSelector } from "react-redux";
-import { add_group } from '../utils/bookingSlice'
+import { addGroup } from '../utils/bookingSlice'
 import { Link, useParams } from 'react-router-dom';
 import axios from "axios";
 
@@ -14,7 +14,7 @@ import axios from "axios";
 and components with tag "rendered" will be iterable*/
 const GroupTherapyDetail = () => {
 
-  const group_details = useSelector((state) => state.booking.selected_councellor)
+  const group_details = useSelector((state) => state.booking.selectedCouncellor)
   const dispatch = useDispatch();
 
   const { id } = useParams;
@@ -27,7 +27,7 @@ const GroupTherapyDetail = () => {
         console.log(data)
         //add fetched data in redux state if data is available
         if (data) {
-          dispatch(add_group(data))
+          dispatch(addGroup(data))
         } else {
           return (
             <>

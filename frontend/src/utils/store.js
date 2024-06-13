@@ -1,11 +1,13 @@
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import userSlice from "./userSlice";
 import bookingSlice from "./bookingSlice";
 
-const rootReducer = combineReducers({user: userSlice, booking: bookingSlice})
 
 const appStore = configureStore({
-    reducer: rootReducer
+    reducer: {
+        user: userSlice,
+        booking: bookingSlice
+    }
 })
 
 export default appStore;

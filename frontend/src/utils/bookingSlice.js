@@ -3,22 +3,22 @@ import { createSlice } from "@reduxjs/toolkit";
 const bookingSlice = createSlice({
     name:"booking",
     initialState: {
-        selected_councellor: null,
-        selected_group: null,
+        selectedCouncellor: null,
+        selectedGroup: null,
         selected_support_group: null
     },
     reducers: {
-        add_councellor: (state, action) => {
-            state.selected_councellor = action.payload
+        addCouncellor: (state, action) => {
+            state.selectedCouncellor = action.payload
         },
-        add_group: (state, action) => {
-            state.selected_group = action.payload
+        addGroup: (state, action) => {
+            state.selectedGroup = action.payload
         },
-        add_support_group: (state, action) => {
-            state.selected_group = action.payload
+        addSupportGroup: (state, action) => {
+            state.selectedGroup = action.payload
         },
     }
 })
 
-export const { add_councellor, add_group, add_support_group } = bookingSlice.actions;
+export const { addCouncellor, addGroup, addSupportGroup } = bookingSlice.actions;
 export default bookingSlice.reducer;

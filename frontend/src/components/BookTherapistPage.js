@@ -12,7 +12,7 @@ function BookTherapistPage() {
   const { id } = useParams;
 
   // const [TherapistData, setTherapistData] = useState({});
-  // const therapistData = useSelector((state) => state.booking.selected_councellor)
+  // const therapistData = useSelector((state) => state.booking.selectedCouncellor)
 
   // setTherapistData(therapistData)
   //verify user
