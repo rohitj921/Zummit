@@ -43,7 +43,7 @@ function TherapistDetailsPage() {
 
     if (user._id) {
       console.log(user);
-      navigate("/BookTherapistPage")
+      navigate("/BookTherapistPage/1") //therapist _id will be used instead of 1
     } else {
       alert("Please Login to book session !")
     }
@@ -51,7 +51,7 @@ function TherapistDetailsPage() {
   return (<>
     <div className={user._id ? "flex" : "flex justify-center"}>
       {
-        user._id && user.role == "Client" && <Side_Navbar />
+        user._id && user.role == "client" && <Side_Navbar />
       }
       <div className="flex-col ml-[2vw] ">
         {/* search bar element */}
