@@ -38,8 +38,11 @@ function TherapistDetailsPage() {
     getCouncellorData()
   }, [id, dispatch]);
 
-  function handle_booking_click() {
+  function handle_booking_click(e) {
+    e.preventDefault();
+
     if (user._id) {
+      console.log(user);
       navigate("/BookTherapistPage")
     } else {
       alert("Please Login to book session !")
