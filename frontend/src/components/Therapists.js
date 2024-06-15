@@ -1,35 +1,74 @@
-import React, { useState, useEffect }from "react";
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
+const useFetch = (url) => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const res = await axios.get(url);
+        setData(res.data);
+      } catch (err) {
+        setError(err);
+      }
+      setLoading(false);
+    };
+    fetchData();
+  }, [url]);
+
+  return { data, loading, error };
+};
+
 const Therapists = () => {
+  const [allTherapists, setAllTherapists] = useState([]);
+  const [searchInput, setSearchInput] = useState(undefined);
+
+  const url = searchInput
+    ? `https://zummit-kefo.onrender.com/api/booking/getTherapistDetails?name=${searchInput}`
+    : "https://zummit-kefo.onrender.com/api/booking/getTherapistDetails";
+
+  const { data, loading, error } = useFetch(url);
+
+  useEffect(() => {
+    setAllTherapists(data);
+  }, [data]);
 
   const [TherapistList, setTherapistList] = useState([]);
   const user = useSelector((store) => store.user.data);
-  async function get_Therapist_List() {
-    //get data from API
-    await axios.get(`/api/booking/getTherapistList`, {
-      withCredentials: true,
-    }).then((data) => {
-        console.log(data)
-        //add fetched data in redux state if data is available
-        if (data) {
-          setTherapistList(data)
-        } else {
-          return (
-            <>
-              <h1>404 Not Found...</h1>
-            </>
-          )
-        }
-      }).catch((err) => console.log(err))
-  }
+  // async function get_Therapist_List() {
+  //   //get data from API
+  //   await axios.get(`/api/booking/getTherapistList`, {
+  //     withCredentials: true,
+  //   }).then((data) => {
+  //       console.log(data)
+  //       //add fetched data in redux state if data is available
+  //       if (data) {
+  //         setTherapistList(data)
+  //       } else {
+  //         return (
+  //           <>
+  //             <h1>404 Not Found...</h1>
+  //           </>
+  //         )
+  //       }
+  //     }).catch((err) => console.log(err))
+  // }
 
-  useEffect(() => {
-    console.log("length", user.length)
-    get_Therapist_List()
-  }, []);
+  // useEffect(() => {
+  //   console.log("length", user.length)
+  //   get_Therapist_List()
+  // }, []);
+  const handleSearchInput = (event) => {
+    if (event.key == "Enter") {
+      setSearchInput(event.target.value);
+    }
+  };
 
   const therapists_info = [
     {
@@ -40,9 +79,13 @@ const Therapists = () => {
       expertise: ["ADHD", "Anxiety", "Body Image"],
       charge: 499,
       bio: "I have always been fascinated by human behavior and why people become the way they are. While we all may be individually different, we all derive our thoughts, patterns, and behaviors in the same way: life experience. We also all share the ability to show great strength, resilience, and insight when put to the test. My clients inspire me and continuously motivate me to be a better therapist and person. It is a privilege to hold space for people to be vulnerable and share their stories and I am honored to play a small part in their journeys of self-discovery and empowerment.",
-      appeal: "In our busy lives, we can often suppress our thoughts and feelings in ways that feel convenient but can build up over time and become burdensome. I can help you recognize your triggers and sources of anxiety so you can better deal with the unique challenges that come your way. My identity as an Asian-American woman also informs my practice through my passion to help those of the 1st to 2nd generation immigrant families. Have you felt stuck and in-between worlds",
-      qualification: "I am a National Certified Counselor with the National Board for Certified Counselors",
-      testimonials: ["In our busy lives, we can often suppress our thoughts and feelings in ways that feel convenient but can build up over time and become burdensome. I can help you recognize your triggers and sources of anxiety so you can better deal with the unique challenges"],
+      appeal:
+        "In our busy lives, we can often suppress our thoughts and feelings in ways that feel convenient but can build up over time and become burdensome. I can help you recognize your triggers and sources of anxiety so you can better deal with the unique challenges that come your way. My identity as an Asian-American woman also informs my practice through my passion to help those of the 1st to 2nd generation immigrant families. Have you felt stuck and in-between worlds",
+      qualification:
+        "I am a National Certified Counselor with the National Board for Certified Counselors",
+      testimonials: [
+        "In our busy lives, we can often suppress our thoughts and feelings in ways that feel convenient but can build up over time and become burdensome. I can help you recognize your triggers and sources of anxiety so you can better deal with the unique challenges",
+      ],
       profile_image: "therapist_card_image.jpeg",
     },
     {
@@ -53,9 +96,13 @@ const Therapists = () => {
       expertise: ["ADHD", "Anxiety", "Body Image"],
       charge: 499,
       bio: "I have always been fascinated by human behavior and why people become the way they are. While we all may be individually different, we all derive our thoughts, patterns, and behaviors in the same way: life experience. We also all share the ability to show great strength, resilience, and insight when put to the test. My clients inspire me and continuously motivate me to be a better therapist and person. It is a privilege to hold space for people to be vulnerable and share their stories and I am honored to play a small part in their journeys of self-discovery and empowerment.",
-      appeal: "In our busy lives, we can often suppress our thoughts and feelings in ways that feel convenient but can build up over time and become burdensome. I can help you recognize your triggers and sources of anxiety so you can better deal with the unique challenges that come your way. My identity as an Asian-American woman also informs my practice through my passion to help those of the 1st to 2nd generation immigrant families. Have you felt stuck and in-between worlds",
-      qualification: "I am a National Certified Counselor with the National Board for Certified Counselors",
-      testimonials: ["In our busy lives, we can often suppress our thoughts and feelings in ways that feel convenient but can build up over time and become burdensome. I can help you recognize your triggers and sources of anxiety so you can better deal with the unique challenges"],
+      appeal:
+        "In our busy lives, we can often suppress our thoughts and feelings in ways that feel convenient but can build up over time and become burdensome. I can help you recognize your triggers and sources of anxiety so you can better deal with the unique challenges that come your way. My identity as an Asian-American woman also informs my practice through my passion to help those of the 1st to 2nd generation immigrant families. Have you felt stuck and in-between worlds",
+      qualification:
+        "I am a National Certified Counselor with the National Board for Certified Counselors",
+      testimonials: [
+        "In our busy lives, we can often suppress our thoughts and feelings in ways that feel convenient but can build up over time and become burdensome. I can help you recognize your triggers and sources of anxiety so you can better deal with the unique challenges",
+      ],
       profile_image: "therapist_card_image.jpeg",
     },
     {
@@ -66,9 +113,13 @@ const Therapists = () => {
       expertise: ["ADHD", "Anxiety", "Body Image"],
       charge: 499,
       bio: "I have always been fascinated by human behavior and why people become the way they are. While we all may be individually different, we all derive our thoughts, patterns, and behaviors in the same way: life experience. We also all share the ability to show great strength, resilience, and insight when put to the test. My clients inspire me and continuously motivate me to be a better therapist and person. It is a privilege to hold space for people to be vulnerable and share their stories and I am honored to play a small part in their journeys of self-discovery and empowerment.",
-      appeal: "In our busy lives, we can often suppress our thoughts and feelings in ways that feel convenient but can build up over time and become burdensome. I can help you recognize your triggers and sources of anxiety so you can better deal with the unique challenges that come your way. My identity as an Asian-American woman also informs my practice through my passion to help those of the 1st to 2nd generation immigrant families. Have you felt stuck and in-between worlds",
-      qualification: "I am a National Certified Counselor with the National Board for Certified Counselors",
-      testimonials: ["In our busy lives, we can often suppress our thoughts and feelings in ways that feel convenient but can build up over time and become burdensome. I can help you recognize your triggers and sources of anxiety so you can better deal with the unique challenges"],
+      appeal:
+        "In our busy lives, we can often suppress our thoughts and feelings in ways that feel convenient but can build up over time and become burdensome. I can help you recognize your triggers and sources of anxiety so you can better deal with the unique challenges that come your way. My identity as an Asian-American woman also informs my practice through my passion to help those of the 1st to 2nd generation immigrant families. Have you felt stuck and in-between worlds",
+      qualification:
+        "I am a National Certified Counselor with the National Board for Certified Counselors",
+      testimonials: [
+        "In our busy lives, we can often suppress our thoughts and feelings in ways that feel convenient but can build up over time and become burdensome. I can help you recognize your triggers and sources of anxiety so you can better deal with the unique challenges",
+      ],
       profile_image: "therapist_card_image.jpeg",
     },
     {
@@ -79,9 +130,13 @@ const Therapists = () => {
       expertise: ["ADHD", "Anxiety", "Body Image"],
       charge: 499,
       bio: "I have always been fascinated by human behavior and why people become the way they are. While we all may be individually different, we all derive our thoughts, patterns, and behaviors in the same way: life experience. We also all share the ability to show great strength, resilience, and insight when put to the test. My clients inspire me and continuously motivate me to be a better therapist and person. It is a privilege to hold space for people to be vulnerable and share their stories and I am honored to play a small part in their journeys of self-discovery and empowerment.",
-      appeal: "In our busy lives, we can often suppress our thoughts and feelings in ways that feel convenient but can build up over time and become burdensome. I can help you recognize your triggers and sources of anxiety so you can better deal with the unique challenges that come your way. My identity as an Asian-American woman also informs my practice through my passion to help those of the 1st to 2nd generation immigrant families. Have you felt stuck and in-between worlds",
-      qualification: "I am a National Certified Counselor with the National Board for Certified Counselors",
-      testimonials: ["In our busy lives, we can often suppress our thoughts and feelings in ways that feel convenient but can build up over time and become burdensome. I can help you recognize your triggers and sources of anxiety so you can better deal with the unique challenges"],
+      appeal:
+        "In our busy lives, we can often suppress our thoughts and feelings in ways that feel convenient but can build up over time and become burdensome. I can help you recognize your triggers and sources of anxiety so you can better deal with the unique challenges that come your way. My identity as an Asian-American woman also informs my practice through my passion to help those of the 1st to 2nd generation immigrant families. Have you felt stuck and in-between worlds",
+      qualification:
+        "I am a National Certified Counselor with the National Board for Certified Counselors",
+      testimonials: [
+        "In our busy lives, we can often suppress our thoughts and feelings in ways that feel convenient but can build up over time and become burdensome. I can help you recognize your triggers and sources of anxiety so you can better deal with the unique challenges",
+      ],
       profile_image: "therapist_card_image.jpeg",
     },
   ];
@@ -115,15 +170,16 @@ const Therapists = () => {
                   class="block w-[743px] p-4 ps-10 text-sm rounded-lg bg-[#EFF7FF] border border-[#B4F0FF] outline-none"
                   placeholder="Search "
                   required
+                  onKeyDown={handleSearchInput}
                 />
               </div>
             </div>
           </div>
           <div className=" flex text-2xl mb-8font-medium leading-9 max-w-[416px] text-slate-950 mb-[2vh] ">
             Therapists
-       </div>
+          </div>
           <div className="grid grid-cols-1 xlg:grid-cols-2 m-0 p-0  gap-x-[27px] gap-y-[32px]">
-            {therapists_info.map((therapist, index) => {
+            {allTherapists.map((therapist, index) => {
               return (
                 <div
                   className=" h-[288px] border border-[#1d96b4] rounded-md"
@@ -133,7 +189,7 @@ const Therapists = () => {
                     <div className="m-0 p-0 h-full flex gap-[12px]">
                       <div className="m-0 p-0 h-full xlg:w-[0] xlg2:w-[100px] sm:w-[129px] w-[0px] ">
                         <img
-                          src={require(`./images/${therapist.profile_image}`)}
+                          src={require(`./images/${therapists_info[0].profile_image}`)}
                           alt={therapist.name}
                           className="object-contain w-full rounded-md"
                         />
@@ -143,21 +199,24 @@ const Therapists = () => {
                           {therapist.name}
                         </p>
                         <p className="therapist-page__desc lg:text-[14px] xl:text-[14px] mt-[8px] sm:text-[14px]">
-                          I have experience over {therapist.experience} years
+                          I have experience over {therapists_info[0].experience}{" "}
+                          years
                         </p>
                         <p className="therapist-page__desc lg:text-[14px] xl:text-[14px] mt-0 xl:mt-[8px] sm:text-[14px] lg:mt-[5px] sm:mt-[2px] flex flex-row gap-1">
                           Expertise:
-                            {therapist.expertise.map((expertise) => {
-                            return <span>{expertise}</span>
+                          {therapists_info[0].expertise.map((expertise) => {
+                            return <span>{expertise}</span>;
                           })}
                         </p>
                         <p className="therapist-page__desc lg:text-[14px] xl:text-[14px] mt-0 xl:mt-[8px] sm:text-[14px] lg:mt-[5px] sm:mt-[2px]">
                           {" "}
-                          <span>Starts@ {therapist.charge}</span> for one session
+                          <span>Starts@ {therapists_info[0].charge}</span> for
+                          one session
                         </p>
                         <p className="therapist-page__desc lg:text-[14px] xl:text-[14px] mt-0 xl:mt-[8px]  sm:text-[14px] lg:mt-[5px] sm:mt-[2px] flex flex-row gap-1">
-                          Languages: {therapist.languages.map((language) => {
-                            return <span>{language}</span>
+                          Languages:{" "}
+                          {therapists_info[0].languages.map((language) => {
+                            return <span>{language}</span>;
                           })}
                         </p>
                       </div>
@@ -168,20 +227,32 @@ const Therapists = () => {
                     <div id="dummy"></div>
                     <div id="dummy"></div>
                     <div className="xl:mt-4 sm:mt-2 sm:ms-4">
-                      <Link to={user._id == undefined ? `/therapist/${therapist._id}` : `/TherapistDetailsPage/${therapist._id}`} target="_top">
-                      <button class="bg-transparent  text-[#0190B1] font-semibold py-2 px-4 border border-[#0190B1] rounded">
-                      View Profile
-                      </button>
+                      <Link
+                        to={
+                          user._id == undefined
+                            ? `/therapist/${therapists_info[0]._id}`
+                            : `/TherapistDetailsPage/${therapists_info[0]._id}`
+                        }
+                        target="_top"
+                      >
+                        <button class="bg-transparent  text-[#0190B1] font-semibold py-2 px-4 border border-[#0190B1] rounded">
+                          View Profile
+                        </button>
                       </Link>
-                      
                     </div>
                     <div className="xl:mt-4 sm:mt-2 sm:ms-4">
-                      <Link to={user._id == undefined ? `/booking/${therapist._id}` : `/BookTherapistPage/${therapist._id}`} target="_top">
-                      <button class="bg-[#0190B1] text-white font-semibold py-2 px-4 rounded">
-                       Book
-                      </button>
+                      <Link
+                        to={
+                          user._id == undefined
+                            ? `/booking/${therapists_info[0]._id}`
+                            : `/BookTherapistPage/${therapists_info[0]._id}`
+                        }
+                        target="_top"
+                      >
+                        <button class="bg-[#0190B1] text-white font-semibold py-2 px-4 rounded">
+                          Book
+                        </button>
                       </Link>
-                      
                     </div>
                   </div>
                 </div>

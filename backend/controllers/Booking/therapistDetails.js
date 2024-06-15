@@ -21,13 +21,17 @@ const getTherapistById = async (req, res) => {
 // Get All Therapists Details...
 
 const getAllTherapists = async (req, res) => {
+  const { name } = req.query;
+  let query = {};
+  if (name) {
+    query = { name: new RegExp(`^${name.trim()}$`, "i") };
+  }
+
   try {
-    const allTherapists = await therapistModel.find();
-    const therapistsData = allTherapists.map((therapist) => {
-      const { name, input, role } = therapist;
-      return { name, input, role };
-    });
-    return res.json(therapistsData);
+    const allTherapists = await therapistModel
+      .find(query)
+      .select("-admin -password");
+    return res.send(allTherapists);
   } catch (err) {
     res
       .status(500)

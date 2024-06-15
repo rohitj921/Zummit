@@ -14,7 +14,7 @@ const {
 const HandleAppointments = require("../controllers/Booking/bookingAppointment");
 
 router.get("/getAvailableSlotsByTherapist/:id", getIndividualBooking);
-router.get("/getTherapistDetails/:id", getTherapistById);
+router.get("/getTherapistDetails/find/:id", getTherapistById);
 router.get("/getTherapistDetails", getAllTherapists);
 router.get("/getPatientDetails/:id", getPatientById);
 router.get("/getPatientDetails", getAllPatients);
