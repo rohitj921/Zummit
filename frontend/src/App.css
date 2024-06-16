@@ -253,3 +253,7 @@ input[type="number"] {
   );
   border-radius: 10px;
 }
+
+.admin-signup-bg-image{
+  background-image: url(../src/components/images/Admin-login-bg.jpeg);
+}
