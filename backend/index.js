@@ -9,7 +9,7 @@ const userRoute = require("./routes/userRoute");
 const adminRoute = require("./routes/adminRoute");
 const bookingRoute = require("./routes/bookingRoute");
 const therapistRoute=require("./routes/therapistRoute");
-const Appointments = require("./models/Appointment/AppointmentModel");
+
 const bodyParser = require('body-parser');
 
 
@@ -64,6 +64,7 @@ cloudinary.cloudinaryConnect();
 const {
   MySqlConnect,
 } = require("./controllers/Booking/BookingSlotsController");
+const Appointments = require("./models/User/AppointmentModel");
 MySqlConnect();
 
 app.listen(PORT, () => {
