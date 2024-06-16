@@ -2,8 +2,9 @@ const express=require("express")
 const router=express.Router();
 const {registerUser, loginUser, logout, getUser,upcomingGroups}=require("../controllers/User/userController");
 const { protect } = require("../middleware/authMiddleware");
-const { getGroupTherapySessions, createGroupTherapySession } = require("../controllers/User/groupTherapyController");
-const { createSupportGroupSession, getSupportGroupSessions } = require("../controllers/User/supportgroupController");
+const { getGroupTherapySessions, createGroupTherapySession } = require("../controllers/User/groupTherapy");
+const { getSupportGroupSessions, createSupportGroupSession } = require("../controllers/User/supportgroup");
+
 
 router.get("/Grouptherapy", getGroupTherapySessions);           
 router.post("/Grouptherapy", createGroupTherapySession);
