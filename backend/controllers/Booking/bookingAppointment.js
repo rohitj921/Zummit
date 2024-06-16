@@ -1,4 +1,5 @@
-const Appointments = require("../../models/Appointment/AppointmentModel");
+const Appointments = require("../../models/User/AppointmentModel");
+
 
 const HandleAppointments = async (req, res) => {
   const {
