@@ -36,8 +36,87 @@
       "Testing Feedback": "The Admin Dashboard component has been tested and found to be working well with minor issues. The UI is not responsive and the data is not correctly retrieved from the backend. However, some bugs were identified and reported, such as  missmatch content between the Figma design and Live UI, and the missing admin image and the use of static data. The fixes for these bugs have been identified and will be implemented in the next iteration.",
       "Performance": "Good, but there is scope for improving the quality of the code."
     },
+
+
     {
-      "Next component": "test next and add like this"
+      "component Name": "Admin Appointments",
+      "Testing Requirement": "Referenced by QA ticket - https://github.com/chandan24042001s/Zummit/issues/108",
+      "Testing Type": "Manually tested",
+      "Tested Cases":[
+        "Verify if the Admin Appointments of Live UI is exactly match with Admin Appointments Figma UI",
+        "Validate the Data response from the backend"
+      ],
+      "Failure Cases": "Bugs",
+      "Accuracy": "95%",
+      "Bugs Reported": [
+        {
+          "Description": "After clicking on the Appointments link mentioned in the PR, results take some time(Seconds) to load, and there is no indication that the system is working on it"
+        },
+        {
+          "Description": "After clicking on the Sort link, nothing is displayed."
+        },
+        {
+          "Description": "The appointment time color shown in the figma design does not align with the color in the live UI."
+        },
+        {
+          "Description": "There is an ammount symbol before each ammount in the ammount in the Figma design, but this symbol is missing in the live UI. "
+        },
+        {
+          "Description": "There is no 'Emergency Call' text next to 'Upcoming' in the status in the Figma desgin, but it is present in the Live UI."
+        },
+        {
+          "ScreenShots": "Attached are screenshots of both the admin Appointments Figma desgin and the Admin Appointments Live UI located in the Testing folder, for your reference."
+        }
+      ],
+      "Fixes to be Done": [
+        {
+          "Description": "Please send the proper response from the backend."
+        },
+        {
+          "Description": "UI alignment can be polished more to improve appearance."
+        }
+      ],
+      "Testing Feedback": "The Admin Appointments component has been tested and found to be working well with minor issues. The UI is not responsive and the data is not correctly retrieved from the backend. However, some bugs were identified and reported, such as  missmatch content between the Figma design and Live UI, and the missing admin image and the use of static data. The fixes for these bugs have been identified and will be implemented in the next iteration.",
+      "Performance": "Good, but there is scope for improving the quality of the code."
+    },
+
+
+    {
+      "component Name": "Admin Clients",
+      "Testing Requirement": "Referenced by QA ticket - https://github.com/chandan24042001s/Zummit/issues/110",
+      "Testing Type": "Manually tested",
+      "Tested Cases":[
+        "Verify if the Admin Clients of Live UI is exactly match with Admin Clients Figma UI",
+        "Validate the Data response from the backend"
+      ],
+      "Failure Cases": "Bugs",
+      "Accuracy": "95%",
+      "Bugs Reported": [
+        {
+          "Description": "After clicking on the Clients link mentioned in the PR, results take some time(Seconds) to load, and there is no indication that the system is working on it"
+        },
+        {
+          "Description": "The data shown in the live UI is not the same as in the Figma design."
+        },
+        {
+          "Description": "There is a spelling inconsistency in the admin dashboard module names: the Figma design uses 'Clients', Whereas the Live UI uses 'Client."
+        }
+        ,{
+          "ScreenShots": "Attached are screenshots of both the admin Clients Figma desgin and the Admin Clients Live UI located in the Testing folder, for your reference."
+        }
+       ],
+      "Fixes to be Done": [
+        {
+          "Description": "Please send the proper response from the backend."
+        },
+        {
+          "Description": "UI alignment can be polished more to improve appearance."
+        }
+      ],
+      "Testing Feedback": "The Admin Client component has been tested and found to be working well with minor issues. The UI is not responsive and the data is not correctly retrieved from the backend. However, some bugs were identified and reported, such as  missmatch content, Data between the Figma design and Live UI, and the missing admin image and the use of static data. The fixes for these bugs have been identified and will be implemented in the next iteration.",
+      "Performance": "Good, but there is scope for improving the quality of the code."
     }
+    
+
   ]
   
