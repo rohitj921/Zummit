@@ -9,9 +9,9 @@ const userRoute = require("./routes/userRoute");
 const adminRoute = require("./routes/adminRoute");
 const bookingRoute = require("./routes/bookingRoute");
 const therapistRoute=require("./routes/therapistRoute");
-
-const bodyParser = require('body-parser');
 const paymentRoutes = require('./routes/paymentRoutes');
+const bodyParser = require('body-parser');
+
 
 app.use(bodyParser.json());
 app.use(express.json());
