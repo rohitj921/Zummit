@@ -11,6 +11,8 @@ const paymentSchema = new mongoose.Schema({
     default: "pending",
   },
   clientName: { type: String, required: true },
+  clientId: { type: String, required: true },
+  therapistId: { type: String, required: true },
   therapistName: { type: String, required: true },
   createdAt: { type: Date, default: Date.now },
 });

@@ -11,7 +11,7 @@ const bookingRoute = require("./routes/bookingRoute");
 const therapistRoute=require("./routes/therapistRoute");
 const Appointments = require("./models/Appointment/AppointmentModel");
 const bodyParser = require('body-parser');
-
+const paymentRoutes = require('./routes/paymentRoutes');
 
 app.use(bodyParser.json());
 app.use(express.json());
@@ -51,7 +51,7 @@ app.get("/booking-details", async (req, res) => {
   const allBookings = await Appointments.find({});
   return res.send(allBookings);
 });
-
+app.use('/api/payment', paymentRoutes);
 
 //connect to the database
 const dbConnect = require("./config/database");

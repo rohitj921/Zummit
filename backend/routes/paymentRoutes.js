@@ -5,9 +5,9 @@ const razorpay = require('../services/razorpayService');
 const crypto = require('crypto');
 const Payment = require('../models/Payment/paymentModel')
 
-router.post('/order', async (req, res) => {
+router.post('/newOrder', async (req, res) => {
     try {
-        const { amount, currency,clientName, therapistName} = req.body;
+        const { amount, currency,clientName,clientId, therapistName,therapistId} = req.body;
         const options = {
             amount: amount * 100,
             currency: currency,
@@ -18,7 +18,9 @@ router.post('/order', async (req, res) => {
             orderId: order.id,
             amount: order.amount,
             clientName,
-            therapistName
+            clientId,
+            therapistName,
+            therapistId
         });
 
         await payment.save(); 
@@ -51,7 +53,7 @@ router.post('/verify', async (req, res) => {
     }
 });
    
-router.get('/payments', async (req, res) => {
+router.get('/allPayments', async (req, res) => {
     try {
         const payments = await Payment.find();
         res.json(payments);
@@ -69,5 +71,27 @@ router.get('/payment/:id', async (req, res) => {
     }
 });
 
+router.get('/order/:orderId', async (req, res) => {
+    try {
+        const payment = await Payment.findOne({ orderId: req.params.orderId });
+        res.json(payment);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+router.delete('/deleteOrder/:orderId', async (req, res) => {
+    try {
+        const payment = await Payment.findOneAndDelete({ orderId: req.params.orderId });
+        if (payment) {
+            res.json({ success: true, message: 'Payment record deleted successfully', payment });
+        } else {
+            res.status(404).json({ success: false, message: 'Payment record not found' });
+        }
+    } catch (error) {
+        res.status(500).json({ success: false, message: 'Error deleting payment record', error: error.message });
+    }
+});
 
 module.exports = router;
+
