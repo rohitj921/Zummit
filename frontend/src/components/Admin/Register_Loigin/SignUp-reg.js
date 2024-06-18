@@ -31,7 +31,7 @@ const SignUp_reg = () => {
 
     try {
       const response = await fetch(
-        "https://zummit-kefo.onrender.com/api/users/register",
+        "https://zummit-chandan.onrender.com/api/users/register",
         {
           method: "POST",
           headers: {
