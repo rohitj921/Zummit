@@ -3,7 +3,9 @@ const mongoose = require("mongoose");
 const therapistObservationModel = mongoose.Schema({
     title: {
         type: String,
-        required: [true, "Please provide title of observation"]
+        required: [true, "Please provide title of observation"],
+    max : 50
+
     },
 
     clientId : {
