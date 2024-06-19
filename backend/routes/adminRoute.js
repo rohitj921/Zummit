@@ -30,7 +30,7 @@ router.route("/createReviews").post(createReviewsList);
 router.post("/createCredentials", protect, admin, createTherapist);
 router.route("/createVideo").post(createAdminVideo);
 router.route("/deleteVideo").post(deleteAdminVideo);
-router.route("/api/users").get(getAllAdminVideos);
+router.route("/getallVideos").get(getAllAdminVideos);
 
 
 
