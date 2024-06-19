@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 
 const adminVideoSchema = mongoose.Schema(
     {
+        title: {
+            type: String,
+            required: [true, "please add title"]
+        },
         video: {
             type: String,
             required: [true, "please add embed code video"]

@@ -28,6 +28,9 @@ router.route("/adminLogin").post(loginAdmin);
 router.route("/createResource").post(createResource);
 router.route("/createReviews").post(createReviewsList);
 router.post("/createCredentials", protect, admin, createTherapist);
+router.route("/createVideo").post(createAdminVideo);
+router.route("/deleteVideo").post(deleteAdminVideo);
+router.route("/api/users").get(getAllAdminVideos);
 
 
 
@@ -37,7 +40,7 @@ router.route("/updateResource").post(updateResource);
 
 // delete API's
 router.route("/deleteReview").post(deleteReview);
-router.route("/deleteVideo").post(deleteAdminVideo);
+
 
 
 //get API's
@@ -51,7 +54,7 @@ router.route("/reviews").post(reviewsList);
 router.route("/therapistsdetails").post(protect, admin, therapistsDetails);
 router.route("/transactions").post(transactions);
 router.route("/resources").post(resources);
-router.route("/getAllVideo").get(getAllAdminVideos);
+
 
 module.exports = router;
 

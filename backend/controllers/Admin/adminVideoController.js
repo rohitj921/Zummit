@@ -16,13 +16,13 @@ const getAllAdminVideos = asyncHandler(async (req, res) => {
 
 const createAdminVideo = asyncHandler(async (req, res) => {
 
-    const { video, description } = req.body;
+    const { video, description, title } = req.body;
 
-    if (!video || !description) {
+    if (!video || !description || !title) {
         return res.status(402).json({ message: "Please fill all fileds" });
     }
     try {
-        const adminVideo = new adminVideosModel({ video, description });
+        const adminVideo = new adminVideosModel({ video, description,title });
         await adminVideo.save();
         res.status(201).json({
             success: true,
