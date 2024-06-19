@@ -11,7 +11,7 @@ const { registerAdmin, loginAdmin } = require("../controllers/Admin/adminControl
 const { resources, createResource, updateResource } = require("../controllers/Admin/resourcesList");
 const { protect, admin } = require("../middleware/authorizationMiddleware");
 const { createTherapist } = require("../controllers/Admin/therapistCredentials/createCredentials");
-const { createAdminVideo, getAllAdminVideos, deleteAdminVideo } = require("../controllers/Admin/adminVideoController")
+const { createAdminVideo, deleteAdminVideo } = require("../controllers/Admin/adminVideoController")
 
 const router = express.Router();
 
@@ -30,7 +30,6 @@ router.route("/createReviews").post(createReviewsList);
 router.post("/createCredentials", protect, admin, createTherapist);
 router.route("/createVideo").post(createAdminVideo);
 router.route("/deleteVideo").post(deleteAdminVideo);
-router.route("/getallVideos").get(getAllAdminVideos);
 
 
 
