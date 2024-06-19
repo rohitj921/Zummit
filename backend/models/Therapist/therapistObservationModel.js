@@ -8,10 +8,12 @@ const therapistObservationModel = mongoose.Schema({
 
     clientId : {
         type: String,
+        required: [true, "Please provide clientId of observation"]
     },
 
     description : {
         type: String,
+        required: [true, "Please provide description of observation"]
     },
     dateModified: {
         type: Date,
