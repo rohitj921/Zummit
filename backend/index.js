@@ -8,12 +8,12 @@ const app = express();
 const userRoute = require("./routes/userRoute");
 const adminRoute = require("./routes/adminRoute");
 
-const bookingRoute = require("./routes/bookingRoute");
-const therapistRoute=require("./routes/therapistRoute");
+const bookingRoute = require("../backend/routes/userRoute");
+const therapistRoute = require("./routes/therapistRoute");
 const bodyParser = require('body-parser');
 
 
-const therapistRoute = require("./routes/therapistRoute");
+// const therapistRoute = require("./routes/therapistRoute");
 
 
 app.use(bodyParser.json());
@@ -51,10 +51,7 @@ app.get("/", (req, res) => {
 app.use("/api/users", userRoute);
 app.use("/api/admin", adminRoute);
 app.use("/api/therapist", therapistRoute);
-app.get("/booking-details", async (req, res) => {
-  const allBookings = await Appointments.find({});
-  return res.send(allBookings);
-});
+app.use("/booking-details", bookingRoute);
 
 //connect to the database
 const dbConnect = require("./config/database");
