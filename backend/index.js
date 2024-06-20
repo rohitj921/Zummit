@@ -12,10 +12,6 @@ const bookingRoute = require("../backend/routes/userRoute");
 const therapistRoute = require("./routes/therapistRoute");
 const bodyParser = require('body-parser');
 
-
-// const therapistRoute = require("./routes/therapistRoute");
-
-
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(cookieParser());
