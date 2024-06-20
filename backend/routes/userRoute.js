@@ -25,7 +25,12 @@ const HandleAppointments = require("../controllers/Booking/bookingAppointment");
 
 const { getGroupTherapySessions, createGroupTherapySession } = require("../controllers/User/groupTherapy");
 const { getSupportGroupSessions, createSupportGroupSession } = require("../controllers/User/supportgroup");
+
+const {newOrder, verifyPayment } = require("../controllers/User/paymentController/orders")
+const { getAllPayments, getPaymentById, getOrderById, getbyClientId, getByTherapistId } = require("../controllers/User/paymentController/paymentDetails");
+
 const { getAllAdminVideos } = require('../controllers/Admin/adminVideoController')
+
 
 
 router.get("/Grouptherapy", getGroupTherapySessions);
@@ -47,6 +52,16 @@ router.get("/booking/getPatientDetails/:id", getPatientById);
 router.get("/booking/getPatientDetails", getAllPatients);
 router.post("/booking/appointment", HandleAppointments);
 
+router.post('/newOrder', newOrder);
+router.post('/verifyPayment', verifyPayment);
+
+router.get('/getAllPayments', getAllPayments);
+router.get('/getPaymentById/:id',getPaymentById);
+router.get('/getOrderById/:orderId', getOrderById);
+router.get('/getbyClientId/:clientId', getbyClientId);
+router.get('/getByTherapistId/:therapistId', getByTherapistId);
+//Delete Payment Records by Order ID
+// router.delete('/deleteOrder/:orderId', deleteOrder)
 
 router.post("/register",registerUser);
 router.post("/login",loginUser)

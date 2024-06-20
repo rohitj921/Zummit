@@ -7,9 +7,14 @@ const PORT = 4000;
 const app = express();
 const userRoute = require("./routes/userRoute");
 const adminRoute = require("./routes/adminRoute");
+
+const bookingRoute = require("./routes/bookingRoute");
+const therapistRoute=require("./routes/therapistRoute");
+const bodyParser = require('body-parser');
+
+
 const therapistRoute = require("./routes/therapistRoute");
-const Appointments = require("./models/User/AppointmentModel");
-const bodyParser = require("body-parser");
+
 
 app.use(bodyParser.json());
 app.use(express.json());
