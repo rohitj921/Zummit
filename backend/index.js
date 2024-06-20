@@ -9,7 +9,6 @@ const userRoute = require("./routes/userRoute");
 const adminRoute = require("./routes/adminRoute");
 const bookingRoute = require("./routes/bookingRoute");
 const therapistRoute=require("./routes/therapistRoute");
-const paymentRoutes = require('./routes/paymentRoutes');
 const bodyParser = require('body-parser');
 
 
@@ -51,7 +50,6 @@ app.get("/booking-details", async (req, res) => {
   const allBookings = await Appointments.find({});
   return res.send(allBookings);
 });
-app.use('/api/payment', paymentRoutes);
 
 //connect to the database
 const dbConnect = require("./config/database");

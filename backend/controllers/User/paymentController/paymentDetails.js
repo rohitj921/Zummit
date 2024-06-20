@@ -1,26 +1,34 @@
-const Payment = require('../../models/Payment/paymentModel')
+const { Payment , mongoose }= require('../../../models/User/paymentModel')
 
 
 // Get all Payment records
 
 const getAllPayments = async (req, res) => {
     try {
-        const payments = await Payment.find();
-        if(!payments){
+        const payments = await Payment.find({});
+        const totalCount = payments.length;
+        if (totalCount === 0) {
             return res.status(404).json({ message: 'Payment records not found' });
         }
-        res.json(payments);
+        res.json({
+            Count: totalCount,
+            Payments: payments
+        });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 };
 
-//Get Payment by ID
+//Get Payment by MongoDB _id
 
 const getPaymentById = async (req, res) => {
     try {
-        const payment = await Payment.findById(req.params.id);
-        if(!payment){
+        const { id } = req.params;
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({ message: 'Invalid payment ID' });
+        }
+        const payment = await Payment.findById(id);
+        if (!payment) {
             return res.status(404).json({ message: 'Payment record not found' });
         }
         res.json(payment);
@@ -47,11 +55,15 @@ const getOrderById = async (req, res) => {
 
 const getbyClientId = async (req, res) => {
     try {
-        const payment = await Payment.findOne({ clientId: req.params.clientId });
-        if(!payment){
+        const payments = await Payment.find({ clientId: req.params.clientId });
+        const totalCount = payments.length;
+        if (totalCount === 0) {
             return res.status(404).json({ message: 'Payment records not found for this Client ID' });
         }
-        res.json(payment);
+        res.json({
+            Count: totalCount,
+            Payments: payments
+        });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -61,11 +73,15 @@ const getbyClientId = async (req, res) => {
 
 const getByTherapistId = async (req, res) => {
     try {
-        const payment = await Payment.findOne({ therapistId: req.params.therapistId });
-        if(!payment){
+        const payments = await Payment.find({ therapistId: req.params.therapistId });
+        const totalCount = payments.length;
+        if (totalCount === 0) {
             return res.status(404).json({ message: 'Payment records not found for this Therapist ID' });
         }
-        res.json(payment);
+        res.json({
+            Count: totalCount,
+            Payments: payments
+        });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
