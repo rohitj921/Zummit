@@ -9,7 +9,7 @@ const{therapistTransactionLists,createtherapistTransactionLists}=require("../con
 
 const{therapistGroupLists,createtherapistGroupLists}=require("../controllers/Therapist/therapistGroupsController.js");
 const { therapistObservationLists, createTherapistObservationLists } = require("../controllers/Therapist/therapistObservationController.js");
-const { therapistScheduleLists , createTherapistSchedule } = require('../controllers/Therapist/therapistScheduleController.js')
+
 
 router.route("/loginTherapist").post(loginTherapist);
 router.route("/logoutTherapist").get(logoutTherapist);
@@ -25,9 +25,6 @@ router.route("/gettherapistTransactionLists").get(therapistTransactionLists);
 
 router.route("/getTherapistObservationLists").get(therapistObservationLists);
 router.route("/createTherapistObservationLists").post(createTherapistObservationLists);
-
-router.route("/therapistScheduleList").get(therapistScheduleLists);
-router.route("/createtherapistScheduleList").post(createTherapistSchedule);
 
 
 
