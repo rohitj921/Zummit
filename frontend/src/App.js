@@ -44,6 +44,7 @@ import SignUp_reg from "./components/Admin/Register_Loigin/SignUp-reg";
 // import Therapist_Transactions from "./components/Therapist/Transactions/Therapist_Transactions";
 // import Therapist_Profile from "./components/Therapist/Profile/Therapist_Profile";
 // import Therapist_Groups from "./components/Therapist/Groups/Therapist_Groups";
+import UserResources from "./components/UserResources";
 
 const WithHeaderAndFooter = ({ children }) => (
   <>
@@ -220,6 +221,7 @@ const routes = [
   // {path: "/therapist-profile", element: <Therapist_Profile/>},
   // { path: "admin-login", element: <Login /> },
   // { path: "admin-register", element: <SignUp /> },
+  { path: "/userdashboard-resources", element: <UserResources /> }
 ];
 
 function renderRoutes(routes) {
