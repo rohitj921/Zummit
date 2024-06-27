@@ -292,28 +292,14 @@ const Register__Login = () => {
             <p className="text-center text-3xl font-medium">
               {signUp ? "Login" : "Signup"}
             </p>
-                <div className="flex justify-around gap-10 cursor-pointer">
-                  <p
-                    onClick={handleClient}
-                    className={role === "Client" ? "active" : "inactive"}
-                  >
+                <div className="text-2xl font-semibold">
+                  <p>
                     Client
                   </p>
-                  {
-                    signUp && (
-                      <p
-                    onClick={handleTherapist}
-                    className={role === "Therapist" ? "active" : "inactive"}
-                  >
-                    Therapist
-                  </p>
-                    )
-                  }
-                  
                 </div>
 
             {!showSection ? (
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col font-medium text-lg gap-3">
                 {!signUp && (
                   <input
                     className="bg-cyan-100  p-2 w-[100%]  outline-none rounded-lg"
@@ -353,9 +339,9 @@ const Register__Login = () => {
                 <p className="m-0 p-0 text-red-600"> {error} </p>
                 <button
                   onClick={handleSubmission}
-                  className="w-[40%] rounded-lg bg-yellow p-2 text-green-500 text-base"
+                  className="w-[40%] rounded-lg bg-yellow p-2 text-green-500 "
                 >
-                  {signUp ? "Login" : "Send OTP"}
+                  {!signUp ? "Login" : "Send OTP"}
                 </button>
                 <p
                   onClick={handleClick}
