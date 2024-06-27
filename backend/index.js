@@ -7,21 +7,22 @@ const PORT = 4000;
 const app = express();
 const userRoute = require("./routes/userRoute");
 const adminRoute = require("./routes/adminRoute");
-const bookingRoute = require("./routes/bookingRoute");
-const therapistRoute=require("./routes/therapistRoute");
-const Appointments = require("./models/Appointment/AppointmentModel");
-const bodyParser = require('body-parser');
 
+const bookingRoute = require("../backend/routes/userRoute");
+const therapistRoute = require("./routes/therapistRoute");
+const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
-const fileupload=require("express-fileupload");
-app.use(fileupload({
-    useTempFiles:true,
-    tempFileDir:'/tmp/'
-}));
+const fileupload = require("express-fileupload");
+app.use(
+  fileupload({
+    useTempFiles: true,
+    tempFileDir: "/tmp/",
+  })
+);
 
 app.use(
   cors({
@@ -45,20 +46,15 @@ app.get("/", (req, res) => {
 });
 app.use("/api/users", userRoute);
 app.use("/api/admin", adminRoute);
-app.use("/api/booking", bookingRoute);
-app.use("/api/therapist",therapistRoute);
-app.get("/booking-details", async (req, res) => {
-  const allBookings = await Appointments.find({});
-  return res.send(allBookings);
-});
-
+app.use("/api/therapist", therapistRoute);
+app.use("/booking-details", bookingRoute);
 
 //connect to the database
 const dbConnect = require("./config/database");
 dbConnect();
 
 //Cloudinary Connection
-const cloudinary=require("./config/cloudinary");
+const cloudinary = require("./config/cloudinary");
 cloudinary.cloudinaryConnect();
 
 const {

@@ -29,9 +29,77 @@ function BookTherapistPage() {
 
   const [Selected_session_Mode, setSelect_session_mode] = useState("video");
 
+  const slotsCount = 3;
+
+  const [CurrentDate, setCurrentDate] = useState(new Date());
+  const [CurrentSlots, setCurrentSlots] = useState([]);
+  const [CurrentFirstSlot, setCurrentFirstSlot] = useState(new Date());
+  const [SelectedSlot, setSelectedSlot] = useState(new Date());
   useEffect(() => {
-    console.log(Selected_session_Mode);
-  }, [Selected_session_Mode])
+    (async function () {
+      await setCurrentSlots(loadSlots(slotsCount, CurrentFirstSlot));
+    })();
+  }, [CurrentFirstSlot]);
+
+  function loadSlots(count, startDate) {
+    const slots = [];
+    for (let i = 0; i < count; i++) {
+      const date = new Date(
+        new Date(
+          startDate.getFullYear(),
+          startDate.getMonth(),
+          startDate.getDate() + i
+        ).toLocaleString()
+      );
+      slots.push(date);
+    }
+    return slots;
+  }
+
+  function moveNext() {
+    setCurrentFirstSlot(
+      new Date(
+        new Date(
+          CurrentFirstSlot.getFullYear(),
+          CurrentFirstSlot.getMonth(),
+          CurrentFirstSlot.getDate() + slotsCount
+        )
+      )
+    );
+  }
+
+  function movePrev() {
+    setCurrentFirstSlot(
+      new Date(
+        new Date(
+          CurrentFirstSlot.getFullYear(),
+          CurrentFirstSlot.getMonth(),
+          CurrentFirstSlot.getDate() - slotsCount
+        )
+      )
+    );
+  }
+
+  function selectSlot(slotData) {
+    setSelectedSlot(slotData);
+  }
+
+  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
 
   return (<>
     <div className="flex gap-[50px] bg-[#F2FCFF]">
@@ -120,53 +188,62 @@ function BookTherapistPage() {
                 Check Available slots
               </div>
               <div className="flex gap-5 justify-between items-center mt-6 w-full max-md:flex-wrap max-md:max-w-full">
-                <img
-                  loading="lazy"
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/dbe922afa8f28ad6e0e909b4e5ee12c30a33d9c9e3843442c012faf84e2cdf90?apiKey=8587097ed3a94b279b125430c3e068a6&"
-                  className="shrink-0 self-stretch my-auto w-8 aspect-square"
-                />
+                <button
+                  onClick={movePrev}
+                  disable={(CurrentFirstSlot <= CurrentDate).toString()}
+                  className="w-8"
+                >
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/dbe922afa8f28ad6e0e909b4e5ee12c30a33d9c9e3843442c012faf84e2cdf90?apiKey=8587097ed3a94b279b125430c3e068a6&"
+                    className={`shrink-0 self-stretch my-auto w-8 aspect-square ${CurrentFirstSlot <= CurrentDate ? `hidden` : `block`
+                      }`}
+                  />
+                </button>
                 <div className="self-stretch max-md:max-w-full">
                   <div className="flex gap-5 max-md:flex-col max-md:gap-0">
-                    <div className="flex flex-col w-[33%] max-md:ml-0 max-md:w-full">
-                      <div className="flex flex-col grow text-black max-md:mt-6">
-                        <div className="self-center text-xl font-medium">MON</div>
-                        <div className="flex flex-col px-7 py-2.5 mt-3 rounded border border-solid border-neutral-900 max-md:px-5">
-                          <div className="text-xl font-medium">Feb 20</div>
-                          <div className="mt-2.5 text-xs">8 Available slots</div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex flex-col ml-5 w-[33%] max-md:ml-0 max-md:w-full">
-                      <div className="flex flex-col grow max-md:mt-6">
-                        <div className="self-center text-xl font-medium text-black">
-                          TUE
-                        </div>
-                        <div className="flex flex-col px-7 py-2.5 mt-3 bg-cyan-600 rounded max-md:px-5">
-                          <div className="text-xl font-medium text-yellow-300">
-                            Feb 21
+                    {CurrentSlots.map((slot, index) => (
+                      <div
+                        className="flex flex-col w-[33%] max-md:ml-0 max-md:w-full"
+                        key={index}
+                        onClick={() => selectSlot(slot)}
+                      >
+                        <div className="flex flex-col grow text-black max-md:mt-6">
+                          <div className="self-center text-xl font-medium">
+                            {days[slot.getDay()].toUpperCase()}
                           </div>
-                          <div className="mt-2.5 text-xs text-black">
-                            3 Available slots
+                          <div
+                            className={`flex flex-col px-7 py-2.5 mt-3 rounded border ${SelectedSlot.getDate() === slot.getDate() &&
+                                SelectedSlot.getMonth() === slot.getMonth() &&
+                                SelectedSlot.getFullYear() === slot.getFullYear()
+                                ? `bg-[#0190B1]`
+                                : `border-solid border-neutral-900`
+                              } max-md:px-5`}
+                          >
+                            <div
+                              className={`text-xl font-medium ${SelectedSlot.getDate() === slot.getDate() &&
+                                  SelectedSlot.getMonth() === slot.getMonth() &&
+                                  SelectedSlot.getFullYear() === slot.getFullYear()
+                                  ? `text-[#F7F131]`
+                                  : ``
+                                } `}
+                            >
+                              {months[slot.getMonth()] + " " + slot.getDate()}
+                            </div>
+                            <div className="mt-2.5 text-xs">8 Available slots</div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div className="flex flex-col ml-5 w-[33%] max-md:ml-0 max-md:w-full">
-                      <div className="flex flex-col grow text-neutral-400 max-md:mt-6">
-                        <div className="self-center text-xl font-medium">WED</div>
-                        <div className="flex flex-col px-7 py-2.5 mt-3 rounded border border-solid border-neutral-400 max-md:px-5">
-                          <div className="text-xl font-medium">Feb 22</div>
-                          <div className="mt-2.5 text-xs">No Available slots</div>
-                        </div>
-                      </div>
-                    </div>
+                    ))}
                   </div>
                 </div>
-                <img
-                  loading="lazy"
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/f56796728be6404f086fe8f6474bf54542cf5b1095ffb1e699b497945b9a19bd?apiKey=8587097ed3a94b279b125430c3e068a6&"
-                  className="shrink-0 self-stretch my-auto w-8 aspect-square"
-                />
+                <button onClick={moveNext}>
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/f56796728be6404f086fe8f6474bf54542cf5b1095ffb1e699b497945b9a19bd?apiKey=8587097ed3a94b279b125430c3e068a6&"
+                    className="shrink-0 self-stretch my-auto w-8 aspect-square"
+                  />
+                </button>
               </div>
               <div className="flex gap-5 justify-between self-center mt-8 max-w-full text-base text-black w-[547px] max-md:flex-wrap">
                 <div className="flex gap-5 justify-between whitespace-nowrap">
