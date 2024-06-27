@@ -288,10 +288,10 @@ const SignUp = () => {
           )}
           <div className="w-[50%] flex flex-col gap-5 shadow-lg rounded-lg  bg-white p-5">
             <p className="text-center text-3xl font-medium">SignUp</p>
-            <div className="font-bold text-xl">
+            <div className="font-semibold text-2xl">
               <p>Admin</p>
             </div>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col font-medium text-lg gap-3">
               <input
                 className="bg-cyan-100  p-2 w-[100%]  outline-none rounded-lg"
                 type="text"
@@ -323,7 +323,7 @@ const SignUp = () => {
               <p className="m-0 p-0 text-red-600"> {error} </p>
               <button
                 onClick={handleSubmission}
-                className="w-[40%] rounded-lg bg-yellow p-2 text-green-500 text-base"
+                className="w-[40%] rounded-lg bg-yellow p-2 text-green-500"
               >
                 {signUp ? "SignUp" : "Send OTP"}
               </button>
