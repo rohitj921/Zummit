@@ -30,7 +30,7 @@ const SignUp = () => {
 
 
 
-  const registerUser = async (userData) => {
+  const registerAdmin = async (userData) => {
     console.log(userData);
     // Check if OTP and verifyOTP are equal
     if (OTP != otpVerify) {
@@ -40,7 +40,7 @@ const SignUp = () => {
 
     try {
       const response = await fetch(
-        "https://zummit-chandan.onrender.com/api/users/register",
+        "https://zummit-chandan.onrender.com/api/admin/adminRegister",
         {
           method: "POST",
           headers: {
@@ -72,7 +72,7 @@ const SignUp = () => {
   const loginUser = async (loginData) => {
     try {
       const response = await fetch(
-        "https://zummit-kefo.onrender.com/api/users/login",
+        "https://zummit-chandan.onrender.com/api/admin/adminRegister",
         {
           method: "POST",
           headers: {
@@ -233,7 +233,7 @@ const SignUp = () => {
     };
 
     if (!signUp) {
-      await registerUser(userData);
+      await registerAdmin(userData);
     } else {
       const loginData = {
         input,
