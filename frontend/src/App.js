@@ -31,9 +31,6 @@ import Admin_Clients from "./components/Admin/Client/Admin_Clients";
 import Admin_Reviews from "./components/Admin/Reviews/Admin_Reviews";
 import Admin_Transactions from "./components/Admin/Transactions/Admin_Transactions";
 import TherapistHome from "./components/TherapistHome";
-
-
-
 import UserResources from "./components/UserResources";
 import Login from "./components/Admin/Register_Loigin/Login";
 import SignUp from "./components/Admin/Register_Loigin/SignUp";
@@ -229,10 +226,7 @@ const routes = [
   { path: "/admin-therapists", element: <Admin_Therapists /> },
   { path: "/admin-transactions", element: <Admin_Transactions /> },
   { path: "/admin-resources", element: <Admin_Resources /> },
-
-
   { path: "/userdashboard-resources", element: <UserResources /> },
-
   { path: "/Therapist-home", element: <TherapistHome /> },
   { path: "/therapist-dashboard", element: <Therapist_Dashboard /> },
   { path: "/therapist-appointments", element: <Therapist_Appointment /> },
@@ -247,7 +241,6 @@ const routes = [
   { path: "/therapist-register", element: <Therapist_SignUp /> },
   { path: "/admin-login", element: <Login /> },
   { path: "/admin-register", element: <SignUp /> },
-
 ];
 
 function renderRoutes(routes) {
