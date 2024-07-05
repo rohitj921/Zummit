@@ -3,6 +3,7 @@ import Admin_SideBar from "../Therapist_SideBar";
 import Dashboard from "./Dashboard";
 import Therapist_SideBar from "../Therapist_SideBar";
 import Shimmer from "./Shimmer";
+import TherapistPop from "../TherapistPop/TherapistPop";
 
 const Therapist_Dashboard = () => {
   return (
@@ -10,6 +11,7 @@ const Therapist_Dashboard = () => {
       <Therapist_SideBar />
       <Dashboard />
       {/* <Shimmer/> */}
+      <TherapistPop/>
     </div>
   );
 };
