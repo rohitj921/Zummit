@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import uploadImg from "../../images/Upload_file.png";
-import fileIcon from "../../images/File_Icon.webp";
 
 const TherapistPop = () => {
   const [image, setImage] = useState(null);
