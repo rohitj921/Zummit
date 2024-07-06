@@ -1,6 +1,6 @@
 import React from "react";
-import Side_Navbar from "./Side_Navbar";
-import Resources from "./Resources";
+import Side_Navbar from "../Side_Navbar";
+import Resources from "../Resources";
 
 const UserResources = () => {
     return (

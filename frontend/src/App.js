@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 import "./App.css";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
-import About from "./components/About";
+
 import Services from "./components/Services";
 import Therapists from "./components/Therapists";
 import Resources from "./components/Resources";
@@ -43,7 +43,9 @@ import Therapist_Groups from "./components/Therapist/Groups/Therapist_Groups";
 import Therapist_Login from "./components/Therapist/Register_Loigin/Therapist_Login";
 import Therapist_SignUp from "./components/Therapist/Register_Loigin/Therapist_Signup";
 import UserDashboard from "./components/UserDashboard";
-import UserResources from "./components/UserResources"
+import UserResources from "./components/User/UserResources";
+import About from "./components/About";
+
 
 const WithHeaderAndFooter = ({ children }) => (
   <>
