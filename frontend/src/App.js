@@ -268,7 +268,7 @@ function App() {
     const fetchData = async () => {
       try {
         const [user, therapist, admin] = await Promise.all([
-          fetch("https://zummit-chandan.onrender.com/users/getUser", {
+          fetch("https://zummit-chandan.onrender.com/api/users/getUser", {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
