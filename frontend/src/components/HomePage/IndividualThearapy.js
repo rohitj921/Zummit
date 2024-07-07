@@ -1,13 +1,13 @@
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
-import { checkToken } from "../utils/Hooks/checkToken";
+import { checkToken } from "../../utils/Hooks/checkToken";
 
 const IndividualThearapy = () => {
   return (
     <>
       <div className="banner-IndividualTherapy">
         <img
-          src={require("./images/Individual_therapy_page.png")}
+          src={require("../images/Individual_therapy_page.png")}
           alt="A Lady talking to her Therapist"
           className="object-contain w-full"
         />

@@ -5,7 +5,7 @@ function GroupTherapy() {
     <>
       <div className="h-[226px]">
         <img
-          src={require("./images/Group-Banner.png")}
+          src={require("../images/Group-Banner.png")}
           alt=""
           className="object-cover w-full h-[100%]"
         />
@@ -40,14 +40,14 @@ function GroupTherapy() {
             <button>
               {" "}
               <img
-                src={require("./images/Aroe_left.png")}
+                src={require("../images/Aroe_left.png")}
                 alt=""
                 className="h-[45px] pr-[24px]"
               />{" "}
             </button>
             <button>
               {" "}
-              <img src={require("./images/Aroe.png")} alt="" />{" "}
+              <img src={require("../images/Aroe.png")} alt="" />{" "}
             </button>
           </div>
 
@@ -59,7 +59,7 @@ function GroupTherapy() {
                   <div className="relative">
                     <div className="relative group overflow-hidden">
                       <img
-                        src={require("./images/Anxiety-Group.png")}
+                        src={require("../images/Anxiety-Group.png")}
                         alt=""
                         className="w-[243px] m-auto"
                       />
@@ -84,7 +84,7 @@ function GroupTherapy() {
                   <div className="relative">
                     <div className="relative group overflow-hidden">
                       <img
-                        src={require("./images/Loneliness-Group.png")}
+                        src={require("../images/Loneliness-Group.png")}
                         alt=""
                         className="w-[243px] m-auto"
                       />
@@ -120,7 +120,7 @@ function GroupTherapy() {
           <div className="relative">
             <div className="relative group overflow-hidden">
               <img
-                src={require("./images/flower-img.png")}
+                src={require("../images/flower-img.png")}
                 alt=""
                 className="w-[316px] m-auto"
               />
@@ -141,7 +141,7 @@ function GroupTherapy() {
           <div className="relative">
             <div className="relative group overflow-hidden">
               <img
-                src={require("./images/flower-img.png")}
+                src={require("../images/flower-img.png")}
                 alt=""
                 className="w-[316px] m-auto"
               />
@@ -162,7 +162,7 @@ function GroupTherapy() {
           <div className="relative">
             <div className="relative group overflow-hidden">
               <img
-                src={require("./images/flower-img.png")}
+                src={require("../images/flower-img.png")}
                 alt=""
                 className="w-[316px] m-auto"
               />
@@ -186,7 +186,7 @@ function GroupTherapy() {
           <div className="relative">
             <div className="relative group overflow-hidden">
               <img
-                src={require("./images/flower-img.png")}
+                src={require("../images/flower-img.png")}
                 alt=""
                 className="w-[316px] m-auto"
               />
@@ -207,7 +207,7 @@ function GroupTherapy() {
           <div className="relative">
             <div className="relative group overflow-hidden">
               <img
-                src={require("./images/flower-img.png")}
+                src={require("../images/flower-img.png")}
                 alt=""
                 className="w-[316px] m-auto"
               />
@@ -228,7 +228,7 @@ function GroupTherapy() {
           <div className="relative">
             <div className="relative group overflow-hidden">
               <img
-                src={require("./images/flower-img.png")}
+                src={require("../images/flower-img.png")}
                 alt=""
                 className="w-[316px] m-auto"
               />

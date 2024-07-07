@@ -1,19 +1,19 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/HomePage/Navbar";
 import "./App.css";
-import Footer from "./components/Footer";
-import Home from "./components/Home";
+import Footer from "./components/HomePage/Footer";
+import Home from "./components/HomePage/Home";
 
-import Services from "./components/Services";
-import Therapists from "./components/Therapists";
+import Services from "./components/HomePage/Services";
+import Our_Therapist from "./components/HomePage/Our_Therapist";
 import Resources from "./components/Resources";
-import FAQ from "./components/FAQ";
-import IndividualTherapy from "./components/IndividualThearapy";
-import GroupTherapy from "./components/GroupTherapy";
-import SupportTherapy from "./components/SupportTherapy";
-import ContactSection from "./components/ContactSection";
-import GroupTherapyDetail from "./components/GroupTherapyDetail";
+import FAQ from "./components/HomePage/FAQ";
+import IndividualTherapy from "./components/HomePage/IndividualThearapy";
+import GroupTherapy from "./components/HomePage/GroupTherapy";
+import SupportTherapy from "./components/HomePage/SupportTherapy";
+import ContactSection from "./components/HomePage/ContactSection";
+import GroupTherapyDetail from "./components/HomePage/GroupTherapyDetail";
 import RegisterLogin from "./components/User/RegisterLogin";
 import BookingPage from "./components/User/BookingPage";
 import ForgotPassword from "./components/ForgotPassword";
@@ -44,8 +44,7 @@ import Therapist_Login from "./components/Therapist/Register_Loigin/Therapist_Lo
 import Therapist_SignUp from "./components/Therapist/Register_Loigin/Therapist_Signup";
 import UserDashboard from "./components/UserDashboard";
 import UserResources from "./components/User/UserResources";
-import About from "./components/About";
-
+import About from "./components/HomePage/About";
 
 const WithHeaderAndFooter = ({ children }) => (
   <>
@@ -130,7 +129,7 @@ const routes = [
         path: "",
         element: (
           <WithHeaderAndFooter>
-            <Therapists />
+            <Our_Therapist />
           </WithHeaderAndFooter>
         ),
       },

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Client1 from "./images/Client-1.png";
-import Client2 from "./images/Client-2.png";
-import Client3 from "./images/Client-3.png";
-import Client4 from "./images/Client-4.webp";
+import Client2 from "../images/Client-2.png";
+import Client3 from "../images/Client-3.png";
+import Client1 from "../images/Client-1.png";
+import Client4 from "../images/Client-4.webp";
 import { Link } from "react-router-dom";
 
 const Meet = () => {

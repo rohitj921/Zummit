@@ -1,6 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import GroupTherapayImg from "../images/Group-Therapy-img.png"
+import SupportGroupImg from "../images/Support_Group-img.png"
+import IndividualTherapayImg from "../images/Individual-Therapy-img.png"
 const Hero = () => {
+  const therapyOptions = [
+    {
+      title: "Group Therapy",
+      imageUrl: GroupTherapayImg,
+      altText: "An icon representing group therapy",
+      linkTo: "/services/group-therapy",
+    },
+    {
+      title: "Support Group",
+      imageUrl: SupportGroupImg,
+      altText: "An icon representing support group",
+      linkTo: "/services/support-group",
+    },
+    {
+      title: "Individual Therapy",
+      imageUrl: IndividualTherapayImg,
+      altText: "An icon representing individual therapy",
+      linkTo: "/services/individual-therapy",
+    },
+  ];
+
   const TherapyOption = ({ title, imageUrl, altText, linkTo }) => (
     <div className="max-md:ml-0 max-md:w-full group">
       <div className="flex flex-col w-[100%] h-[17rem] px-8 py-4  items-center text-black whitespace-nowrap bg-white rounded-lg hover:bg-lightyellow max-md:mt-6 ">
@@ -10,7 +34,7 @@ const Hero = () => {
         <Link to={linkTo} className="hero-img-link">
           <img
             loading="lazy"
-            src={require(`${imageUrl}`)}
+            src={imageUrl}
             alt={altText}
             className="hero-img transition ease-in-out duration-700 group-hover:scale-[1.3] w-48"
           />
@@ -31,29 +55,9 @@ const Hero = () => {
           </svg>
         </div>
       </div>
+      {console.log(imageUrl)}
     </div>
   );
-
-  const therapyOptions = [   
-    {
-      title: "Group Therapy",
-      imageUrl: "./images/Group-Therapy-img.png",
-      altText: "An icon representing group therapy",
-      linkTo: "/services/group-therapy",
-    },
-    {
-      title: "Support Group",
-      imageUrl: "./images/Support_Group-img.png",
-      altText: "An icon representing support group",
-      linkTo: "/services/support-group",
-    },
-    {
-      title: "Individual Therapy",
-      imageUrl: "./images/Individual Therapy.png",
-      altText: "An icon representing individual therapy",
-      linkTo: "/services/individual-therapy",
-    },
-  ];
 
   return (
     <div>

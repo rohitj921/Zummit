@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { checkToken } from "../../utils/Hooks/checkToken.js";
+import LoginReq_pop from "../PopUps/LoginReq_pop.js";
+import { addCouncellor } from "../../utils/Slices/bookingSlice.js";
+import useFetch from "../../utils/Hooks/fetchData.js";
 
-import { checkToken } from "../utils/Hooks/checkToken.js";
-import LoginReq_pop from "./PopUps/LoginReq_pop.js";
-import { addCouncellor } from "../utils/Slices/bookingSlice.js";
-import useFetch from "../utils/Hooks/fetchData.js";
-
-const Therapists = () => {
+const Our_Therapist = () => {
   const [allTherapists, setAllTherapists] = useState([]);
   const [searchInput, setSearchInput] = useState(undefined);
   const [ShowPopUp, setShowPopUp] = useState(false);
@@ -26,7 +25,7 @@ const Therapists = () => {
   }, [data]);
 
   const user = useSelector((store) => store.user.data);
-  
+
   const handleSearchInput = (event) => {
     if (event.key == "Enter") {
       setSearchInput(event.target.value);
@@ -34,11 +33,11 @@ const Therapists = () => {
   };
 
   function handleBook(therapistID) {
-    if(!checkToken("token")){
-      setShowPopUp(true)
-    }else{
-      dispatch(addCouncellor(therapistID))
-      navigate("/BookTherapistPage")
+    if (!checkToken("token")) {
+      setShowPopUp(true);
+    } else {
+      dispatch(addCouncellor(therapistID));
+      navigate("/BookTherapistPage");
     }
   }
 
@@ -114,9 +113,7 @@ const Therapists = () => {
   ];
   return (
     <React.Fragment>
-      {
-        ShowPopUp && <LoginReq_pop setShowPopUp={setShowPopUp} />
-      }
+      {ShowPopUp && <LoginReq_pop setShowPopUp={setShowPopUp} />}
       <div className="m-0 p-0">
         <div className="px-[194px] m-0 pb-[68px]">
           <div className="h-[120px] m-0 pt-[33px]">
@@ -164,7 +161,7 @@ const Therapists = () => {
                     <div className="m-0 p-0 h-full flex gap-[12px]">
                       <div className="m-0 p-0 h-full xlg:w-[0] xlg2:w-[100px] sm:w-[129px] w-[0px] ">
                         <img
-                          src={require(`./images/${therapists_info[0].profile_image}`)}
+                          src={require(`../images/${therapists_info[0].profile_image}`)}
                           alt={therapist.name}
                           className="object-contain w-full rounded-md"
                         />
@@ -216,7 +213,8 @@ const Therapists = () => {
                       </Link>
                     </div>
                     <div className="xl:mt-4 sm:mt-2 sm:ms-4">
-                      <button class="bg-[#0190B1] text-white font-semibold py-2 px-4 rounded"
+                      <button
+                        class="bg-[#0190B1] text-white font-semibold py-2 px-4 rounded"
                         onClick={() => handleBook(therapist._id)}
                       >
                         Book Appointment
@@ -233,4 +231,4 @@ const Therapists = () => {
   );
 };
 
-export default Therapists;
+export default Our_Therapist;
