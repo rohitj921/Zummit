@@ -157,7 +157,8 @@ const loginAdmin = asyncHandler(async (req, res) => {
 });
 
 const getAdmin = asyncHandler(async (req, res) => {
-  const { adminToken } = req.body;
+  const authHeader = req.headers['authorization'];
+  const adminToken = authHeader && authHeader.split(' ')[1];
     if (!adminToken) {
         return res.status(401).json({ error: "Unauthorized Admin" });
     }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import "./App.css";
@@ -45,7 +45,10 @@ import Therapist_SignUp from "./components/Therapist/Register_Loigin/Therapist_S
 import UserDashboard from "./components/UserDashboard";
 import UserResources from "./components/User/UserResources";
 import About from "./components/About";
-
+import { useDispatch } from "react-redux";
+import { addUser } from "./utils/Slices/userSlice";
+import { addTherapist } from "./utils/Slices/therapistSlice";
+import { addAdmin } from "./utils/Slices/adminSlice";
 
 const WithHeaderAndFooter = ({ children }) => (
   <>
@@ -255,6 +258,65 @@ function renderRoutes(routes) {
 }
 
 function App() {
+  const dispatch = useDispatch();
+  const userToken ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NjIwNDk5ZWQ5ODlkMjljMzVjZmY5NyIsImlhdCI6MTcxOTk0NzE2NiwiZXhwIjoxNzIyNTM5MTY2fQ.N4A4wsJ67sDlYmT3wflePWtP-gzI69maf3A0t98qKBM"
+  // const userToken = localStorage.getItem("userToken");
+  const therapistToken = localStorage.getItem("therapistToken");
+  const adminToken = localStorage.getItem("adminToken");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [user, therapist, admin] = await Promise.all([
+          fetch("http://localhost:4000/api/users/getUser", {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${userToken}`
+            },
+            // body:userToken,
+            credentials: "include",
+           
+          }),
+          fetch(
+            "https://zummit-chandan.onrender.com/api/therapist/getTherapist",
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${therapistToken}`
+              },
+              
+              credentials: "include",
+              
+            }
+          ),
+          fetch("https://zummit-chandan.onrender.com/api/admin/getAdmin", {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${adminToken}`
+            },
+           
+            credentials: "include",
+            
+          }), 
+        ]);
+
+        const userInfo = await user.json();
+        const therapistInfo = await therapist.json();
+        const adminInfo = await admin.json();
+
+        dispatch(addUser(userInfo));
+        dispatch(addTherapist(therapistInfo));
+        dispatch(addAdmin(adminInfo));
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <Router>
       <Routes>{renderRoutes(routes)}</Routes>
