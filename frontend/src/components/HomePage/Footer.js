@@ -1,7 +1,6 @@
 import React, { useState , useRef } from "react";
 import { Link } from "react-router-dom";
 
-import Resume from "../Privacy/AroundWithin - Privacy and Confidentiality Policy.pdf";
 const Footer = () => {
   const [showPrivacy, setShowPrivacy] = useState(false);
   const togglePrivacyPopup = () => {

@@ -44,7 +44,7 @@ const About = () => {
           <div className="p-0 m-0 w-[306px] flex align-bottom">
             {showGif ? (
               <img
-                src={require(`./images/aroundwithin-speed.gif`)}
+                src={require(`../images/aroundwithin-speed.gif`)}
                 alt=""
                 className="object-contain w-full rounded-md"
               />
@@ -78,7 +78,7 @@ const About = () => {
           <div className="p-0 m-0 sm:w-0 md:w-[300px] lg:w-[447px] flex items-center ">
             <div className="p-0 m-0">
               <img
-                src={require(`./images/Premium_Vector___Talk_show_concept_illustration-removebg-preview 2 (2).png`)}
+                src={require(`../images/Premium_Vector___Talk_show_concept_illustration-removebg-preview 2 (2).png`)}
                 alt=""
                 className="object-contain w-full rounded-md"
               />
@@ -122,7 +122,7 @@ const About = () => {
             <div className="m-0 p-0 ">
               <div className="m-0 p-4 mt-4 dashed-border">
                 <img
-                  src={require(`./images/Frame 278.png`)}
+                  src={require(`../images/Frame 278.png`)}
                   alt=""
                   height={"357px"}
                   width={"306px"}
@@ -136,7 +136,7 @@ const About = () => {
             <div className="m-0 p-0 ">
               <div className="m-0 p-4 mt-4 dashed-border">
                 <img
-                  src={require(`./images/Group 278.png`)}
+                  src={require(`../images/Group 278.png`)}
                   alt=""
                   height={"357px"}
                   width={"306px"}
@@ -211,7 +211,7 @@ const About = () => {
             <div className="m-0 p-0 ">
               <div className="m-0 p-4 mt-4 dashed-border">
                 <img
-                  src={require(`./images/Group 279.png`)}
+                  src={require(`../images/Group 279.png`)}
                   alt=""
                   height={"357px"}
                   width={"306px"}

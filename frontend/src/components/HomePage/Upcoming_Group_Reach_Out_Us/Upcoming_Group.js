@@ -3,8 +3,9 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
+import flower_img from "../../images/flower-img.png";
 
-const Card = () => {
+const UpcomingGroup = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const Data2 = [
@@ -18,7 +19,7 @@ const Card = () => {
   const Data = [
     {
       _id: 1,
-      imageFile: "./images/flower-img.png",
+      imageFile: flower_img,
       heading: "Lacus amet egestas ullamcorper fermentum",
       description:
         "Trauma, Anxiety, Depression, Life Transitions, Career Uncertainty, Relationship Challenges, Quarter-Life Crisis, Couples Therapy",
@@ -26,7 +27,7 @@ const Card = () => {
     },
     {
       _id: 2,
-      imageFile: "./images/flower-img.png",
+      imageFile: flower_img,
       heading: "Lacus amet egestas ullamcorper fermentum",
       description:
         "Trauma, Anxiety, Depression, Life Transitions, Career Uncertainty, Relationship Challenges, Quarter-Life Crisis, Couples Therapy",
@@ -34,7 +35,7 @@ const Card = () => {
     },
     {
       _id: 3,
-      imageFile: "./images/flower-img.png",
+      imageFile: flower_img,
       heading: "Lacus amet egestas ullamcorper fermentum",
       description:
         "Trauma, Anxiety, Depression, Life Transitions, Career Uncertainty, Relationship Challenges, Quarter-Life Crisis, Couples Therapy",
@@ -42,7 +43,7 @@ const Card = () => {
     },
     {
       _id: 4,
-      imageFile: "./images/flower-img.png",
+      imageFile: flower_img,
       heading: "Lacus amet egestas ullamcorper fermentum",
       description:
         "Trauma, Anxiety, Depression, Life Transitions, Career Uncertainty, Relationship Challenges, Quarter-Life Crisis, Couples Therapy",
@@ -50,7 +51,7 @@ const Card = () => {
     },
     {
       _id: 5,
-      imageFile: "./images/flower-img.png",
+      imageFile: flower_img,
       heading: "Lacus amet egestas ullamcorper fermentum",
       description:
         "Trauma, Anxiety, Depression, Life Transitions, Career Uncertainty, Relationship Challenges, Quarter-Life Crisis, Couples Therapy",
@@ -58,7 +59,7 @@ const Card = () => {
     },
     {
       _id: 6,
-      imageFile: "./images/flower-img.png",
+      imageFile: flower_img,
       heading: "Lacus amet egestas ullamcorper fermentum",
       description:
         "Trauma, Anxiety, Depression, Life Transitions, Career Uncertainty, Relationship Challenges, Quarter-Life Crisis, Couples Therapy",
@@ -66,7 +67,7 @@ const Card = () => {
     },
     {
       _id: 7,
-      imageFile: "./images/flower-img.png",
+      imageFile: flower_img,
       heading: "Lacus amet egestas ullamcorper fermentum",
       description:
         "Trauma, Anxiety, Depression, Life Transitions, Career Uncertainty, Relationship Challenges, Quarter-Life Crisis, Couples Therapy",
@@ -152,27 +153,27 @@ const Card = () => {
           {Data.map((item) => (
             <Link to="#">
               <div className="flex justify-center inline-none">
-              <div className="w-[348px] my-2 h-[485px] p-[10px] rounded-lg hover:shadow-lg cursor-pointer">
-                <div className="relative">
-                  <div className="relative group overflow-hidden">
-                    <img
-                      src={require(`${item.imageFile}`)}
-                      alt=""
-                      className="w-full transition-transform duration-500 transform scale-100 group-hover:scale-125"
-                    />
+                <div className="w-[348px] my-2 h-[485px] p-[10px] rounded-lg hover:shadow-lg cursor-pointer">
+                  <div className="relative">
+                    <div className="relative group overflow-hidden">
+                      <img
+                        src={item.imageFile}
+                        alt=""
+                        className="w-full transition-transform duration-500 transform scale-100 group-hover:scale-125"
+                      />
+                    </div>
+                    <div className="bg-[#F7F131] absolute rounded-lg pl-2 pr-[8px,] py-[4px,] w-[129px] h-[28px] top-[5px] right-[5px]">
+                      <p>Starts: {item.startsFrom}</p>
+                    </div>
                   </div>
-                  <div className="bg-[#F7F131] absolute rounded-lg pl-2 pr-[8px,] py-[4px,] w-[129px] h-[28px] top-[5px] right-[5px]">
-                    <p>Starts: {item.startsFrom}</p>
-                  </div>
+                  <p className="text-xl w-full text-center font-semibold text-[#121014] pb-2 hover:underline">
+                    {item.heading}
+                  </p>
+                  <p className="leading-[20px] text-[#272529]">
+                    {item.description}
+                  </p>
                 </div>
-                <p className="text-xl w-full text-center font-semibold text-[#121014] pb-2 hover:underline">
-                  {item.heading}
-                </p>
-                <p className="leading-[20px] text-[#272529]">
-                  {item.description}
-                </p>
               </div>
-            </div>
             </Link>
           ))}
         </Slider>
@@ -206,4 +207,4 @@ const Card = () => {
   );
 };
 
-export default Card;
+export default UpcomingGroup;

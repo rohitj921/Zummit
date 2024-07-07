@@ -8,14 +8,14 @@ import "swiper/css/navigation";
 const SupportGroupComponent = () => {
   const currentGroupsData = [
     {
-      imageFile: "./images/support-group-card1.png",
+      imageFile: "../images/support-group-card1.png",
       heading: "Anxiety",
       description:
         "Trauma, Anxiety, Depression, Life Transitions, Career Uncertainty, Relationship Challenges, Quarter-Life Crisis, Couples Therapy",
       startsFrom: "16 March",
     },
     {
-      imageFile: "./images/support-group-card2.png",
+      imageFile: "../images/support-group-card2.png",
       heading: "Loneliness",
       description:
         "Trauma, Anxiety, Depression, Life Transitions, Career Uncertainty, Relationship Challenges, Quarter-Life Crisis, Couples Therapy",
@@ -25,42 +25,42 @@ const SupportGroupComponent = () => {
 
   const data = [
     {
-      imageFile: "./images/flower-img.png",
+      imageFile: "../images/flower-img.png",
       heading: "Lacus amet egestas ullamcorper fermentum",
       description:
         "Trauma, Anxiety, Depression, Life Transitions, Career Uncertainty, Relationship Challenges, Quarter-Life Crisis, Couples Therapy",
       startsFrom: "16 March",
     },
     {
-      imageFile: "./images/flower-img.png",
+      imageFile: "../images/flower-img.png",
       heading: "Lacus amet egestas ullamcorper fermentum",
       description:
         "Trauma, Anxiety, Depression, Life Transitions, Career Uncertainty, Relationship Challenges, Quarter-Life Crisis, Couples Therapy",
       startsFrom: "16 March",
     },
     {
-      imageFile: "./images/flower-img.png",
+      imageFile: "../images/flower-img.png",
       heading: "Lacus amet egestas ullamcorper fermentum",
       description:
         "Trauma, Anxiety, Depression, Life Transitions, Career Uncertainty, Relationship Challenges, Quarter-Life Crisis, Couples Therapy",
       startsFrom: "16 March",
     },
     {
-      imageFile: "./images/flower-img.png",
+      imageFile: "../images/flower-img.png",
       heading: "Lacus amet egestas ullamcorper fermentum",
       description:
         "Trauma, Anxiety, Depression, Life Transitions, Career Uncertainty, Relationship Challenges, Quarter-Life Crisis, Couples Therapy",
       startsFrom: "16 March",
     },
     {
-      imageFile: "./images/flower-img.png",
+      imageFile: "../images/flower-img.png",
       heading: "Lacus amet egestas ullamcorper fermentum",
       description:
         "Trauma, Anxiety, Depression, Life Transitions, Career Uncertainty, Relationship Challenges, Quarter-Life Crisis, Couples Therapy",
       startsFrom: "16 March",
     },
     {
-      imageFile: "./images/flower-img.png",
+      imageFile: "../images/flower-img.png",
       heading: "Lacus amet egestas ullamcorper fermentum",
       description:
         "Trauma, Anxiety, Depression, Life Transitions, Career Uncertainty, Relationship Challenges, Quarter-Life Crisis, Couples Therapy",
@@ -73,7 +73,7 @@ const SupportGroupComponent = () => {
       <div className="">
         <div>
           <img
-            src={require("./images/SupportgroupHeader.png")}
+            src={require("../images/SupportgroupHeader.png")}
             className="support-group-header"
           />
         </div>

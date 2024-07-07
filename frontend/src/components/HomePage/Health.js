@@ -16,7 +16,7 @@ const Health = () => {
           <div className="bg-white p-4 h-fit rounded-lg flex flex-col gap-2 ">
             <img
               className="w-[257px] h-[162px] rounded-lg"
-              src={require("./images/Health-1.webp")}
+              src={require("../images/Health-1.webp")}
               alt=""
             />
             <p className="text-xs text-gray-500">Article| 5min</p>
@@ -25,7 +25,7 @@ const Health = () => {
           <div className="bg-white p-4 h-fit rounded-lg flex flex-col gap-2 ">
             <img
               className="w-[257px] h-[162px] rounded-lg"
-              src={require("./images/health-2.webp")}
+              src={require("../images/health-2.webp")}
               alt=""
             />
             <p className="text-xs text-gray-500">Article| 5min</p>
@@ -34,7 +34,7 @@ const Health = () => {
           <div className="bg-white p-4 h-fit rounded-lg flex flex-col gap-2 ">
             <img
               className="w-[257px] h-[162px] rounded-lg"
-              src={require("./images/health-3.webp")}
+              src={require("../images/health-3.webp")}
               alt=""
             />
             <p className="text-xs text-gray-500">Article| 5min</p>
