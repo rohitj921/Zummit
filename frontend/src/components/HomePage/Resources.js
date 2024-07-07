@@ -1,16 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
-import Rectangle541 from './images/Rectangle541.png';
-import Rectangle544 from './images/Rectangle544.png';
-import Rectangle547 from './images/Rectangle547.png';
-import Rectangle534 from './images/Rectangle534.png';
-import Rectangle531 from './images/Rectangle531.png';
-import Rectangle535 from './images/Rectangle535.png';
-import whatsappIcon from './images/whatsappIcon.png';
-import instaIcon from './images/instaIcon.png';
-import snapIcon from './images/snapIcon.png';
-import facebookIcon from './images/facebookIcon.png';
-import videodataimg from './images/videodataimg.png';
-import SearchContainer from './User/SearchContainer';
+import Rectangle541 from '../images/Rectangle541.png';
+import Rectangle544 from '../images/Rectangle544.png';
+import Rectangle547 from '../images/Rectangle547.png';
+import Rectangle534 from '../images/Rectangle534.png';
+import Rectangle531 from '../images/Rectangle531.png';
+import Rectangle535 from '../images/Rectangle535.png';
+import whatsappIcon from '../images/whatsappIcon.png';
+import instaIcon from '../images/instaIcon.png';
+import snapIcon from '../images/snapIcon.png';
+import facebookIcon from '../images/facebookIcon.png';
+import videodataimg from '../images/videodataimg.png';
+import SearchContainer from '../User/SearchContainer';
 
 const Resources = () => {
   const videoArr = [
