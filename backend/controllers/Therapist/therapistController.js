@@ -55,7 +55,8 @@ const loginTherapist = asyncHandler(async (req, res) => {
 });
 
 const getTherapist = asyncHandler(async (req, res) => {
-  const { therapistToken } = req.body;
+  const authHeader = req.headers['authorization'];
+  const therapistToken = authHeader && authHeader.split(' ')[1];
     if (!therapistToken) {
         return res.status(401).json({ error: "Unauthorized Therapist" });
     }
