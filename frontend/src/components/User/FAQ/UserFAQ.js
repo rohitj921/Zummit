@@ -1,6 +1,6 @@
 import React from "react";
 import FAQs from "./FAQs";
-import Side_Navbar from "../Side_Navbar";
+import Side_Navbar from "../UserSidebar";
 import SearchContainer from "../SearchContainer";
 
 const UserFAQ = () => {

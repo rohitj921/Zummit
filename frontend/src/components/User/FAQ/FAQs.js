@@ -1,6 +1,6 @@
 import React, { useState,useRef } from "react";
 import { Link } from "react-router-dom";
-import Resume from "../../../Privacy/AroundWithin - Privacy and Confidentiality Policy.pdf";
+
 const Section = ({ title, description, isVisible, toggleVisibility }) => {
 
   return (

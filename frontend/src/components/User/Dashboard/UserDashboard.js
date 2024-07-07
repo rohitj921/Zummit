@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Side_Navbar from "../Side_Navbar";
+import Side_Navbar from "../UserSidebar";
 import IndividualThearapy from "../../images/Individual Therapy.png";
 import GroupTherapyImg from "../../images/Group-Therapy-img.png";
 import SupportGroupImg from "../../images/Support_Group-img.png";
