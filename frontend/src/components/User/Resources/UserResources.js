@@ -1,5 +1,5 @@
 import React from "react";
-import Side_Navbar from "../Side_Navbar";
+import Side_Navbar from "../UserSidebar";
 import ResourcesComponent from "./ResourcesComponent";
 
 const UserResources = () => {
