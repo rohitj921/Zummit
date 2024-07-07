@@ -259,8 +259,7 @@ function renderRoutes(routes) {
 
 function App() {
   const dispatch = useDispatch();
-  const userToken ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NjIwNDk5ZWQ5ODlkMjljMzVjZmY5NyIsImlhdCI6MTcxOTk0NzE2NiwiZXhwIjoxNzIyNTM5MTY2fQ.N4A4wsJ67sDlYmT3wflePWtP-gzI69maf3A0t98qKBM"
-  // const userToken = localStorage.getItem("userToken");
+  const userToken = localStorage.getItem("userToken");
   const therapistToken = localStorage.getItem("therapistToken");
   const adminToken = localStorage.getItem("adminToken");
 
@@ -268,13 +267,13 @@ function App() {
     const fetchData = async () => {
       try {
         const [user, therapist, admin] = await Promise.all([
-          fetch("http://localhost:4000/api/users/getUser", {
+          fetch("https://zummit-chandan.onrender.com/users/getUser", {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
               "Authorization": `Bearer ${userToken}`
             },
-            // body:userToken,
+        
             credentials: "include",
            
           }),
