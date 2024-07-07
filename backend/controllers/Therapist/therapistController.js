@@ -54,5 +54,32 @@ const loginTherapist = asyncHandler(async (req, res) => {
   }
 });
 
+const getTherapist = asyncHandler(async (req, res) => {
+  const { therapistToken } = req.body;
+    if (!therapistToken) {
+        return res.status(401).json({ error: "Unauthorized Therapist" });
+    }
+    try {
+      const decoded = jwt.verify(therapistToken, process.env.JWT_SECRET);
+      const therapistId = decoded.id;
+    
+      const therapist = await Therapist.findById(therapistId).select('-password');
 
-module.exports = {loginTherapist}
+      if (!therapist) {
+          return res.status(404).json({ error: "Therapist not found" });
+      }
+
+      res.status(200).json({
+          success: true,
+          data: user,
+          message: "Therapist retrieved successfully",
+      });
+  } catch (error) {
+      console.error(`Error verifying Therapist by token: ${error.message}`);
+      res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+
+
+module.exports = {loginTherapist,getTherapist}
