@@ -44,11 +44,12 @@ import Therapist_Login from "./components/Therapist/Register_Loigin/Therapist_Lo
 import Therapist_SignUp from "./components/Therapist/Register_Loigin/Therapist_Signup";
 import UserDashboard from "./components/UserDashboard";
 import UserResources from "./components/User/UserResources";
-import About from "./components/About";
+
 import { useDispatch } from "react-redux";
 import { addUser } from "./utils/Slices/userSlice";
 import { addTherapist } from "./utils/Slices/therapistSlice";
 import { addAdmin } from "./utils/Slices/adminSlice";
+import About from "./components/HomePage/About";
 
 const WithHeaderAndFooter = ({ children }) => (
   <>
