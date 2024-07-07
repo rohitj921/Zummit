@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Side_Navbar from "../Side_Navbar";
+import Side_Navbar from "./Side_Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from 'react-router-dom';
 

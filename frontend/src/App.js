@@ -43,13 +43,6 @@ import Therapist_Groups from "./components/Therapist/Groups/Therapist_Groups";
 import Therapist_Login from "./components/Therapist/Register_Loigin/Therapist_Login";
 import Therapist_SignUp from "./components/Therapist/Register_Loigin/Therapist_Signup";
 import UserDashboard from "./components/UserDashboard";
-import UserResources from "./components/User/UserResources";
-
-import { useDispatch } from "react-redux";
-import { addUser } from "./utils/Slices/userSlice";
-import { addTherapist } from "./utils/Slices/therapistSlice";
-import { addAdmin } from "./utils/Slices/adminSlice";
-import About from "./components/HomePage/About";
 
 const WithHeaderAndFooter = ({ children }) => (
   <>
@@ -245,6 +238,9 @@ const routes = [
   { path: "/therapist-register", element: <Therapist_SignUp /> },
   { path: "/admin-login", element: <Login /> },
   { path: "/admin-register", element: <SignUp /> },
+  { path: "/userdashboard-resources", element: <UserResources /> },
+  { path: "/userdashboard-groups", element: <UserGroups /> },
+  { path: "/userdashboard-FAQs", element: <UserFAQ /> }
 ];
 
 function renderRoutes(routes) {
