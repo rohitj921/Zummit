@@ -160,7 +160,7 @@ const getUser = asyncHandler(async (req, res) => {
 
 const VerifyClient_ByToken = asyncHandler(async (req, res) => {
   try {
-    const authToken = req.cookies.token;
+    const authToken = req.headers['authorization'];
     if (!authToken) {
       return res.status(401).json({ error: "Unauthorized user" });
     }
