@@ -34,6 +34,7 @@ const Groups = () => {
             }
         ];
         return (
+
             <div className='w-[95%] flex flex-col mt-[24px]'>
                 <div className=' h-[2.7rem] flex  gap-10 items-center text-2xl font-medium text-gray-900 cursor-pointer'>
                 {tabs.map((tab, index) => (
