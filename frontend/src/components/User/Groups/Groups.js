@@ -34,8 +34,8 @@ const Groups = () => {
             }
         ];
         return (
-            <div className='w-[95%] flex flex-col mt-[24px]'>
-                <div className='w-[33%] h-[2.7rem] flex justify-between items-center text-2xl font-medium text-gray-900 cursor-pointer'>
+            <div className='w-full flex flex-col mt-[24px]'>
+                <div className='w-[35%] h-[2.7rem] flex justify-between items-center text-2xl font-medium text-gray-900 cursor-pointer'>
                 {tabs.map((tab, index) => (
                     <button 
                         key={index} 
@@ -102,7 +102,7 @@ const Groups = () => {
                     <Link
                         to={`/user-group/${index}`} 
                         key={index} 
-                        className="w-[348px] my-2 h-[485px] p-[10px] rounded-lg hover:shadow-lg cursor-pointer bg-[#FDFEF1]"
+                        className="w-[32%] my-2 h-[485px] p-[10px] rounded-lg hover:shadow-lg cursor-pointer bg-[#FDFEF1]"
                     >
                         <div className="relative">
                             <div className="relative group overflow-hidden">
