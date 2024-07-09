@@ -59,6 +59,7 @@ const createTherapist = asyncHandler(async (req, res) => {
     role,
     password: hashedPassword,
     admin: adminId,
+    loginCount : 1
   });
 
   if (therapist) {
@@ -78,6 +79,7 @@ const createTherapist = asyncHandler(async (req, res) => {
       name,
       input,
       role,
+      loginCount,
       token,
       message: "Registered successfully",
     });
@@ -86,46 +88,7 @@ const createTherapist = asyncHandler(async (req, res) => {
   }
 });
 
-const loginTherapist = asyncHandler(async (req, res) => {
-  const { input, password } = req.body;
 
-  if (!input || !password) {
-    res.status(400).json({
-      message: "Please add email/phone & password",
-    });
-    throw new Error("Please add email/phone & password");
-  }
-
-  const therapist = await Therapist.findOne({ input });
-
-  if (!therapist) {
-    res.status(400).json({
-      message : "Therapist does not exist",
-    })
-    throw new Error("Therapist does not exist");
-  }
-
-  const passwordIsCorrect = await bcrypt.compare(password, therapist.password);
-
-  if (therapist && passwordIsCorrect) {
-    const token = generateToken(therapist._id);
-    const newTherapist = await Therapist.findOne({ input }).select("-password");
-    res.cookie("token", token, {
-      path: "/",
-      httpOnly: true,
-      expires: new Date(Date.now() + 1000 * 86400),
-      // secure: true, // for deployment
-      // sameSite: none
-    });
-
-    res.status(201).json({ newTherapist, Authorization: token });
-  } else {
-    res.status(400).json({
-      message: "Invalid email or password",
-    });
-    throw new Error("Invalid email or password");
-  }
-});
 
 const logoutTherapist = asyncHandler(async (req, res) => {
   res.clearCookie("token");
@@ -134,37 +97,9 @@ const logoutTherapist = asyncHandler(async (req, res) => {
   });
 });
 
-const getTherapist = asyncHandler(async (req, res) => {
-  const token = req.cookies.token;
-
-  if (!token) {
-    return res
-      .status(401)
-      .json({ success: false, msg: "No token provided, authorization denied" });
-  }
-
-  try {
-    const therapist = await Therapist.find({}).select("-password");
-    if (!therapist) {
-      return res
-        .status(404)
-        .json({ success: false, msg: "Therapists not found" });
-    }
-
-    res.status(200).json({
-      success: true,
-      data: therapist,
-      msg: "Therapists found"
-    });
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: "Server error" });
-  }
-});
 
 module.exports = {
   createTherapist,
-  loginTherapist,
   logoutTherapist,
-  getTherapist,
+
 };

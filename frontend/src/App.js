@@ -1,26 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/HomePage/Navbar";
 import "./App.css";
-import Footer from "./components/Footer";
-import Home from "./components/Home";
-import About from "./components/About";
-import Services from "./components/Services";
-import Therapists from "./components/Therapists";
+import Footer from "./components/HomePage/Footer";
+import Home from "./components/HomePage/Home";
+
+import Services from "./components/HomePage/Services";
+import Our_Therapist from "./components/HomePage/Our_Therapist";
 import Resources from "./components/Resources";
-import FAQ from "./components/FAQ";
-import IndividualTherapy from "./components/IndividualThearapy";
-import GroupTherapy from "./components/GroupTherapy";
-import SupportTherapy from "./components/SupportTherapy";
-import ContactSection from "./components/ContactSection";
-import GroupTherapyDetail from "./components/GroupTherapyDetail";
-import RegisterLogin from "./components/RegisterLogin";
-import BookingPage from "./components/BookingPage";
+import FAQ from "./components/HomePage/FAQ";
+import IndividualTherapy from "./components/HomePage/IndividualThearapy";
+import GroupTherapy from "./components/HomePage/GroupTherapy";
+import SupportTherapy from "./components/HomePage/SupportTherapy";
+import ContactSection from "./components/HomePage/ContactSection";
+import GroupTherapyDetail from "./components/HomePage/GroupTherapyDetail";
+import RegisterLogin from "./components/User/RegisterLogin";
+import BookingPage from "./components/User/BookingPage";
 import ForgotPassword from "./components/ForgotPassword";
-import UserDashboard from "./components/UserDashboard";
-import TherapistDetailsPage from "./components/TherapistDetailsPage";
-import BookTherapistPage from "./components/BookTherapistPage";
-import ShowBookingDetailsPage from "./components/ShowBookingDetailsPage";
+import TherapistDetailsPage from "./components/User/TherapistDetailsPage";
+import BookTherapistPage from "./components/User/BookTherapistPage";
+import ShowBookingDetailsPage from "./components/User/ShowBookingDetailsPage";
 import AdminDashboard from "./components/Admin/Dashboard/AdminDashboard";
 import Admin_Appointments from "./components/Admin/Appointment/Admin_Appointments";
 import Admin_Groups from "./components/Admin/Groups/Admin_Groups";
@@ -30,20 +29,27 @@ import Admin_Resources from "./components/Admin/Resources/Admin_Resources";
 import Admin_Clients from "./components/Admin/Client/Admin_Clients";
 import Admin_Reviews from "./components/Admin/Reviews/Admin_Reviews";
 import Admin_Transactions from "./components/Admin/Transactions/Admin_Transactions";
-import TherapistHome from "./components/TherapistHome";
-// import Login from "./components/Admin/Register_Loigin/Login";
-// import SignUp from "./components/Admin/Register_Loigin/SignUp";
-import Login_reg from "./components/Admin/Register_Loigin/Login-reg";
-import SignUp_reg from "./components/Admin/Register_Loigin/SignUp-reg";
-// import Therapist_Dashboard from "./components/Therapist/Dashboard/Therapist_Dashboard";
-// import Therapist_Appointment from "./components/Therapist/Appointment/Therapist_Appointment";
-// import Therapist_Schedules from "./components/Therapist/Schedules/Therapist_Schedules";
-// import Therapist_Client from "./components/Therapist/Clients/Therapist_Client";
-// import Therapist_Observation from "./components/Therapist/Observation/Therapist_Observation";
-// import Therapist_Responses from "./components/Therapist/Responses/Therapist_Responses";
-// import Therapist_Transactions from "./components/Therapist/Transactions/Therapist_Transactions";
-// import Therapist_Profile from "./components/Therapist/Profile/Therapist_Profile";
-// import Therapist_Groups from "./components/Therapist/Groups/Therapist_Groups";
+import Login from "./components/Admin/Register_Loigin/Login";
+import SignUp from "./components/Admin/Register_Loigin/SignUp";
+import Therapist_Dashboard from "./components/Therapist/Dashboard/Therapist_Dashboard";
+import Therapist_Appointment from "./components/Therapist/Appointment/Therapist_Appointment";
+import Therapist_Schedules from "./components/Therapist/Schedules/Therapist_Schedules";
+import Therapist_Client from "./components/Therapist/Clients/Therapist_Client";
+import Therapist_Observation from "./components/Therapist/Observation/Therapist_Observation";
+import Therapist_Responses from "./components/Therapist/Responses/Therapist_Responses";
+import Therapist_Transactions from "./components/Therapist/Transactions/Therapist_Transactions";
+import Therapist_Profile from "./components/Therapist/Profile/Therapist_Profile";
+import Therapist_Groups from "./components/Therapist/Groups/Therapist_Groups";
+import Therapist_Login from "./components/Therapist/Register_Loigin/Therapist_Login";
+import Therapist_SignUp from "./components/Therapist/Register_Loigin/Therapist_Signup";
+import UserDashboard from "./components/UserDashboard";
+import UserResources from "./components/User/UserResources";
+
+import { useDispatch } from "react-redux";
+import { addUser } from "./utils/Slices/userSlice";
+import { addTherapist } from "./utils/Slices/therapistSlice";
+import { addAdmin } from "./utils/Slices/adminSlice";
+import About from "./components/HomePage/About";
 
 const WithHeaderAndFooter = ({ children }) => (
   <>
@@ -128,7 +134,7 @@ const routes = [
         path: "",
         element: (
           <WithHeaderAndFooter>
-            <Therapists />
+            <Our_Therapist />
           </WithHeaderAndFooter>
         ),
       },
@@ -170,7 +176,24 @@ const routes = [
     path: "/admin-register",
     element: (
       <WithHeaderAndFooter>
-        <SignUp_reg />
+        <SignUp />
+      </WithHeaderAndFooter>
+    ),
+  },
+
+  {
+    path: "/therapist-login",
+    element: (
+      <WithHeaderAndFooter>
+        <Therapist_Login />
+      </WithHeaderAndFooter>
+    ),
+  },
+  {
+    path: "/therapist-register",
+    element: (
+      <WithHeaderAndFooter>
+        <Therapist_SignUp />
       </WithHeaderAndFooter>
     ),
   },
@@ -179,7 +202,7 @@ const routes = [
     path: "/admin-login",
     element: (
       <WithHeaderAndFooter>
-        <Login_reg />
+        <Login />
       </WithHeaderAndFooter>
     ),
   },
@@ -195,9 +218,10 @@ const routes = [
     path: "/",
   },
   { path: "/userdashboard", element: <UserDashboard /> },
+  { path: "/userdashboard-resources", element: <UserResources /> },
   { path: "/bookingPage", element: <BookingPage /> },
   { path: "/TherapistDetailsPage/:id", element: <TherapistDetailsPage /> },
-  { path: "/BookTherapistPage/:id", element: <BookTherapistPage /> },
+  { path: "/BookTherapistPage", element: <BookTherapistPage /> },
   { path: "/ShowBookingDetailsPage", element: <ShowBookingDetailsPage /> },
   { path: "/admin-dashboard", element: <AdminDashboard /> },
   { path: "/admin-appointments", element: <Admin_Appointments /> },
@@ -208,18 +232,19 @@ const routes = [
   { path: "/admin-therapists", element: <Admin_Therapists /> },
   { path: "/admin-transactions", element: <Admin_Transactions /> },
   { path: "/admin-resources", element: <Admin_Resources /> },
-  // { path: "/Therapist-home", element: <TherapistHome /> },
-  // {path: "/therapist-dashboard", element: <Therapist_Dashboard/>},
-  // {path: "/therapist-appointments", element: <Therapist_Appointment/>},
-  // {path: "/therapist-schedules", element: <Therapist_Schedules/>},
-  // {path: "/therapist-clients", element: <Therapist_Client/>},
-  // {path: "/therapist-groups", element: <Therapist_Groups/>},
-  // {path: "/therapist-observation", element: <Therapist_Observation/>},
-  // {path: "/therapist-responses", element: <Therapist_Responses/>},
-  // {path: "/therapist-transactions", element: <Therapist_Transactions/>},
-  // {path: "/therapist-profile", element: <Therapist_Profile/>},
-  // { path: "admin-login", element: <Login /> },
-  // { path: "admin-register", element: <SignUp /> },
+  { path: "/therapist-dashboard", element: <Therapist_Dashboard /> },
+  { path: "/therapist-appointments", element: <Therapist_Appointment /> },
+  { path: "/therapist-schedules", element: <Therapist_Schedules /> },
+  { path: "/therapist-clients", element: <Therapist_Client /> },
+  { path: "/therapist-groups", element: <Therapist_Groups /> },
+  { path: "/therapist-observation", element: <Therapist_Observation /> },
+  { path: "/therapist-responses", element: <Therapist_Responses /> },
+  { path: "/therapist-transactions", element: <Therapist_Transactions /> },
+  { path: "/therapist-profile", element: <Therapist_Profile /> },
+  { path: "/therapist-login", element: <Therapist_Login /> },
+  { path: "/therapist-register", element: <Therapist_SignUp /> },
+  { path: "/admin-login", element: <Login /> },
+  { path: "/admin-register", element: <SignUp /> },
 ];
 
 function renderRoutes(routes) {
@@ -234,6 +259,64 @@ function renderRoutes(routes) {
 }
 
 function App() {
+  const dispatch = useDispatch();
+  const userToken = localStorage.getItem("userToken");
+  const therapistToken = localStorage.getItem("therapistToken");
+  const adminToken = localStorage.getItem("adminToken");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [user, therapist, admin] = await Promise.all([
+          fetch("https://zummit-chandan.onrender.com/api/users/getUser", {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${userToken}`
+            },
+        
+            credentials: "include",
+           
+          }),
+          fetch(
+            "https://zummit-chandan.onrender.com/api/therapist/getTherapist",
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${therapistToken}`
+              },
+              
+              credentials: "include",
+              
+            }
+          ),
+          fetch("https://zummit-chandan.onrender.com/api/admin/getAdmin", {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${adminToken}`
+            },
+           
+            credentials: "include",
+            
+          }), 
+        ]);
+
+        const userInfo = await user.json();
+        const therapistInfo = await therapist.json();
+        const adminInfo = await admin.json();
+
+        dispatch(addUser(userInfo));
+        dispatch(addTherapist(therapistInfo));
+        dispatch(addAdmin(adminInfo));
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <Router>
       <Routes>{renderRoutes(routes)}</Routes>
