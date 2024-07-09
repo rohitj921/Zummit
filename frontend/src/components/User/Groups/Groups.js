@@ -34,12 +34,13 @@ const Groups = () => {
             }
         ];
         return (
-            <div className='w-full flex flex-col mt-[24px]'>
-                <div className='w-[35%] h-[2.7rem] flex justify-between items-center text-2xl font-medium text-gray-900 cursor-pointer'>
+
+            <div className='w-[95%] flex flex-col mt-[24px]'>
+                <div className=' h-[2.7rem] flex  gap-10 items-center text-2xl font-medium text-gray-900 cursor-pointer'>
                 {tabs.map((tab, index) => (
                     <button 
                         key={index} 
-                        className={`outline-none w-auto hover:bg-[#FDFEE6] p-1 ${tab.active ? "bg-[#FDFEE6]" : ""}`}
+                        className={`outline-none w-auto rounded-md p-2 hover:bg-[#E6FAFF] p-1 ${tab.active ? "bg-[#FDFEE6]" : ""}`}
                         onClick={tab.toggler}
                     >
                         {tab.title}
@@ -49,7 +50,7 @@ const Groups = () => {
                 <div className='w-full'>
                     {tabs.map((tab, index) => (
                         <div className={`${tab.active ? "" : "hidden"}`}>
-                            <div className="w-full bg-white flex flex-wrap gap-4 py-5 px-4 shadow-lg rounded-lg mt-6">
+                            <div className="w-full bg-white flex flex-wrap gap-4 py-5 px-4 shadow-lg rounded-md p-2 mt-6">
                                 {tab.content}
                             </div>
                         </div>
