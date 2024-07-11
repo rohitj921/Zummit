@@ -36,8 +36,7 @@ const PaymentButton = () => {
       return;
     }
     try {
-      // const response = await axios.post('https://zummit-chandan.onrender.com/api/users/Neworder', paymentData);
-      const response = await axios.post('http://localhost:4000/api/users/Neworder', paymentData);
+      const response = await axios.post('https://zummit-chandan.onrender.com/api/users/Neworder', paymentData);
       const order = response.data;
 
       const options = {
@@ -55,8 +54,7 @@ const PaymentButton = () => {
             signature: response.razorpay_signature
           };
           try {
-            // const verifyResponse = await axios.post('https://zummit-chandan.onrender.com/api/users/verifyPayment', paymentDetails);
-            const verifyResponse = await axios.post('http://localhost:4000/api/users/verifyPayment', paymentDetails);
+            const verifyResponse = await axios.post('https://zummit-chandan.onrender.com/api/users/verifyPayment', paymentDetails);
             
             const verifyResult = verifyResponse.data;
             if (verifyResult.success) {
@@ -85,7 +83,7 @@ const PaymentButton = () => {
             order_Id: response.error.metadata.order_id,
             payment_Id: response.error.metadata.payment_id,
           };
-          const updateResponse = await axios.post('http://localhost:4000/api/users/updatePaymentStatus', paymentDetails);
+          const updateResponse = await axios.post('https://zummit-chandan.onrender.com/api/users/updatePaymentStatus', paymentDetails);
           const updateResult = updateResponse.data;
           if (updateResult.success) {
             console.log('Payment failed, Status has been updated.');
