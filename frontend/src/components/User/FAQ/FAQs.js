@@ -132,7 +132,7 @@ const FAQs = () => {
   return (
     <div className="mb-16 w-full p-4">
       <div>
-        <p className="text-3xl font-medium mb-10 ml-5">FAQ</p>
+        <p className="text-2xl font-medium mb-10 ml-5">FAQ</p>
       </div>
       <div>
         <div className="flex flex-col h-[20%] w-[70%] mx-40">
@@ -473,17 +473,6 @@ const FAQs = () => {
                   </div>
                 </div>
                </div>
-                <div className="privacy-popup-footer">
-                  <div className="privacy-popup-footer-button">
-                  {/* <button
-                    onClick={handlePrint}
-                    className="privacy-popup-footer-link"
-                  > */}
-                    {/* Print
-                  </button> */}
-                  
-                  </div>
-                </div>
               </div>
             </div>
           </div>

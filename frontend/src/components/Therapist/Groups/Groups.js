@@ -77,7 +77,7 @@ const Groups = () => {
               </svg>
             </div>
           </div>
-          <div className="p-4 mt-10 rounded-lg bg-white ">
+          <div className="p-4 shadow-lg mt-10 rounded-lg bg-white ">
             <div className="bg-[#DCDCDD] text-lg mb-4 rounded-lg w-full p-2 text-black flex gap-4">
               <h1 className="w-[20%]">Group Name</h1>
               <h1 className="w-[15%]">Member</h1>

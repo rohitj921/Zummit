@@ -4,7 +4,6 @@ import Navbar from "./components/HomePage/Navbar";
 import "./App.css";
 import Footer from "./components/HomePage/Footer";
 import Home from "./components/HomePage/Home";
-
 import Services from "./components/HomePage/Services";
 import Our_Therapist from "./components/HomePage/Our_Therapist";
 import Resources from "./components/HomePage/Resources";
@@ -56,6 +55,8 @@ import UserGroupTherapy from "./components/User/Groups/UserGroupTherapy";
 import UserSupport from "./components/User/Groups/UserSupport";
 import UserBillings from "./components/User/Billings/UserBillings";
 import UserProfile from "./components/User/Profile/UserProfile";
+import Create_Therapist_Credentail from "./components/Admin/Create_Therapist/Create_Therapist_Credentail";
+import Create_Another_Admin from "./components/Admin/Create_Admin/Create_Another_Admin";
 
 const WithHeaderAndFooter = ({ children }) => (
   <>
@@ -223,8 +224,8 @@ const routes = [
   {
     path: "/",
   },
-  { path: "/userdashboard", element: <UserDashboard /> },
-  { path: "/userdashboard-resources", element: <UserResources /> },
+  { path: "/user-dashboard", element: <UserDashboard /> },
+  { path: "/user-resources", element: <UserResources /> },
   { path: "/bookingPage", element: <BookingPage /> },
   { path: "/TherapistDetailsPage/:id", element: <TherapistDetailsPage /> },
   { path: "/BookTherapistPage", element: <BookTherapistPage /> },
@@ -251,13 +252,15 @@ const routes = [
   { path: "/therapist-register", element: <Therapist_SignUp /> },
   { path: "/admin-login", element: <Login /> },
   { path: "/admin-register", element: <SignUp /> },
-  { path: "/userdashboard-groups", element: <UserGroups /> },
-  { path: "/userdashboard-FAQs", element: <UserFAQ /> },
+  { path: "/user-groups", element: <UserGroups /> },
+  { path: "/user-FAQs", element: <UserFAQ /> },
   { path: "/user-appointments", element: <UserAppointments /> },
   { path: "/user-billings", element: <UserBillings /> },
   { path: "/user-group/:id", element: <UserGroupTherapy /> },
   { path: "/user-support/:id", element: <UserSupport /> },
-  { path: "/user-profile", element: <UserProfile /> }
+  { path: "/user-profile", element: <UserProfile /> },
+  {path: "/admin-create-therapist-credentail", element:<Create_Therapist_Credentail/>},
+  {path: "/admin-create-another-admin", element:<Create_Another_Admin/>},
 ];
 
 function renderRoutes(routes) {

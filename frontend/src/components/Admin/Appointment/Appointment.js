@@ -235,7 +235,7 @@ const Appointment = () => {
         </div>
       </div>
 
-      <div className="p-4 w-[95%] rounded-lg bg-white ">
+      <div className="p-4 w-[95%] shadow-lg rounded-lg bg-white ">
         <div className="bg-[#DCDCDD] text-lg  rounded-lg w-full p-2 text-black flex gap-2 items-center">
           <h1 className="w-[10rem] ">Client Name</h1>
           <h1 className="w-[10rem]">Appointment Time</h1>

@@ -110,7 +110,7 @@ const Appointment = () => {
         <h1>Appointments</h1>
       </div>
 
-      <div className="p-4  rounded-lg bg-white ">
+      <div className="p-4 shadow-lg rounded-lg bg-white ">
         <div className="bg-[#DCDCDD] text-lg  rounded-lg w-full p-2 text-black flex gap-2 items-center">
           <h1 className="w-[18%] ">Client Name</h1>
           <h1 className="w-[18%]">Appointment Time</h1>
@@ -147,12 +147,12 @@ const Appointment = () => {
                 </button>
               </div>
               <div>
-              <h1
-                style={{ color: getReasonColor(item.report) }}
-                className="w-[10rem]  "
-              >
-                {item.reason}
-              </h1>
+                <h1
+                  style={{ color: getReasonColor(item.report) }}
+                  className="w-[10rem]  "
+                >
+                  {item.reason}
+                </h1>
               </div>
             </div>
           ))}

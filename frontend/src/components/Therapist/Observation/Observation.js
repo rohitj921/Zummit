@@ -102,7 +102,7 @@ const Observation = () => {
                 Add New
               </button>
             </div>
-            <div className="w-[90%] m-5">
+            <div className="w-[90%]   m-5">
               <div className="flex font-medium text-lg rounded-md justify-between items-center px-4 py-2 bg-[#989A9B]">
                 <h1>Name</h1>
                 <h1>Date Modified</h1>
@@ -112,7 +112,7 @@ const Observation = () => {
                   <div
                     onClick={() => selectedGroup(index)}
                     key={index}
-                    className={`flex rounded-md my-2 justify-between items-center px-4 py-2 ${
+                    className={`flex rounded-md shadow-md my-2 justify-between items-center px-4 py-2 ${
                       selectedGroupIndex === index ? "bg-[#FDFEE6]" : "bg-[#EFF7FF]"
                     }`}
                   >
