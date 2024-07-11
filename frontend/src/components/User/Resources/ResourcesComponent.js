@@ -229,10 +229,10 @@ const Resources = () => {
   const VideoOrArticleCardComponent = ({ item, type }) => {
     return (
       <div 
-        className='w-[20.12rem] h-[19.8rem] flex flex-col items-center p-3 border border-[#B4F0FF] rounded cursor-pointer' 
+        className='w-[90%] flex flex-col items-center p-3 border border-[#B4F0FF] rounded cursor-pointer' 
         onClick={() => setShowPage({ id: item.id, type: type })} 
       >
-        <img className='w-[15.8rem] h-[11.3rem] rounded object-cover' src={item.img} alt="cardImage" />
+        <img className='w-[95%] rounded object-cover' src={item.img} alt="cardImage" />
         <div className='w-full flex flex-col gap-3 mt-3'>
           <h2 className='text-base font-normal text-[#0190B1]'>{item.name}</h2>
           <p className='text-sm font-medium'>{item.text}</p>
@@ -274,11 +274,11 @@ const Resources = () => {
           </div>
         </div>
         {/* Trending Videos */}
-        <div className='w-[30%] h-auto flex flex-col'>
-          <div className='w-full h-[38rem] flex flex-col gap-y-3'>
+        <div className='w-[30%] flex flex-col'>
+          <div className='w-full flex flex-col gap-y-3'>
             <h2 className='text-2xl font-semibold text-[#00677F]'>Trending Videos of the Week</h2>
             {trendingVideos.slice(0,3).map((video) => (
-              <div key={video.id} className='w-full h-[11.3rem] flex flex-col gap-y-2 px-4 py-3 border border-[#B4F0FF] font-medium'>
+              <div key={video.id} className='w-full flex flex-col gap-y-2 px-4 py-3 border border-[#B4F0FF] font-medium'>
                 <img className='w-full h-[4.4rem] rounded object-cover' src={video.img} alt='trendingVideosImage' />
                 <p className='text-xl text-[#101617]'>{video.title}</p>
                 <p className='text-sm text-[#3D3B3E]'>Duration {video.duration} min</p>
@@ -294,12 +294,12 @@ const Resources = () => {
   /* ARTICLES TAB */
   const ArticlesTab = () => {
     return(
-      <div className='w-full h-auto flex gap-x-12 mt-8'>
+      <div className='flex gap-12 mt-5'>
         {/* Recently Added Articles */}
-        <div className='w-[62%]'>
+        <div className='w-[65%]'>
           <p className='text-2xl font-semibold text-[#00677F] mb-3'>Recently Added</p>
           <div className='w-full h-[44rem] overflow-auto'>
-            <div className='w-inherit h-inherit grid grid-cols-2 gap-5'>
+            <div className='grid grid-cols-2 gap-5'>
               {articleData.map((item) => (
                 <VideoOrArticleCardComponent key={item.id} item={item} type='article' />
               ))}
@@ -307,12 +307,12 @@ const Resources = () => {
           </div>
         </div>
         {/* Trending Blogs */}
-        <div className='w-[31%] h-[44rem] flex flex-col gap-y-3 border-t-[0.5px] border-[#0190B1]'>
+        <div className='w-[35%] flex flex-col gap-y-3 border-t-[0.5px] border-[#0190B1]'>
           <p className='text-2xl font-semibold text-[#00677F] mt-2'>Trending Blogs of the Week</p>
           {trendingBlogs.slice(0, 3).map((blog) => (
             <div key={blog.id} className='w-full h-[8.8rem] p-3 flex gap-x-5 border border-[#B4F0FF]'>
-              <img className='w-[6rem] h-full object-cover' src={blog.img} alt="trendingBlogImg" />
-              <div className='w-[13rem] h-full flex flex-col justify-between'>
+              <img className='w-[30%] object-cover' src={blog.img} alt="trendingBlogImg" />
+              <div className='w-[80%] flex flex-col justify-between'>
                 <p className='text-xl font-medium'>{blog.title}</p>
                 <div className='w-full h-[1.125] flex gap-x-3 text-sm font-normal text-[#3D3B3E]'>
                   <p>Read| {blog.duration} min</p>
@@ -330,10 +330,10 @@ const Resources = () => {
   /* ALL TAB */
   const AllTab = () => {
     return (
-      <div className='w-full h-auto mt-8'>
+      <div className='mt-8'>
         {/* Videos Container */}
-        <div className='w-[90%] mt-5 flex gap-x-14'>
-          <div className='w-[60%] flex flex-col gap-y-5'>
+        <div className='flex gap-8'>
+          <div className='w-[55%] flex flex-col gap-5'>
             <h2 className='text-[1.75rem] leading-[2.62rem] font-medium text-black'>
               Our latest Videos to keep you Engaged
             </h2>
@@ -349,13 +349,13 @@ const Resources = () => {
             </div>
           </div>
           {/* Video Cards */}
-          <div className='w-[36%] h-[26.6rem] flex flex-col gap-y-3 overflow-y-auto'>
+          <div className='w-[45%] h-[26.5rem] flex flex-col gap-4 overflow-y-auto'>
             {videoArr.slice(0, allVideos.showItems).map((video) => (
               <VideoCard video={video} />
             ))}
             {videoArr.length > allVideos.showItems 
               ? <button 
-                  className='w-[5.75rem] h-[2.75rem] border border-[#00677F] rounded text-2xl font-medium text-[#00677F]'
+                  className='w-[25%] p-1 border border-[#00677F] rounded text-2xl font-medium text-[#00677F]'
                   onClick={() => handleShowMore('videos')}
                 >See All</button> 
               : null
@@ -364,8 +364,8 @@ const Resources = () => {
         </div>
 
         {/* Articles Container */}
-        <div className='w-[90%] h-auto mt-20 flex gap-x-10'>
-          <div className='w-[50%] flex flex-col gap-y-10'>
+        <div className='mt-20 flex gap-10'>
+          <div className='w-[54%] flex flex-col gap-y-10'>
             <h2 className='text-[1.75rem] leading-[2.62rem] font-medium text-black'>
               Our latest Articles to keep you Engaged
             </h2>
@@ -380,13 +380,13 @@ const Resources = () => {
             </div>
           </div>
           {/* Article Cards */}
-          <div className='w-[42%] h-[25rem] flex flex-col gap-y-3 overflow-y-auto'>
+          <div className='w-[55%] h-[23.5rem] flex flex-col gap-y-3 overflow-y-auto'>
             {articleArr.slice(0, allArticles.showItems).map((article) => (
               <ArticleCard article={article} />
             ))}
             {articleArr.length > allArticles.showItems 
               ? <button 
-                  className='w-[5.75rem] h-[2.75rem] border border-[#00677F] rounded text-2xl font-medium text-[#00677F]'
+                  className='w-[25%] p-1 border border-[#00677F] rounded text-2xl font-medium text-[#00677F]'
                   onClick={() => handleShowMore('articles')}
                 >See All</button> 
               : null
@@ -413,7 +413,7 @@ const Resources = () => {
       }
     ];
     return (
-      <div className='w-full h-auto flex flex-col mt-[24px]'>
+      <div className='flex flex-col'>
         <div className='w-[25%] h-[2.7rem] flex justify-between items-center text-2xl font-medium text-gray-900 cursor-pointer'>
           {tabs.map((tab, index) => (
             <button 
@@ -438,10 +438,10 @@ const Resources = () => {
   }
 
   return (
-    <div className='w-full h-auto flex flex-col bg-[#F2FCFF] pb-5'>
+    <div className='w-full flex flex-col p-10'>
       <SearchContainer />
-      <div className='w-[94%] h-auto flex flex-col ml-11 mt-8'>
-        <h2 className='text-[1.75rem] leading-[2.5rem] font-medium text-gray-900'>Resources</h2>
+      <div className='flex flex-col'>
+        <h2 className='text-[1.75rem] leading-[2.5rem] font-medium text-gray-900 py-6'>Resources</h2>
         <TabsContainer />
       </div>
     </div>
