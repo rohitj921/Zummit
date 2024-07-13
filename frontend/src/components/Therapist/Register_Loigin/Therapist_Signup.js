@@ -3,7 +3,7 @@ import { addUser } from "../../../utils/Slices/userSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { BASE_BACKEND, BASE_THERAPIST, BASE_USER } from "../../../utils/constants";
+import { BASE_THERAPIST, BASE_USER } from "../../../utils/constants";
 
 //main component toh yaha hey
 const Therapist_SignUp = () => {

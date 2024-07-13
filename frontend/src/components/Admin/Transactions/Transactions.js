@@ -3,7 +3,7 @@ import axios from "axios";
 import SearchBar from "../../images/SVG_files/SearchBar.svg";
 
 import BellIcon from "../../images/SVG_files/BellIcon.svg";
-import { BASE_ADMIN, BASE_BACKEND } from "../../../utils/constants";
+import { BASE_ADMIN} from "../../../utils/constants";
 
 
 

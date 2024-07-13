@@ -3,7 +3,7 @@ import axios from "axios";
 import Main_Dashboard_img from "../../images/Main_Dashboard_img.png";
 import BellIcon from "../../images/SVG_files/BellIcon.svg";
 import SearchBar from "../../images/SVG_files/SearchBar.svg"
-import { BASE_ADMIN, BASE_BACKEND } from "../../../utils/constants";
+import { BASE_ADMIN } from "../../../utils/constants";
 
 const Resources = () => {
   const [addedReview, setAddedReview] = useState([])

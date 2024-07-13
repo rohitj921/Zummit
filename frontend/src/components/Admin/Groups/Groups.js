@@ -3,7 +3,7 @@ import axios from "axios";
 import FlowerImage from "../../images/flower-img.png"; 
 import BellIcon from "../../images/SVG_files/BellIcon.svg"; 
 import SearchBar from "../../images/SVG_files/SearchBar.svg";
-import { BASE_ADMIN, BASE_BACKEND } from "../../../utils/constants";
+import { BASE_ADMIN} from "../../../utils/constants";
 const Groups = () => { 
   const [groupsDetails, setGroupsDetails] = useState([])
   useEffect(() => {

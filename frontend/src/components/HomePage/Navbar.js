@@ -25,7 +25,7 @@ function Navbar() {
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const logout = async () => {
-   
+    //data hatane ka ninja technique
     localStorage.removeItem("token");
 
    

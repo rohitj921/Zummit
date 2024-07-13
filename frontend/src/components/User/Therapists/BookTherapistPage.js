@@ -5,7 +5,7 @@ import VerifyClient from "../../../utils/Hooks/verifyClient";
 import { addUser } from "../../../utils/Slices/userSlice";
 import axios from "axios";
 import UserSidebar from "../UserSidebar";
-import { BASE_BACKEND, BASE_USER } from "../../../utils/constants";
+import {  BASE_USER } from "../../../utils/constants";
 
 function BookTherapistPage() {
   const Client = {}

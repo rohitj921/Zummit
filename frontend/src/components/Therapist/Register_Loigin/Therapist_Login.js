@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { addUser } from "../../../utils/Slices/userSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { BASE_BACKEND, BASE_THERAPIST } from "../../../utils/constants";
+import {  BASE_THERAPIST } from "../../../utils/constants";
 
 const Therapist_Login = () => {
   const dispatch = useDispatch();

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { BASE_BACKEND, BASE_USER } from '../../../utils/constants';
+import {  BASE_USER } from '../../../utils/constants';
 
 const RAZORPAY_KEY_ID = 'rzp_test_Csz5mNjOu2Dwz7'
 

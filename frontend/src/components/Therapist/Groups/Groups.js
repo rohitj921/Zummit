@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Client_Feedback from "./Client_Feedback";
-import { BASE_BACKEND, BASE_THERAPIST } from "../../../utils/constants";
+import { BASE_THERAPIST } from "../../../utils/constants";
 
 const Groups = () => {
   const [feedbackToggler, setFeedbackToggler] = useState(true);
