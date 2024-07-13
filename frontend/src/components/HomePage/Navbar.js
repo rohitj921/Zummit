@@ -89,7 +89,7 @@ function Navbar() {
               <h1 className="text-[22px] font-semibold">{link.name}</h1>
             </Link>
           ))}
-          {user.data._id == undefined && (
+          {validate && (
               <div className="group inline-block">
                 <button
                   aria-haspopup="true"
