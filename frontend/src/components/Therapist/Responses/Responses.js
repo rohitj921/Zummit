@@ -64,7 +64,7 @@ const Responses = () => {
         </div>
         <div>
           {data.map((item) => (
-            <div className="flex rounded-md my-2 justify-between items-center px-4 py-2 bg-[#EFF7FF]">
+            <div className="flex shadow-md rounded-md my-3 justify-between items-center px-4 py-2 bg-[#EFF7FF]">
                 <h1>{item.name}</h1>
               <h1>{item.feedback}</h1>
             </div>

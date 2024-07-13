@@ -65,7 +65,7 @@ const Transactions = () => {
       <div className="flex w-[90%] justify-between items-center">
         <h1 className="text-2xl  my-8">Transactions</h1>
       </div>
-      <div className="p-4  rounded-lg bg-white ">
+      <div className="p-4 shadow-lg  rounded-lg bg-white ">
         <tr className="bg-[#DCDCDD] text-lg mb-2  rounded-lg w-full p-2 text-black flex gap-2 items-center">
           <td className="w-[18%]">Invoice Number</td>
           <td className="w-[18%]">Session Date</td>

@@ -135,7 +135,7 @@ const FAQs = () => {
     <div className="mb-16 w-full p-4">
       <SearchContainer/>
       <div>
-        <p className="text-3xl font-medium mb-10 ml-5">FAQ</p>
+        <p className="text-2xl font-medium mb-10 ml-5">FAQ</p>
       </div>
       <div>
         <div className="flex flex-col h-[20%] w-[70%] mx-40">

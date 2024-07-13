@@ -69,8 +69,48 @@ const Appointment = () => {
   const handleSortClick = (selected) => {
     setSelectedSort(selected);
   };
+
+  const AppointmentDetails = () => {
+    return(
+      <div className="absolute w-[96%] top-52 left-5 bg-[#FDFEF1] rounded-md shadow-md p-2">
+            <h1 className="text-center p-4 font-semibold text-2xl border-b-8 border-[#B4F0FF]">Appointment Details</h1>
+          <div className="flex border-b-2 border-gray-400  justify-between px-20 font-medium text-lg py-5">
+            <div className="flex  gap-5">
+              <div className="flex flex-col gap-3">
+                <h1>Therapy Type</h1>
+                <h1>Doctor Name</h1>
+                <h1>Appointment Time</h1>
+                <h1>Appointment Date</h1>
+              </div>
+              <div className="flex flex-col gap-3">
+                <h1>Individual</h1>
+                <h1>Dr. Jordan Patel</h1>
+                <h1>11:00 AM - 11:30 AM</h1>
+                <h1>02/08/2023</h1>
+              </div>
+            </div>
+            <div>
+              <div className="flex items-center mb-3 gap-10">
+                <h1>Amount</h1>
+                <h1>Status</h1>
+              </div>
+              <div className="flex  items-center gap-10">
+                <h1 className="pl-4 text-[#02B04A]">₹1000</h1>
+                <h1>Completed</h1>
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-end my-2 gap-5">
+            <button className="px-5 p-1 bg-[#0190B1] rounded-md font-semibold">Join</button>
+            <button className="px-5 p-1 bg-[#B00202] rounded-md  text-white">Cancel</button>
+          </div>
+      </div>
+    )
+
+  };
+
   return (
-    <div className="w-full m-5 ">
+    <div className="relative w-full m-5 ">
       {/* Search Bar */}
       <div className="flex w-[95%] justify-end gap-10 items-center">
         <div className="flex items-center bg-white w-[80%]  pl-4 rounded-lg -[#B4F0FF] ">
@@ -91,7 +131,7 @@ const Appointment = () => {
         <h1>Appointments</h1>
       </div>
 
-      <div className="p-4  rounded-lg bg-white ">
+      <div className="p-4 shadow-lg rounded-lg bg-white ">
         <div className="bg-[#DCDCDD] text-lg  rounded-lg w-full p-2 text-black flex gap-2 items-center">
           <h1 className="w-[18%] ">Client Name</h1>
           <h1 className="w-[18%]">Appointment Time</h1>
