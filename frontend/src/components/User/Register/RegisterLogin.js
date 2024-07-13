@@ -55,7 +55,7 @@ const Register__Login = () => {
 
       //reload kee baad bhi data remain constant
       localStorage.setItem("token", data.Authorization);
-      navigate("/userdashboard");
+      navigate("/user-dashboard");
     } catch (error) {
       console.error("Error:", error);
     }
@@ -83,7 +83,7 @@ const Register__Login = () => {
       const data = await response.json();
 
       dispatch(addUser( data.newUser ));
-      navigate("/userdashboard");
+      navigate("/user-dashboard");
 
       const token = data.Authorization;
       if (!token) {
@@ -277,7 +277,7 @@ const Register__Login = () => {
                   onClick={handleSubmission}
                   className="w-[40%] rounded-lg bg-yellow p-2 text-green-500 "
                 >
-                  {!signUp ? "Login" : "Send OTP"}
+                  {signUp ? "Login" : "Send OTP"}
                 </button>
                 <p
                   onClick={handleClick}
