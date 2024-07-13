@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Client_Feedback from "./Client_Feedback";
+import { BASE_THERAPIST } from "../../../utils/constants";
 
 const Groups = () => {
   const [feedbackToggler, setFeedbackToggler] = useState(true);
@@ -10,7 +11,7 @@ const Groups = () => {
   useEffect(() => {
     axios
       .get(
-        "https://zummit-chandan.onrender.com/api/therapist/gettherapistGroupLists"
+        BASE_THERAPIST+"/gettherapistGroupLists"
       )
       .then((response) => {
         setData(response.data.therapistGroupData);

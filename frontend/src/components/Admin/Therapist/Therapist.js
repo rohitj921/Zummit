@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import BellIcon from "../../images/SVG_files/BellIcon.svg";
 import SearchBar from "../../images/SVG_files/SearchBar.svg";
+import { BASE_ADMIN} from "../../../utils/constants";
 
 const Therapist = () => {
   const [therapistsDetails, setTherapistsDetails] = useState([]);
@@ -21,7 +22,7 @@ const Therapist = () => {
 
       try {
         const response = await axios.post(
-          "https://zummit-chandan.onrender.com/api/admin/therapistsdetails",
+          BASE_ADMIN+"/therapistsdetails",
           {
             input: "akib@gmail.com"
           },

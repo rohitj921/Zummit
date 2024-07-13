@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Add_Observation from "./Add_Observation";
+import { BASE_BACKEND } from "../../../utils/constants";
 
 const Observation = () => {
   const [addNew, setAddNew] = useState(true);
@@ -8,7 +9,7 @@ const Observation = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get('https://zummit-chandan.onrender.com/api/therapist/getTherapistObservationLists')
+    axios.get(BASE_BACKEND+'/getTherapistObservationLists')
       .then(response => {
         setData(response.data.therapistObservationData);
       })
