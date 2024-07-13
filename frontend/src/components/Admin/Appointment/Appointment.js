@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import BellIcon from "../../images/SVG_files/BellIcon.svg";
 import SearchBar from "../../images/SVG_files/SearchBar.svg";
+import { BASE_ADMIN, BASE_BACKEND } from "../../../utils/constants";
 
 
 const Appointment = () => {
@@ -11,7 +12,7 @@ const Appointment = () => {
 
   useEffect(() => {
     axios
-      .post("https://zummit-chandan.onrender.com/api/admin/appointmentslist", {
+      .post(BASE_ADMIN+"/appointmentslist", {
         input: "akib@gmail.com",
         token:
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NWEwNGRiMTk3Mzk4MTgwNzAwZDZjNCIsImlhdCI6MTcxNzE3NTUxNiwiZXhwIjoxNzE5NzY3NTE2fQ.nT9mK7G3tCQlHfhpFBC-iefz4XkGdBIP8BUNN9tOoUQ",

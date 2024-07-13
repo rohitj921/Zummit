@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import BellIcon from "../../images/SVG_files/BellIcon.svg";
 import SearchBar from "../../images/SVG_files/SearchBar.svg";
+import { BASE_ADMIN} from "../../../utils/constants";
 const Reviews = () => {
 
  const [reviews,setReviews] = useState([])  
 
   useEffect(() => {
     axios
-      .post("https://zummit-chandan.onrender.com/api/admin/reviews", {
+      .post(BASE_ADMIN+"/reviews", {
         input: "Dom@gmail.com",
         token: 
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NWFiOGNjNDQ1MmIxM2Q1MGJmYTYzNCIsImlhdCI6MTcxNzIyMTU4MCwiZXhwIjoxNzE5ODEzNTgwfQ.ZKxsQmALrx7CpkOpNzA1i1Ub1exmI9ghmsdY9bQVzuI",

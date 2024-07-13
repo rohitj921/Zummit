@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import BellIcon from "../../images/SVG_files/BellIcon.svg";
 import SearchBar from "../../images/SVG_files/SearchBar.svg";
+import { BASE_THERAPIST } from "../../../utils/constants";
 
 const Transactions = () => {
   const [transactions, setTransactions] = useState([])
   useEffect(() => {
-    axios.get('https://zummit-chandan.onrender.com/api/therapist/gettherapistTransactionLists')
+    axios.get(BASE_THERAPIST+'/gettherapistTransactionLists')
       .then((response) => {
         if (response.data.success) {
           setTransactions(response.data.therapistTransaction);

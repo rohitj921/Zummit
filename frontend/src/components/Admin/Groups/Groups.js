@@ -3,11 +3,12 @@ import axios from "axios";
 import FlowerImage from "../../images/flower-img.png"; 
 import BellIcon from "../../images/SVG_files/BellIcon.svg"; 
 import SearchBar from "../../images/SVG_files/SearchBar.svg";
+import { BASE_ADMIN, BASE_BACKEND } from "../../../utils/constants";
 const Groups = () => { 
   const [groupsDetails, setGroupsDetails] = useState([])
   useEffect(() => {
     axios
-      .post("https://zummit-chandan.onrender.com/api/admin/groupsdetails", {
+      .post(BASE_ADMIN+"/groupsdetails", {
         input: "Dom@gmail.com",
         token:
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NWFiOGNjNDQ1MmIxM2Q1MGJmYTYzNCIsImlhdCI6MTcxNzIyMTU4MCwiZXhwIjoxNzE5ODEzNTgwfQ.ZKxsQmALrx7CpkOpNzA1i1Ub1exmI9ghmsdY9bQVzuI",

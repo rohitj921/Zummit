@@ -2,6 +2,7 @@ import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { removeUser } from "../../utils/Slices/userSlice";
+import { BASE_USER } from "../../utils/constants";
 
 function NavigationLink({ children, href = "#" }) {
   return (
@@ -24,11 +25,11 @@ function Navbar() {
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const logout = async () => {
-    //data hatane ka ninja technique
+   
     localStorage.removeItem("token");
 
-    // const response = await axios.get("https://zummit-kefo.onrender.com/api/users/logout", {credentials: 'include',  withCredentials: true});
-    await fetch("https://zummit-kefo.onrender.com/api/users/logout", {
+   
+    await fetch(BASE_USER+"/logout", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
