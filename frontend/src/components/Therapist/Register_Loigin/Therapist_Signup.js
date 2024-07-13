@@ -54,7 +54,7 @@ const Therapist_SignUp = () => {
 
       //reload kee baad bhi data remain constant
       localStorage.setItem("token", data.token);
-      navigate("/userdashboard");
+      navigate("/user-dashboard");
     } catch (error) {
       console.error("Error:", error);
     }
@@ -82,7 +82,7 @@ const Therapist_SignUp = () => {
       const data = await response.json();
       console.log(data);
       dispatch(addUser(data.newUser));
-      navigate("/userdashboard");
+      navigate("/user-dashboard");
       console.log(response);
 
       //jaao token leke aao
