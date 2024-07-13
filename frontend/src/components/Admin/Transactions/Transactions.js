@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Admin_SideBar from "../Admin_SideBar";
 import axios from "axios";
 import SearchBar from "../../images/SVG_files/SearchBar.svg";
+
+import BellIcon from "../../images/SVG_files/BellIcon.svg";
+
+
 
 const Transactions = () => {
   const [transactions, setTransactions] = useState([])
