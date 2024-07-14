@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Main_Dashboard_img from "../../images/Main_Dashboard_img.png";
 import BellIcon from "../../images/SVG_files/BellIcon.svg";
 import SearchBar from "../../images/SVG_files/SearchBar.svg"
 import { BASE_ADMIN } from "../../../utils/constants";
@@ -84,6 +83,8 @@ const Resources = () => {
       <div className="flex justify-between gap-10 items-center">
         <div className="flex items-center bg-white w-[80%] border  pl-4 rounded-lg border-[#B4F0FF] ">
           <img src={SearchBar} alt="SearchBar" />
+
+         <img src={SearchBar} alt="SearchBar"/>
 
           <input
             type="text"

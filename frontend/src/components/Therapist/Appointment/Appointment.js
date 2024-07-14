@@ -83,8 +83,9 @@ const Appointment = () => {
                 className="h-12 ml-5 rounded-lg outline-none w-[100%]"
               />
             </div>
-
-            <img src={BellIcon} alt=" BellIcon " />
+        </div>
+        <div className="p-2 cursor-pointer rounded-full ">
+          <img src={BellIcon} alt=" BellIcon " />
           </div>
           <div>
             <button className="px-4 font-medium text-lg py-2 rounded-md text-white bg-[#0190b1]">

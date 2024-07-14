@@ -60,7 +60,6 @@ const Transactions = () => {
               className="h-12 ml-5 rounded-lg outline-none w-[100%]"
             />
           </div>
-
           <img src={BellIcon} alt=" BellIcon " />
         </div>
         <div>
