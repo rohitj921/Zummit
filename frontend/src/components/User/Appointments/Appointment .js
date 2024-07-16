@@ -5,6 +5,7 @@ import SearchBar from "../../images/SVG_files/SearchBar.svg";
 import { BASE_THERAPIST } from "../../../utils/constants";
 import SearchBar from "../SearchBar";
 
+
 const Appointment = () => {
   const [appointmentsList, setAppointmentsList] = useState([]);
   const [showSort, setShowSort] = useState(false);
