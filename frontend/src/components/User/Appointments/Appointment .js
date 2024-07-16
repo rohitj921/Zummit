@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import BellIcon from "../../images/SVG_files/BellIcon.svg";
-import SearchBar from "../../images/SVG_files/SearchBar.svg";
+
 import { BASE_THERAPIST } from "../../../utils/constants";
+import SearchBar from "../../Therapist/Searchbar";
 
 
 const Appointment = () => {
