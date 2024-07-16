@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SearchContainer from "../SearchContainer";
 import IndividualThearapy from "../../images/Individual Therapy.png";
 import GroupTherapyImg from "../../images/Group-Therapy-img.png";
@@ -22,6 +22,13 @@ function Dashboard() {
 
   const handleSupportGroupToggle = () => {
     setToggleSupportGroup(true);
+  }
+
+  const navigate = useNavigate();
+  const logout = () => {
+    localStorage.clear("userToken");
+    localStorage.clear("userID");
+    navigate('/login');
   }
 
   // Card Data
@@ -119,7 +126,7 @@ function Dashboard() {
     },
   ];
 
-  const UpcomingCard = ({ 
+  const UpcomingCard = ({
     title,
     description,
     imageURL,
@@ -129,7 +136,7 @@ function Dashboard() {
     buttonText,
     notification
   }) => {
-    return(
+    return (
       <div className="rounded-lg p-3 bg-white">
         <div className="flex gap-3">
           <img className="w-28 h-28" src={imageURL} alt="cardImage" />
@@ -154,7 +161,7 @@ function Dashboard() {
   };
 
   const UpcomingCardInfo = ({ title, description, imageURL, createdBy, startsOn, }) => {
-    return(
+    return (
       <div className="w-[92%] rounded-lg p-3 bg-white">
         <div className="flex gap-3">
           <img className="w-22 h-22" src={imageURL} alt="cardImage" />
@@ -174,7 +181,7 @@ function Dashboard() {
   }
 
   const ThearapySessionCard = () => {
-    return(
+    return (
       <div className="w-[90%] rounded-md shadow-md">
         <div className="bg-[#0190B1] text-lg flex flex-col gap-3 px-5 py-4 rounded-md rounded-b-none leading-6">
           <p className="text-[1rem] font-normal">Individual Session</p>
@@ -194,7 +201,7 @@ function Dashboard() {
   }
 
   const IndividualTherapyView = () => {
-    return(
+    return (
       <div className="flex bg-[#F2FCFF] gap-10">
         <div className="w-[40%] flex flex-col gap-5">
           <div>
@@ -219,19 +226,19 @@ function Dashboard() {
           <ThearapySessionCard />
           <div className="w-[90%] bg-[#FDFEF1] py-4 px-3 rounded-lg shadow-lg pl-2">
             <h2 className="text-2xl leading-9 font-medium py-2">Upcoming Groups</h2>
-            {upcomingGroups.slice(0,1).map((option) => (
-            <UpcomingCard
-              key={option.title}
-              title={option.title}
-              description={option.description}
-              imageURL={option.imageUrl}
-              startsOn={option.startsOn}
-              sessionsCount={option.sessionsCount}
-              createdBy={option.createdBy}
-              buttonText={option.buttonText}
-              notification={option.notification}
-            />
-          ))}
+            {upcomingGroups.slice(0, 1).map((option) => (
+              <UpcomingCard
+                key={option.title}
+                title={option.title}
+                description={option.description}
+                imageURL={option.imageUrl}
+                startsOn={option.startsOn}
+                sessionsCount={option.sessionsCount}
+                createdBy={option.createdBy}
+                buttonText={option.buttonText}
+                notification={option.notification}
+              />
+            ))}
           </div>
         </div>
       </div>
@@ -245,26 +252,26 @@ function Dashboard() {
         <div className="flex h-[28rem] mt-8">
           <div className="w-[45%] flex flex-col gap-5 justify-between">
             <div>
-                <h3 className="text-[#001519] text-3xl leading-10 font-medium py-3">Hello Sanjay</h3>
-                <p className="text-[#272529] text-xl leading-8 font-semibold">Welcome to building a Supportive Mental Community</p>
+              <h3 className="text-[#001519] text-3xl leading-10 font-medium py-3">Hello Sanjay</h3>
+              <p className="text-[#272529] text-xl leading-8 font-semibold">Welcome to building a Supportive Mental Community</p>
             </div>
             <ThearapySessionCard />
           </div>
           <div className="h-full overflow-auto flex flex-col gap-3 bg-[#FDFEF1] py-5 pl-3 rounded-lg shadow-lg">
             <h2 className="text-2xl font-medium">Upcoming Groups</h2>
-            {upcomingGroups.slice(0,3).map((option) => (
-            <UpcomingCard
-              key={option.title}
-              title={option.title}
-              description={option.description}
-              imageURL={option.imageUrl}
-              startsOn={option.startsOn}
-              sessionsCount={option.sessionsCount}
-              createdBy={option.createdBy}
-              buttonText={option.buttonText}
-              notification={option.notification}
-            />
-          ))}
+            {upcomingGroups.slice(0, 3).map((option) => (
+              <UpcomingCard
+                key={option.title}
+                title={option.title}
+                description={option.description}
+                imageURL={option.imageUrl}
+                startsOn={option.startsOn}
+                sessionsCount={option.sessionsCount}
+                createdBy={option.createdBy}
+                buttonText={option.buttonText}
+                notification={option.notification}
+              />
+            ))}
           </div>
         </div>
       </div>
@@ -278,26 +285,26 @@ function Dashboard() {
         <div className="flex gap-10 p-7">
           <div className="w-[45%] flex flex-col gap-20">
             <div>
-                <h3 className="text-[#001519] text-3xl leading-10 font-medium py-3">Hello Sanjay</h3>
-                <p className="text-[#272529] text-xl leading-8 font-semibold">Welcome to building a Supportive Mental Community</p>
+              <h3 className="text-[#001519] text-3xl leading-10 font-medium py-3">Hello Sanjay</h3>
+              <p className="text-[#272529] text-xl leading-8 font-semibold">Welcome to building a Supportive Mental Community</p>
             </div>
             <ThearapySessionCard />
           </div>
           <div className="w-[50%] h-[30rem] overflow-auto flex flex-col gap-3 bg-[#FDFEF1] py-5 pl-3 rounded-lg shadow-lg">
             <h2 className="text-2xl leading-9 font-medium text-black py-3 pl-3">Upcoming Groups</h2>
-            {upcomingGroups.slice(0,3).map((option) => (
-            <UpcomingCard
-              key={option.title}
-              title={option.title}
-              description={option.description}
-              imageURL={option.imageUrl}
-              startsOn={option.startsOn}
-              sessionsCount={option.sessionsCount}
-              createdBy={option.createdBy}
-              buttonText={option.buttonText}
-              notification={option.notification}
-            />
-          ))}
+            {upcomingGroups.slice(0, 3).map((option) => (
+              <UpcomingCard
+                key={option.title}
+                title={option.title}
+                description={option.description}
+                imageURL={option.imageUrl}
+                startsOn={option.startsOn}
+                sessionsCount={option.sessionsCount}
+                createdBy={option.createdBy}
+                buttonText={option.buttonText}
+                notification={option.notification}
+              />
+            ))}
           </div>
         </div>
       </div>
@@ -306,11 +313,16 @@ function Dashboard() {
 
   return (
     <>
-      <div className="p-10">
+      <div className="p-10 w-full">
         {!toggleIndividual && !toggleGroupTherapy && !toggleSupportGroup ? (<div>
-          <div className="font-semibold">
-            <h1 className="text-2xl mb-2">Hello Sanjay</h1>
-            <p>Welcome to building a Supportive Mental Community.</p>
+          <div className="font-semibold flex justify-between items-center">
+            <div>
+              <h1 className="text-2xl mb-2">Hello Sanjay</h1>
+              <p>Welcome to building a Supportive Mental Community.</p>
+            </div>
+            <div>
+              <button onClick={logout} className="bg-[#0190B1] px-4 py-2 rounded-md text-white text-lg font-medium">Logout</button>
+            </div>
           </div>
 
           {/* Cards - Group Therapy */}
@@ -336,23 +348,23 @@ function Dashboard() {
               Upcoming Groups
             </h1>
             <div className="flex flex-col gap-3">
-                {upcomingGroups.map((option) => (
-                  <UpcomingCard
-                    key={option.title}
-                    title={option.title}
-                    description={option.description}
-                    imageURL={option.imageUrl}
-                    startsOn={option.startsOn}
-                    sessionsCount={option.sessionsCount}
-                    createdBy={option.createdBy}
-                    buttonText={option.buttonText}
-                    notification={option.notification}
-                  />
-                ))}
+              {upcomingGroups.map((option) => (
+                <UpcomingCard
+                  key={option.title}
+                  title={option.title}
+                  description={option.description}
+                  imageURL={option.imageUrl}
+                  startsOn={option.startsOn}
+                  sessionsCount={option.sessionsCount}
+                  createdBy={option.createdBy}
+                  buttonText={option.buttonText}
+                  notification={option.notification}
+                />
+              ))}
             </div>
           </div>
-        </div>) : toggleIndividual ? (<IndividualTherapyView />) 
-              : toggleGroupTherapy ? (<GroupTherapyView />) : (<SupportGroupView />)}
+        </div>) : toggleIndividual ? (<IndividualTherapyView />)
+          : toggleGroupTherapy ? (<GroupTherapyView />) : (<SupportGroupView />)}
       </div>
     </>
   );
