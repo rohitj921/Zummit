@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Admin_SideBar from "../Admin_SideBar";
 import axios from "axios";
-import BellIcon from "../../images/SVG_files/BellIcon.svg"
+import { BASE_ADMIN } from "../../../utils/constants";
+import SearchBar from "../SearchBar";
 
 const Transactions = () => {
   const [transactions, setTransactions] = useState([])
@@ -20,7 +20,7 @@ const Transactions = () => {
       }; 
 
     axios
-      .get("https://zummit-chandan.onrender.com/api/admin/transactions",  config)
+      .get(BASE_ADMIN + "/transactions",  config)
       .then((response) => {
         if (response.data.success) {
           setTransactions(response.data.transaction);
@@ -32,6 +32,7 @@ const Transactions = () => {
         console.error("Error fetching appointments:", error);
       });
   }, []);
+
   const cancelledStyle = { color: "#B00202" };
   const completedStyle = { color: "#02B04A" };
 
@@ -61,40 +62,7 @@ const Transactions = () => {
   return (
     <div className="w-full m-10 ">
       {/* Search Bar */}
-      <div className="flex justify-center gap-10 items-center">
-        <div className="flex items-center bg-white w-[70%]  pl-4 rounded-lg-[#B4F0FF] ">
-          <svg
-            width="25"
-            height="26"
-            viewBox="0 0 24 25"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M11 19.5C15.4183 19.5 19 15.9183 19 11.5C19 7.08172 15.4183 3.5 11 3.5C6.58172 3.5 3 7.08172 3 11.5C3 15.9183 6.58172 19.5 11 19.5Z"
-              stroke="#787579"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M21.0004 21.5004L16.6504 17.1504"
-              stroke="#787579"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          <input
-            type="text"
-            placeholder="Search"
-            className="h-12 ml-5 rounded-lg outline-none w-[100%]"
-          />
-        </div>
-        <div className="p-2 rounded-full ">
-           <img src={BellIcon} alt=" BellIcon " />
-        </div>
-      </div>
+      <SearchBar />
       <div className="flex w-[90%] justify-between items-center">
         <h1 className="text-2xl  my-8">Transactions</h1>
       </div>

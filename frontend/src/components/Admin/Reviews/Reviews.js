@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import BellIcon from "../../images/SVG_files/BellIcon.svg";
+import { BASE_ADMIN } from "../../../utils/constants";
+import SearchBar from "../SearchBar";
 const Reviews = () => {
 
- const [reviews,setReviews] = useState([])  
+  const [reviews, setReviews] = useState([])
 
   useEffect(() => {
 
@@ -20,7 +21,7 @@ const Reviews = () => {
       };
 
     axios
-      .get("https://zummit-chandan.onrender.com/api/admin/reviews",  config)
+      .get(BASE_ADMIN + "/reviews",  config)
       .then((response) => {
         if (response.data.success) {
           setReviews(response.data.review);
@@ -32,7 +33,8 @@ const Reviews = () => {
         console.error("Error fetching appointments:", error);
       });
   }, []);
- const renderStars = (reviewValue) => {
+
+  const renderStars = (reviewValue) => {
     let stars = [];
     for (let i = 0; i < 5; i++) {
       stars.push(
@@ -54,43 +56,10 @@ const Reviews = () => {
       );
     }
     return stars;
- };
+  };
   return (
     <div className="w-full m-10 ">
-      <div className="flex justify-center gap-10 items-center">
-        <div className="flex items-center bg-white w-[70%] border  pl-4 rounded-lg border-[#B4F0FF] ">
-          <svg
-            width="25"
-            height="26"
-            viewBox="0 0 24 25"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M11 19.5C15.4183 19.5 19 15.9183 19 11.5C19 7.08172 15.4183 3.5 11 3.5C6.58172 3.5 3 7.08172 3 11.5C3 15.9183 6.58172 19.5 11 19.5Z"
-              stroke="#787579"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M21.0004 21.5004L16.6504 17.1504"
-              stroke="#787579"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          <input
-            type="text"
-            placeholder="Search"
-            className="h-12 ml-5 rounded-lg outline-none w-[100%]"
-          />
-        </div>
-        <div className="p-2 rounded-full ">
-           <img src={BellIcon} alt=" BellIcon " />
-        </div>
-      </div>
+      <SearchBar />
       <div className="flex w-[90%] justify-between items-center">
         <h1 className="text-2xl  my-8">Clients</h1>
       </div>
@@ -106,7 +75,7 @@ const Reviews = () => {
           <div className="flex gap-4 w-full p-2 text-lg rounded-lg items-center">
             <h1 className="w-[10rem]">{item.doctorName}</h1>
             <h1 className="flex gap-2 w-[10rem]">
-            {renderStars(item.review)}
+              {renderStars(item.review)}
             </h1>
             <h1 className="w-[22rem] text-sm">
               {item.comment.description}

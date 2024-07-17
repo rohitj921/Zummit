@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import BellIcon from "../../images/SVG_files/BellIcon.svg";
 import SearchContainer from "../SearchContainer";
+import { BASE_THERAPIST } from "../../../utils/constants";
 
 const Billings = () => {
   const [transactions, setTransactions] = useState([])
   useEffect(() => {
-    axios.get('https://zummit-chandan.onrender.com/api/therapist/gettherapistTransactionLists')
+    axios.get(BASE_THERAPIST+'/gettherapistTransactionLists')
       .then((response) => {
         if (response.data.success) {
           setTransactions(response.data.therapistTransaction);
@@ -46,7 +46,7 @@ const Billings = () => {
     }
   };
   return (
-    <div className="w-[90%] px-10 bg-[#F2FCFF]">
+    <div className="w-[90%] p-10">
       <SearchContainer />
       <div className="flex w-[90%] justify-between items-center">
         <h1 className="font-medium text-3xl leading-10 my-6">Billings</h1>

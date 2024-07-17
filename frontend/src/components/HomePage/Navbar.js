@@ -1,7 +1,9 @@
-import * as React from "react";
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { removeUser } from "../../utils/Slices/userSlice";
+import { BASE_USER } from "../../utils/constants";
+import Logo from "../images/Navbar-logo.png"
 
 function NavigationLink({ children, href = "#" }) {
   return (
@@ -13,6 +15,7 @@ function NavigationLink({ children, href = "#" }) {
 
 function Navbar() {
   const location = useLocation();
+  const [validate,setValidate]=useState(false);
 
   const navLinks = [
     { name: "About Us", to: "/about" },
@@ -22,20 +25,50 @@ function Navbar() {
     { name: "FAQ", to: "/FAQs" },
   ];
   const user = useSelector((store) => store.user);
+  const admin=useSelector((store)=>store.admin);
+  const therapist=useSelector((store)=>store.therapist);
+  const navigate=useNavigate();
   const dispatch = useDispatch();
+
+  // useEffect(()=>{
+  //   if(user){
+  //     // setValidate(true);
+  //     navigate("/user-dashboard");
+  //   } else{
+  //     // setValidate(false);
+  //     navigate("/login");
+  //   }
+  //   if(admin){
+  //     // setValidate(true);
+  //     navigate("/admin-dashboard");
+  //   } else{
+  //     // setValidate(false);
+  //     navigate("/login");
+  //   }
+  //   if(therapist){
+  //     // setValidate(true);
+  //     console.log(therapist);
+  //     navigate("/therapist-dashboard");
+  //   }
+  //   else{
+  //     // setValidate(false);
+  //     navigate("/login");
+  //   }
+  // },[])
+
   const logout = async () => {
     //data hatane ka ninja technique
     localStorage.removeItem("token");
 
-    // const response = await axios.get("https://zummit-kefo.onrender.com/api/users/logout", {credentials: 'include',  withCredentials: true});
-    await fetch("https://zummit-kefo.onrender.com/api/users/logout", {
+   
+    await fetch(BASE_USER+"/logout", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
 
-      credentials: "include", // Changed from 'true' to 'include' for clarity
-      withCredentials: true,
+      credentials: "include",
+     
     });
 
     dispatch(removeUser());
@@ -50,7 +83,7 @@ function Navbar() {
         >
           <img
             loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/6fb58034307f07517c9e0c497e461fc4e31eb7bf01576cfcb2c328b28bd1eb1d?apiKey=cf8fdc45d1bf4d769195b26a1a492d1c&"
+          src={Logo}
             alt="Company Logo"
           />
         </a>
@@ -66,7 +99,7 @@ function Navbar() {
               <h1 className="text-[22px] font-semibold">{link.name}</h1>
             </Link>
           ))}
-          {user.data._id == undefined && (
+          {validate && (
               <div className="group inline-block">
                 <button
                   aria-haspopup="true"
@@ -109,7 +142,7 @@ function Navbar() {
                 </ul>
               </div>
           )}
-          {user.data._id != undefined && (
+          {validate && (
             <button
               onClick={async () => {
                 await logout();

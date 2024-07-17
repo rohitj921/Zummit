@@ -1,9 +1,11 @@
 import React from "react";
+import ToggleHandler from "../../images/SVG_files/ToggleHandler.svg";
 
 const Existing_Client = ({toggleHandler}) => {
   return (
     <div className="w-[90%] p-5">
       <div className="flex gap-5 items-center">
+        {/* Left Arrow */}
         <svg
           width="14"
           height="14"
@@ -29,28 +31,7 @@ const Existing_Client = ({toggleHandler}) => {
         {/* left */}
         <div>
           <div className="flex gap-2 bg-white border border-[#B4F0FF] rounded-md px-4 py-2">
-            <svg
-              width="25"
-              height="25"
-              viewBox="0 0 25 25"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M11.1504 19.5C15.5687 19.5 19.1504 15.9183 19.1504 11.5C19.1504 7.08172 15.5687 3.5 11.1504 3.5C6.73211 3.5 3.15039 7.08172 3.15039 11.5C3.15039 15.9183 6.73211 19.5 11.1504 19.5Z"
-                stroke="#787579"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M21.1508 21.4999L16.8008 17.1499"
-                stroke="#787579"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
+            <img src={ToggleHandler} alt="ToggleHandler"/>
 
             <input type="text" placeholder="search" />
           </div>
@@ -69,6 +50,7 @@ const Existing_Client = ({toggleHandler}) => {
         <div className="bg-[#B4F0FF] p-2 rounded-md shadow-md w-[60%]">
           <div className="flex justify-between items-center px-4 py-2 rounded-md bg-[#EFF7FF]">
             <h1>What are you trying to accomplish through counselling?</h1>
+            {/* Down Angle Icon */}
             <svg
               width="14"
               height="10"
@@ -87,6 +69,7 @@ const Existing_Client = ({toggleHandler}) => {
           </div>
           <div className="flex justify-end p-2">
             <div className="flex  items-center gap-2">
+              {/* Left Angle Icon */}
               <svg
                 width="10"
                 height="16"
@@ -103,6 +86,7 @@ const Existing_Client = ({toggleHandler}) => {
                 />
               </svg>
               <h1>1 to 5</h1>
+              {/* Right Angle Icon */}
               <svg
                 width="10"
                 height="16"
