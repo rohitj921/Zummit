@@ -2,7 +2,14 @@ const mongoose = require("mongoose");
 
 const paymentSchema = new mongoose.Schema(
   {
-
+      invoiceId: {
+        type: String,
+        required :[true, "invoice ID is required"]
+      },
+      receipt: {
+        type: String,
+        required :[true, "receipt is required"]
+      },
       orderId: { 
         type: String,
         required: [true, "Order ID is required"]
@@ -10,15 +17,23 @@ const paymentSchema = new mongoose.Schema(
       paymentId: { 
         type: String,
         default:null
-      },
+      },  
       amount: { 
         type: Number,
-        required: [true, "Amount is required"]
+        required: [true, "amount is required"]
       },
       status: {
         type: String,
         enum: ["completed", "pending", "cancelled","failed"],
         default: "pending",
+      },
+      invoiceUrl:{
+        type: String,
+        required :[true, "invoiceUrl is required"]
+      },
+      razorpaySignature :{
+        type: String,
+        default:null
       },
       clientName: { 
         type: String,
