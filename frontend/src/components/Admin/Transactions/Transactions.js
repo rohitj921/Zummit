@@ -6,12 +6,21 @@ import BellIcon from "../../images/SVG_files/BellIcon.svg"
 const Transactions = () => {
   const [transactions, setTransactions] = useState([])
   useEffect(() => {
+
+   const token = localStorage.getItem("adminToken");
+      if (!token) {
+        console.error("No token found");
+        return;
+      }
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }; 
+
     axios
-      .post("https://zummit-chandan.onrender.com/api/admin/transactions", {
-        input: "Dom@gmail.com",
-        token:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NWFiOGNjNDQ1MmIxM2Q1MGJmYTYzNCIsImlhdCI6MTcxNzIyMTU4MCwiZXhwIjoxNzE5ODEzNTgwfQ.ZKxsQmALrx7CpkOpNzA1i1Ub1exmI9ghmsdY9bQVzuI",
-      })
+      .get("https://zummit-chandan.onrender.com/api/admin/transactions",  config)
       .then((response) => {
         if (response.data.success) {
           setTransactions(response.data.transaction);

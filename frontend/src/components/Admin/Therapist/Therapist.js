@@ -19,13 +19,7 @@ const Therapist = () => {
       };
 
       try {
-        const response = await axios.post(
-          "https://zummit-chandan.onrender.com/api/admin/therapistsdetails",
-          {
-            input: "akib@gmail.com"
-          },
-          config
-        );
+        const response = await axios.get("https://zummit-chandan.onrender.com/api/admin/therapistsdetails",config);
 
         if (response.data.success) {
           setTherapistsDetails(response.data.therapists);
