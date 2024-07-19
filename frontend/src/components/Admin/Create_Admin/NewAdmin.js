@@ -3,6 +3,7 @@ import { addUser } from "../../../utils/Slices/userSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { AROUND_WITH_US_GIF, BASE_ADMIN } from "../../../utils/constants";
 
 //main component toh yaha hey
 const NewAdmin = () => {
@@ -23,6 +24,8 @@ const NewAdmin = () => {
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
+
+  
   const togglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
   };
@@ -36,18 +39,15 @@ const NewAdmin = () => {
     }
 
     try {
-      const response = await fetch(
-        "https://zummit-chandan.onrender.com/api/admin/adminRegister",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(userData),
-          credentials: "include", // Changed from 'true' to 'include' for clarity
-          withCredentials: true,
-        }
-      );
+      const response = await fetch(BASE_ADMIN + "/adminRegister", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+        credentials: "include", // Changed from 'true' to 'include' for clarity
+        withCredentials: true,
+      });
 
       if (!response.ok) {
         throw new Error("Registration failed");
@@ -60,7 +60,7 @@ const NewAdmin = () => {
 
       //reload kee baad bhi data remain constant
       localStorage.setItem("token", data.token);
-      navigate("/userdashboard");
+      navigate("/user-dashboard");
     } catch (error) {
       console.error("Error:", error);
     }
@@ -68,18 +68,15 @@ const NewAdmin = () => {
 
   const loginUser = async (loginData) => {
     try {
-      const response = await fetch(
-        "https://zummit-chandan.onrender.com/api/admin/adminRegister",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(loginData),
-          credentials: "include", // Changed from 'true' to 'include' for clarity
-          withCredentials: true,
-        }
-      );
+      const response = await fetch(BASE_ADMIN + "/adminRegister", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loginData),
+        credentials: "include", // Changed from 'true' to 'include' for clarity
+        withCredentials: true,
+      });
 
       if (!response.ok) {
         throw new Error("Login failed");
@@ -88,7 +85,7 @@ const NewAdmin = () => {
       const data = await response.json();
       console.log(data);
       dispatch(addUser(data.newUser));
-      navigate("/userdashboard");
+      navigate("/user-dashboard");
       console.log(response);
 
       //jaao token leke aao
@@ -97,44 +94,6 @@ const NewAdmin = () => {
         throw new Error("Token not found in response headers");
       } else if (token) {
         localStorage.setItem("token", data.token);
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
-
-  const TherapistLogin = async (loginData) => {
-    try {
-      const response = await fetch(
-        "http://localhost:4000/api/therapist/loginTherapist",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(loginData),
-          credentials: "include", // Changed from 'true' to 'include' for clarity
-          withCredentials: true,
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Login failed");
-      }
-
-      const data = await response.json();
-
-      dispatch(addUser(data));
-      navigate("/therapist-home");
-      console.log(response);
-
-      //reload kee baad bhi data remain constant
-      localStorage.setItem("token", data.token);
-
-      //jaao token leke aao
-      const token = response["Authorization"];
-      if (!token) {
-        throw new Error("Token not found in response headers");
       }
     } catch (error) {
       console.error("Error:", error);
@@ -277,7 +236,9 @@ const NewAdmin = () => {
             </div>
           )}
           <div className="flex flex-col gap-5 shadow-lg rounded-lg  bg-white p-5">
-            <p className="text-center text-2xl mb-5 font-medium">Create Admin Account</p>
+            <p className="text-center text-2xl mb-5 font-medium">
+              Create Admin Account
+            </p>
             {/* <div className="font-semibold text-xl">
               <p>Admin</p>
             </div> */}

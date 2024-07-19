@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import BellIcon from "../../images/SVG_files/BellIcon.svg"
-
+import { BASE_ADMIN } from "../../../utils/constants";
+import SearchBar from "../SearchBar";
 
 const Appointment = () => {
   const [appointmentsList, setAppointmentsList] = useState([]);
@@ -9,12 +9,21 @@ const Appointment = () => {
   const [selectedSort, setSelectedSort] = useState("");
 
   useEffect(() => {
+
+    const token = localStorage.getItem("adminToken");
+      if (!token) {
+        console.error("No token found");
+        return;
+      }
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+    
     axios
-      .post("https://zummit-chandan.onrender.com/api/admin/appointmentslist", {
-        input: "akib@gmail.com",
-        token:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NWEwNGRiMTk3Mzk4MTgwNzAwZDZjNCIsImlhdCI6MTcxNzE3NTUxNiwiZXhwIjoxNzE5NzY3NTE2fQ.nT9mK7G3tCQlHfhpFBC-iefz4XkGdBIP8BUNN9tOoUQ",
-      })
+      .get(BASE_ADMIN + "/appointmentslist", config)
       .then((response) => {
         if (response.data.success) {
           setAppointmentsList(response.data.adminAppointmentList);
@@ -74,50 +83,21 @@ const Appointment = () => {
   return (
     <div className="w-full m-10 ">
       {/* Search Bar */}
-      <div className="flex w-[95%] justify-end gap-10 items-center">
-        <div className="flex items-center bg-white w-[80%]   pl-4 rounded-lg -[#B4F0FF] ">
-          <svg
-            width="25"
-            height="26"
-            viewBox="0 0 24 25"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M11 19.5C15.4183 19.5 19 15.9183 19 11.5C19 7.08172 15.4183 3.5 11 3.5C6.58172 3.5 3 7.08172 3 11.5C3 15.9183 6.58172 19.5 11 19.5Z"
-              stroke="#787579"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M21.0004 21.5004L16.6504 17.1504"
-              stroke="#787579"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          <input
-            type="text"
-            placeholder="Search"
-            className="h-12 ml-5 rounded-lg outline-none w-[100%]"
-          />
-        </div>
-        <div className="p-2 cursor-pointer rounded-full ">
-          <img src={BellIcon} alt=" BellIcon " />
-        </div>
-      </div>
+
+      <SearchBar />
+
       {/* heading */}
       <div className="w-[95%] flex justify-between items-center text-2xl my-8">
         <h1>Appointments</h1>
         <div className="relative text-white cursor-pointer bg-[#0190B1] w-[7rem] p-1 text-center  rounded-md text-base ">
           <div
-            className={`flex ${showSort && "border-b"
-              } border-white justify-center items-center gap-2 py-1 text-center`}
+            className={`flex ${
+              showSort && "border-b"
+            } border-white justify-center items-center gap-2 py-1 text-center`}
           >
             <h1>Sort</h1>
             {showSort ? (
+              // sort icon
               <svg
                 width="23"
                 height="23"
@@ -135,6 +115,7 @@ const Appointment = () => {
                 />
               </svg>
             ) : (
+              // down arrow
               <svg
                 width="20"
                 height="17"
@@ -204,29 +185,33 @@ const Appointment = () => {
             <div className="absolute left-0 rounded-b-md px-1 text-sm  w-full  bg-[#0190b1]">
               <h1
                 onClick={handleSortClick("All")}
-                className={`${selectedSort === "All" ? "#F7F131" : ""
-                  } border-b rounde-md border-white text-center  py-1`}
+                className={`${
+                  selectedSort === "All" ? "#F7F131" : ""
+                } border-b rounde-md border-white text-center  py-1`}
               >
                 All
               </h1>
               <h1
                 onClick={handleSortClick("Pending")}
-                className={`${selectedSort === "All" ? "#F7F131" : ""
-                  } border-b rounde-md border-white text-center p-1`}
+                className={`${
+                  selectedSort === "All" ? "#F7F131" : ""
+                } border-b rounde-md border-white text-center p-1`}
               >
                 Pending
               </h1>
               <h1
                 onClick={handleSortClick("Cancelled")}
-                className={`${selectedSort === "All" ? "#F7F131" : ""
-                  } border-b rounde-md border-white text-center p-1`}
+                className={`${
+                  selectedSort === "All" ? "#F7F131" : ""
+                } border-b rounde-md border-white text-center p-1`}
               >
                 Cancelled
               </h1>
               <h1
                 onClick={handleSortClick("Completed")}
-                className={`${selectedSort === "All" ? "#F7F131" : ""
-                  } rounde-md border-white text-center p-1`}
+                className={`${
+                  selectedSort === "All" ? "#F7F131" : ""
+                } rounde-md border-white text-center p-1`}
               >
                 Completed
               </h1>
@@ -235,7 +220,7 @@ const Appointment = () => {
         </div>
       </div>
 
-      <div className="p-4 w-[95%] rounded-lg bg-white ">
+      <div className="p-4 w-[95%] shadow-lg rounded-lg bg-white ">
         <div className="bg-[#DCDCDD] text-lg  rounded-lg w-full p-2 text-black flex gap-2 items-center">
           <h1 className="w-[10rem] ">Client Name</h1>
           <h1 className="w-[10rem]">Appointment Time</h1>

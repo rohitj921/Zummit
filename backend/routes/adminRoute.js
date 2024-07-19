@@ -17,20 +17,20 @@ const { createAdminVideo, deleteAdminVideo } = require("../controllers/Admin/adm
 const router = express.Router();
 
 //Create API's
-router.route("/createAppointmentLists").post(createAppointment);
-router.route("/createAdmindashboardDetails").post(createadminDashboard);
-router.route("/createClientLists").post(createClient);
-router.route("/createCreategroupsDetails").post(CreategroupsDetails);
-router.route("/createCreateProfiles").post(createProfiles);
-router.route("/createTherapistsDetails").post(createtherapistsDetails);
+router.post("/createAppointmentLists", protect, admin, createAppointment);
+router.post("/createAdmindashboardDetails", protect, admin, createadminDashboard);
+router.post("/createClientLists", protect, admin, createClient);
+router.post("/createCreategroupsDetails", protect, admin, CreategroupsDetails);
+router.post("/createCreateProfiles", protect, admin,createProfiles);
+router.post("/createTherapistsDetails", protect, admin,createtherapistsDetails);
 router.route("/createTransactions").post(createtransactions);
 router.route("/adminRegister").post(registerAdmin);
 router.route("/adminLogin").post(loginAdmin);
 router.route("/createResource").post(createResource);
 router.route("/createReviews").post(createReviewsList);
 router.post("/createCredentials", protect, admin, createTherapist);
-router.route("/createVideo").post(createAdminVideo);
-router.route("/deleteVideo").post(deleteAdminVideo);
+router.post("/createVideo", protect, admin,createAdminVideo);
+router.post("/deleteVideo", protect, admin,deleteAdminVideo);
 
 
 
@@ -45,16 +45,16 @@ router.route("/deleteReview").post(deleteReview);
 
 //get API's
 router.route("/getAdmin").get(getAdmin);
-router.route("/adminDashboard").get(adminDashboard);
-router.route("/appointmentslist").post(appointmentsList);
-router.route("/clienlist").post(clientsList);
-router.route("/profile").get(profiles);
-router.route("/groupsdetails").post(groupsDetails);
-router.route("/addedreview").get(reviewsList);
-router.route("/reviews").post(reviewsList);
-router.route("/therapistsdetails").post(protect, admin, therapistsDetails);
-router.route("/transactions").post(transactions);
-router.route("/resources").post(resources);
+router.route("/adminDashboard").get(protect, admin, adminDashboard);
+router.route("/appointmentslist").get(protect, admin, appointmentsList);
+router.route("/clienlist").get(protect, admin, clientsList);
+router.route("/profile").get(protect, admin, profiles);
+router.route("/groupsdetails").get(protect, admin, groupsDetails);
+router.route("/addedreview").get(protect, admin, reviewsList);
+router.route("/reviews").get(protect, admin, reviewsList);
+router.route("/therapistsdetails").get(protect, admin, therapistsDetails);
+router.route("/transactions").get(protect, admin, transactions);
+router.route("/resources").get(protect, admin, resources);
 
 
 module.exports = router;

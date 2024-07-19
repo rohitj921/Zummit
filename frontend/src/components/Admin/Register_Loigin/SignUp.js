@@ -3,6 +3,7 @@ import { addUser } from "../../../utils/Slices/userSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { AROUND_WITH_US_GIF, BASE_ADMIN } from "../../../utils/constants";
 
 //main component toh yaha hey
 const SignUp = () => {
@@ -36,18 +37,15 @@ const SignUp = () => {
     }
 
     try {
-      const response = await fetch(
-        "https://zummit-chandan.onrender.com/api/admin/adminRegister",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(userData),
-          credentials: "include", // Changed from 'true' to 'include' for clarity
-          withCredentials: true,
-        }
-      );
+      const response = await fetch(BASE_ADMIN + "/adminRegister", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+        credentials: "include", // Changed from 'true' to 'include' for clarity
+        withCredentials: true,
+      });
 
       if (!response.ok) {
         throw new Error("Registration failed");
@@ -60,7 +58,7 @@ const SignUp = () => {
 
       //reload kee baad bhi data remain constant
       localStorage.setItem("token", data.token);
-      navigate("/userdashboard");
+      navigate("/user-dashboard");
     } catch (error) {
       console.error("Error:", error);
     }
@@ -68,18 +66,15 @@ const SignUp = () => {
 
   const loginUser = async (loginData) => {
     try {
-      const response = await fetch(
-        "https://zummit-chandan.onrender.com/api/admin/adminRegister",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(loginData),
-          credentials: "include", // Changed from 'true' to 'include' for clarity
-          withCredentials: true,
-        }
-      );
+      const response = await fetch(BASE_ADMIN + "/adminRegister", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loginData),
+        credentials: "include", // Changed from 'true' to 'include' for clarity
+        withCredentials: true,
+      });
 
       if (!response.ok) {
         throw new Error("Login failed");
@@ -88,7 +83,7 @@ const SignUp = () => {
       const data = await response.json();
       console.log(data);
       dispatch(addUser(data.newUser));
-      navigate("/userdashboard");
+      navigate("/user-dashboard");
       console.log(response);
 
       //jaao token leke aao
@@ -97,44 +92,6 @@ const SignUp = () => {
         throw new Error("Token not found in response headers");
       } else if (token) {
         localStorage.setItem("token", data.token);
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
-
-  const TherapistLogin = async (loginData) => {
-    try {
-      const response = await fetch(
-        "http://localhost:4000/api/therapist/loginTherapist",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(loginData),
-          credentials: "include", // Changed from 'true' to 'include' for clarity
-          withCredentials: true,
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Login failed");
-      }
-
-      const data = await response.json();
-
-      dispatch(addUser(data));
-      navigate("/therapist-home");
-      console.log(response);
-
-      //reload kee baad bhi data remain constant
-      localStorage.setItem("token", data.token);
-
-      //jaao token leke aao
-      const token = response["Authorization"];
-      if (!token) {
-        throw new Error("Token not found in response headers");
       }
     } catch (error) {
       console.error("Error:", error);
@@ -401,7 +358,7 @@ const SignUp = () => {
             ) : (
               <img
                 loading="lazy"
-                srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/097017b6221225ba91654ced9fdf666cd0fa2e4d4c5218e043ea12cb8afdf043?apiKey=8587097ed3a94b279b125430c3e068a6&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/097017b6221225ba91654ced9fdf666cd0fa2e4d4c5218e043ea12cb8afdf043?apiKey=8587097ed3a94b279b125430c3e068a6&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/097017b6221225ba91654ced9fdf666cd0fa2e4d4c5218e043ea12cb8afdf043?apiKey=8587097ed3a94b279b125430c3e068a6&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/097017b6221225ba91654ced9fdf666cd0fa2e4d4c5218e043ea12cb8afdf043?apiKey=8587097ed3a94b279b125430c3e068a6&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/097017b6221225ba91654ced9fdf666cd0fa2e4d4c5218e043ea12cb8afdf043?apiKey=8587097ed3a94b279b125430c3e068a6&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/097017b6221225ba91654ced9fdf666cd0fa2e4d4c5218e043ea12cb8afdf043?apiKey=8587097ed3a94b279b125430c3e068a6&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/097017b6221225ba91654ced9fdf666cd0fa2e4d4c5218e043ea12cb8afdf043?apiKey=8587097ed3a94b279b125430c3e068a6&"
+                srcSet={AROUND_WITH_US_GIF}
                 className="w-full rounded-md"
               />
             )}

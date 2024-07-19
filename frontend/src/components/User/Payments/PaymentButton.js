@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import {  BASE_USER } from '../../../utils/constants';
 
 const RAZORPAY_KEY_ID = 'rzp_test_Csz5mNjOu2Dwz7'
 
@@ -18,19 +19,18 @@ const loadRazorpay = (src) => {
 // export default loadRazorpay;
 
 const PaymentButton = () => {
-  //hardcoded data for testing purpose please update this
+  //hardcoded data for testing purpose only please update this
   const [paymentData, setPaymentData] = useState({
-    amount: 300,
+    amount: 860,
     currency: 'INR',
-    clientName: 'Ethan',
-    clientEmail : 'ethan00@email.com',
-    clientId: '12346',
+    clientName: 'David Fosh',
+    clientEmail : 'david.fosh@email.com',
+    clientId: '12346785',
     therapistName: 'Dr. Stephen',
     therapistId: '1234',
     appointmentType: 'Individual',
-    therapyType: 'Depression'
+    therapyType: 'Cognitive Behavioral Therapy'
   });
-  // const [invoiceUrl, setInvoiceUrl] = useState('');
   const navigate = useNavigate();
 
   const handlePayment = async () => {
@@ -40,10 +40,10 @@ const PaymentButton = () => {
       return;
     }
     try {
-      const response = await axios.post('http://localhost:4000/api/users/Neworder', paymentData);
+      const response = await axios.post(BASE_USER + '/Neworder', paymentData);
       const order = response.data;
-      console.log(order)
       const options = {
+
         key: RAZORPAY_KEY_ID,
         amount: order.amount,
         currency: order.currency,
@@ -52,19 +52,14 @@ const PaymentButton = () => {
         order_id: order.order_id,
         image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/6fb58034307f07517c9e0c497e461fc4e31eb7bf01576cfcb2c328b28bd1eb1d',
         handler: async (response) => {
-          console.log(response)
           try {
-            const verifyResponse = await axios.post('http://localhost:4000/api/users/verifyPayment', response);
+            const verifyResponse = await axios.post(BASE_USER + '/verifyPayment', response);
             
             const verifyResult = verifyResponse.data;
-            console.log(verifyResult)
             if (verifyResult.success) {
               // set redirect to payment success page
-              // alert('Payment successful');
-              // window.location.href = verifyResult.invoiceUrl
               window.open(verifyResult.invoiceUrl, 'Invoice', 'width=1000,height=800');
               navigate('/user-billings');
-              // setInvoiceUrl(verifyResult.invoiceUrl);
             } else {
               alert('Payment verification failed');
             }
@@ -84,12 +79,13 @@ const PaymentButton = () => {
       const rzp = new window.Razorpay(options);
       rzp.on('payment.failed', async (response) => {
         try {
-          console.log(response)
+          console.error(response.error.description)
           const paymentDetails = {
             order_Id: response.error.metadata.order_id,
             payment_Id: response.error.metadata.payment_id,
           };
-          const updateResponse = await axios.post('http://localhost:4000/api/users/updatePaymentStatus', paymentDetails);
+          const updateResponse = await axios.post(BASE_USER + '/updatePaymentStatus', paymentDetails);
+
           const updateResult = updateResponse.data;
           if (updateResult.success) {
             console.log('Payment failed, Status has been updated.');
@@ -99,8 +95,6 @@ const PaymentButton = () => {
         } catch (error) {
           console.error('Error updating payment status:', error.response,error.response.data);
         }
-        alert("payment failed")
-        console.log(response.error)
       });
       rzp.open();
     } catch (error) {
@@ -111,14 +105,6 @@ const PaymentButton = () => {
 
   return (
     <button onClick={handlePayment}>Make Payment</button>
-    // <div>
-    //   <button onClick={handlePayment}>Pay Now</button>
-    //   {invoiceUrl && (
-    //     <div>
-    //       <iframe src={invoiceUrl} width="100%" height="600px"></iframe>
-    //     </div>
-    //   )}
-    // </div>
   );
 };
 

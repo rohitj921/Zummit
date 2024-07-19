@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import BellIcon from "../../images/SVG_files/BellIcon.svg";
+import { BASE_THERAPIST } from "../../../utils/constants";
+import SearchBar from "../Searchbar";
 
 const Appointment = () => {
   const [appointmentsList, setAppointmentsList] = useState([]);
@@ -9,9 +10,7 @@ const Appointment = () => {
 
   useEffect(() => {
     axios
-      .get(
-        "https://zummit-chandan.onrender.com/api/therapist/gettherapistAppointmentLists"
-      )
+      .get(BASE_THERAPIST + "/gettherapistAppointmentLists")
       .then((response) => {
         if (response.data.success) {
           setAppointmentsList(response.data.therapistAppointmentData);
@@ -69,48 +68,14 @@ const Appointment = () => {
     setSelectedSort(selected);
   };
   return (
-    <div className="w-full m-10 ">
-      {/* Search Bar */}
-      <div className="flex w-[95%] justify-end gap-10 items-center">
-        <div className="flex items-center bg-white w-[80%]   pl-4 rounded-lg -[#B4F0FF] ">
-          <svg
-            width="25"
-            height="26"
-            viewBox="0 0 24 25"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M11 19.5C15.4183 19.5 19 15.9183 19 11.5C19 7.08172 15.4183 3.5 11 3.5C6.58172 3.5 3 7.08172 3 11.5C3 15.9183 6.58172 19.5 11 19.5Z"
-              stroke="#787579"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M21.0004 21.5004L16.6504 17.1504"
-              stroke="#787579"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          <input
-            type="text"
-            placeholder="Search"
-            className="h-12 ml-5 rounded-lg outline-none w-[100%]"
-          />
-        </div>
-        <div className="p-2 cursor-pointer rounded-full ">
-          <img src={BellIcon} alt=" BellIcon " />
-        </div>
-      </div>
+    <div className="w-full m-10">
+      <SearchBar />
       {/* heading */}
       <div className="w-[95%] flex justify-between items-center text-2xl my-8">
         <h1>Appointments</h1>
       </div>
 
-      <div className="p-4  rounded-lg bg-white ">
+      <div className="p-4 shadow-lg rounded-lg bg-white ">
         <div className="bg-[#DCDCDD] text-lg  rounded-lg w-full p-2 text-black flex gap-2 items-center">
           <h1 className="w-[18%] ">Client Name</h1>
           <h1 className="w-[18%]">Appointment Time</h1>
@@ -147,12 +112,12 @@ const Appointment = () => {
                 </button>
               </div>
               <div>
-              <h1
-                style={{ color: getReasonColor(item.report) }}
-                className="w-[10rem]  "
-              >
-                {item.reason}
-              </h1>
+                <h1
+                  style={{ color: getReasonColor(item.report) }}
+                  className="w-[10rem]  "
+                >
+                  {item.reason}
+                </h1>
               </div>
             </div>
           ))}

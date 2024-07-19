@@ -1,10 +1,10 @@
-import React, { useState,useRef } from "react";
+import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import SearchContainer from "../SearchContainer";
 import PrivacyPolicy from "./PrivacyPolicy";
+import CancellationPolicy from "../../HomePage/CancellationPolicy";
 
 const Section = ({ title, description, isVisible, toggleVisibility }) => {
-
   return (
     <>
       <div className="text-white rounded-xl m-2">
@@ -64,6 +64,10 @@ const Section = ({ title, description, isVisible, toggleVisibility }) => {
 const FAQs = () => {
   const PrintRef = useRef();
   const [showPrivacy, setShowPrivacy] = useState(false);
+  const [showCancellationPrivacy, setShowCancellationPrivacy] = useState(false);
+  const toggleCancellationPrivacy = () => {
+    setShowCancellationPrivacy(!showCancellationPrivacy);
+  };
   const togglePrivacyPopup = () => {
     setShowPrivacy(!showPrivacy);
   };
@@ -86,7 +90,6 @@ const FAQs = () => {
   });
 
   const toggleVisibility = (sectionName) => {
-    
     setSectionConfig((prevConfig) => {
       // Check if the section being clicked is already open
       if (prevConfig[sectionName]) {
@@ -133,9 +136,9 @@ const FAQs = () => {
 
   return (
     <div className="mb-16 w-full p-4">
-      <SearchContainer/>
+      <SearchContainer />
       <div>
-        <p className="text-3xl font-medium mb-10 ml-5">FAQ</p>
+        <p className="text-2xl font-medium mb-10 ml-5">FAQ</p>
       </div>
       <div>
         <div className="flex flex-col h-[20%] w-[70%] mx-40">
@@ -145,12 +148,18 @@ const FAQs = () => {
             }
             description={
               <>
-                AroundWithin is an organization committed to enhancing mental health through diverse avenues by Offering group therapies, support groups, and individual counseling. Through these comprehensive approaches, AroundWithin endeavours to nurture resilience, foster growth, and uplift spirits in 
-                the realm of mental health. To know more click 
-                <Link to="/about" style={{color:"blue"}}>  About Us.</Link>
+                AroundWithin is an organization committed to enhancing mental
+                health through diverse avenues by Offering group therapies,
+                support groups, and individual counseling. Through these
+                comprehensive approaches, AroundWithin endeavours to nurture
+                resilience, foster growth, and uplift spirits in the realm of
+                mental health. To know more click
+                <Link to="/about" style={{ color: "blue" }}>
+                  {" "}
+                  About Us.
+                </Link>
               </>
             }
-            
             isVisible={sectionConfig.showAbout}
             toggleVisibility={() => toggleVisibility("showAbout")}
           />
@@ -166,7 +175,14 @@ const FAQs = () => {
           />
           <Section
             title={"How do I sign up for AroundWithin?"}
-            description={<>"To sign up please <Link to="/login" style={{color:"blue"}} >click here."</Link> </>}
+            description={
+              <>
+                "To sign up please{" "}
+                <Link to="/login" style={{ color: "blue" }}>
+                  click here."
+                </Link>{" "}
+              </>
+            }
             isVisible={sectionConfig.showCareers}
             toggleVisibility={() => toggleVisibility("showCareers")}
           />
@@ -176,8 +192,15 @@ const FAQs = () => {
             }
             description={
               <>
-              The information that you share is protected by data privacy laws, for more information visit our 
-               <span onClick={togglePrivacyPopup} style={{color: "blue", cursor: "pointer" }}> Privacy Policy.</span> 
+                The information that you share is protected by data privacy
+                laws, for more information visit our
+                <span
+                  onClick={togglePrivacyPopup}
+                  style={{ color: "blue", cursor: "pointer" }}
+                >
+                  {" "}
+                  Privacy Policy.
+                </span>
               </>
             }
             isVisible={sectionConfig.showCareers1}
@@ -189,7 +212,14 @@ const FAQs = () => {
             }
             description={
               <>
-              We offer support for all kinds of mental health concerns. To know more please <Link to="/services" style={{color:"blue"}}>click here.</Link> You can write to us info@aroundwithin.com. Or you can set up an appointment with one of our therapists directly to gain more insights.
+                We offer support for all kinds of mental health concerns. To
+                know more please{" "}
+                <Link to="/services" style={{ color: "blue" }}>
+                  click here.
+                </Link>{" "}
+                You can write to us info@aroundwithin.com. Or you can set up an
+                appointment with one of our therapists directly to gain more
+                insights.
               </>
             }
             isVisible={sectionConfig.showCareers2}
@@ -211,7 +241,14 @@ const FAQs = () => {
             }
             description={
               <>
-              AroundWithin is all about affordable mental health. Our charges depend on the type of services that you avail. For information on this please <Link to="/services" style={{color:"blue"}}>click here."</Link>. We are a fee-for-service organization; hence we do not take pro bono cases.
+                AroundWithin is all about affordable mental health. Our charges
+                depend on the type of services that you avail. For information
+                on this please{" "}
+                <Link to="/services" style={{ color: "blue" }}>
+                  click here."
+                </Link>
+                . We are a fee-for-service organization; hence we do not take
+                pro bono cases.
               </>
             }
             isVisible={sectionConfig.showCareers4}
@@ -231,7 +268,11 @@ const FAQs = () => {
             }
             description={
               <>
-              We leave that choice to you. Check your preferences and choose the therapists accordingly. You can browse our professionals by <Link to="/therapist" style={{color:"blue"}}>clicking here.</Link>
+                We leave that choice to you. Check your preferences and choose
+                the therapists accordingly. You can browse our professionals by{" "}
+                <Link to="/therapist" style={{ color: "blue" }}>
+                  clicking here.
+                </Link>
               </>
             }
             isVisible={sectionConfig.showCareers6}
@@ -259,7 +300,18 @@ const FAQs = () => {
           />
           <Section
             title={"How do I cancel or modify my subscription to AroundWithin?"}
-            description={"Please go through our cancellation policy."}
+            description={
+              <>
+                "Please go through our{" "}
+                <span
+                  onClick={toggleCancellationPrivacy}
+                  className="text-[blue] cursor-pointer"
+                >
+                  cancellation policy
+                </span>
+                ."
+              </>
+            }
             isVisible={sectionConfig.showCareers9}
             toggleVisibility={() => toggleVisibility("showCareers9")}
           />
@@ -289,9 +341,12 @@ const FAQs = () => {
           />
         </div>
       </div>
-      {showPrivacy && (
-        <PrivacyPolicy togglePrivacyPopup={togglePrivacyPopup} />
-      )} 
+      {showCancellationPrivacy && (
+        <CancellationPolicy
+          toggleCancellationPrivacy={toggleCancellationPrivacy}
+        />
+      )}
+      {showPrivacy && <PrivacyPolicy togglePrivacyPopup={togglePrivacyPopup} />}
     </div>
   );
 };
